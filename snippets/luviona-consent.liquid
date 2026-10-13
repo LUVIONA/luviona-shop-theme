@@ -1,0 +1,61 @@
+{%- doc -%}
+  LUVIONA – Theme-eigenes Consent-Banner (§ 25 TDDDG, DSGVO) auf Basis der Shopify Customer Privacy API.
+  - „Alle ablehnen“ und „Alle akzeptieren“ gleichwertig (gleiche Größe, Farbe, Ebene)
+  - keine vorausgewählten Kategorien, Banner ist nicht modal und verdeckt Rechtsseiten nicht
+  - Einwilligung jederzeit über „Cookie-Einstellungen“ (Footer) änderbar
+  Wird über Theme-Einstellung „LUVIONA – Cookie-Einwilligung“ aktiviert; im Footer rendert
+  snippets/luviona-cookie-link.liquid den Link zum erneuten Öffnen.
+{%- enddoc -%}
+<script src="{{ 'luviona-consent.js' | asset_url }}" defer="defer"></script>
+<luviona-consent
+  id="LuvionaConsent"
+  class="luviona-consent color-{{ settings.luviona_consent_color_scheme }} gradient"
+  role="region"
+  aria-labelledby="LuvionaConsentTitle"
+  aria-describedby="LuvionaConsentText"
+  hidden
+>
+  <div class="luviona-consent__inner">
+    <div>
+      <h2 class="luviona-consent__title" id="LuvionaConsentTitle">{{ settings.luviona_consent_title | escape }}</h2>
+      <div class="luviona-consent__text rte" id="LuvionaConsentText">{{ settings.luviona_consent_text }}</div>
+      <p class="luviona-consent__links">
+        {%- if shop.privacy_policy != blank -%}<a href="{{ shop.privacy_policy.url }}">{{ 'luviona.consent.privacy' | t }}</a>{%- endif -%}
+        {%- assign impressum = pages['impressum'] -%}
+        {%- if impressum != blank -%}<a href="{{ impressum.url }}">{{ 'luviona.consent.imprint' | t }}</a>{%- endif -%}
+      </p>
+    </div>
+    <ul class="luviona-consent__categories" id="LuvionaConsentCategories" hidden data-consent-categories>
+      <li>
+        <label class="luviona-checkbox">
+          <input type="checkbox" checked disabled>
+          <span>{{ 'luviona.consent.cat_necessary' | t }}<small>{{ 'luviona.consent.cat_necessary_text' | t }}</small></span>
+        </label>
+      </li>
+      <li>
+        <label class="luviona-checkbox">
+          <input type="checkbox" name="preferences" data-consent-category="preferences">
+          <span>{{ 'luviona.consent.cat_preferences' | t }}<small>{{ 'luviona.consent.cat_preferences_text' | t }}</small></span>
+        </label>
+      </li>
+      <li>
+        <label class="luviona-checkbox">
+          <input type="checkbox" name="analytics" data-consent-category="analytics">
+          <span>{{ 'luviona.consent.cat_analytics' | t }}<small>{{ 'luviona.consent.cat_analytics_text' | t }}</small></span>
+        </label>
+      </li>
+      <li>
+        <label class="luviona-checkbox">
+          <input type="checkbox" name="marketing" data-consent-category="marketing">
+          <span>{{ 'luviona.consent.cat_marketing' | t }}<small>{{ 'luviona.consent.cat_marketing_text' | t }}</small></span>
+        </label>
+      </li>
+    </ul>
+    <div class="luviona-consent__actions">
+      <button type="button" class="button button--primary-equal" data-consent-action="reject">{{ 'luviona.consent.reject_all' | t }}</button>
+      <button type="button" class="button button--primary-equal" data-consent-action="accept">{{ 'luviona.consent.accept_all' | t }}</button>
+      <button type="button" class="button button--secondary luviona-consent__save" data-consent-action="save" hidden>{{ 'luviona.consent.save' | t }}</button>
+      <button type="button" class="link luviona-cookie-link luviona-consent__more" data-consent-action="more" aria-expanded="false" aria-controls="LuvionaConsentCategories">{{ 'luviona.consent.settings' | t }}</button>
+    </div>
+  </div>
+</luviona-consent>

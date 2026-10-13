@@ -1,0 +1,65 @@
+{%- doc -%}
+  LUVIONA – Akkordeon „Hersteller & Produktsicherheit“ (GPSR, EU 2023/988).
+  Wird aus sections/main-product.liquid für den Block luviona_gpsr gerendert.
+
+  @param {object} block - Section-Block (Einstellungen: heading, default_*, footnote, open_by_default)
+  @param {object} product - Produkt
+  @param {object} section - Section (für IDs)
+{%- enddoc -%}
+{%- liquid
+  assign gpsr = product.metafields.luviona
+  assign m_name = gpsr.hersteller_name.value | default: block.settings.default_manufacturer_name
+  assign m_address = gpsr.hersteller_anschrift.value | default: block.settings.default_manufacturer_address
+  assign m_contact = gpsr.hersteller_kontakt.value | default: block.settings.default_manufacturer_contact
+  assign m_eu = gpsr.eu_verantwortliche.value | default: block.settings.default_eu_responsible
+  assign m_id = gpsr.produktkennung.value | default: product.selected_or_first_available_variant.sku
+  assign m_warn = gpsr.warnhinweise.value | default: block.settings.default_warnings
+-%}
+<div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+  <details id="Details-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
+    <summary>
+      <div class="summary__title">
+        {% render 'icon-accordion', icon: 'shield' %}
+        <h2 class="h4 accordion__title inline-richtext">{{ block.settings.heading | escape }}</h2>
+      </div>
+      {{- 'icon-caret.svg' | inline_asset_content -}}
+    </summary>
+    <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+      <table class="luviona-legal-table">
+        <tbody>
+          <tr>
+            <th scope="row">{{ 'luviona.product.gpsr.manufacturer' | t }}</th>
+            <td>
+              {%- if m_name != blank -%}{{ m_name | newline_to_br }}{%- else -%}<span class="luviona-placeholder">[PLATZHALTER: Herstellername – Metafeld luviona.hersteller_name oder Block-Einstellung]</span>{%- endif -%}
+              {%- if m_address != blank -%}<br>{{ m_address | newline_to_br }}{%- else -%}<br><span class="luviona-placeholder">[PLATZHALTER: Postanschrift des Herstellers]</span>{%- endif -%}
+              {%- if m_contact != blank -%}<br>{{ m_contact | newline_to_br }}{%- else -%}<br><span class="luviona-placeholder">[PLATZHALTER: E-Mail/Website des Herstellers]</span>{%- endif -%}
+            </td>
+          </tr>
+          {%- if m_eu != blank or request.design_mode -%}
+            <tr>
+              <th scope="row">{{ 'luviona.product.gpsr.eu_responsible' | t }}</th>
+              <td>{%- if m_eu != blank -%}{{ m_eu | newline_to_br }}{%- else -%}<span class="luviona-placeholder">[PLATZHALTER: Verantwortliche Person in der EU – nur nötig, wenn der Hersteller außerhalb der EU sitzt]</span>{%- endif -%}</td>
+            </tr>
+          {%- endif -%}
+          <tr>
+            <th scope="row">{{ 'luviona.product.gpsr.product_id' | t }}</th>
+            <td>{%- if m_id != blank -%}{{ m_id }}{%- else -%}<span class="luviona-placeholder">[PLATZHALTER: Artikelnummer/SKU in der Variante hinterlegen]</span>{%- endif -%}</td>
+          </tr>
+          <tr>
+            <th scope="row">{{ 'luviona.product.gpsr.warnings' | t }}</th>
+            <td>{{ m_warn | newline_to_br }}</td>
+          </tr>
+          {%- if gpsr.material_konformitaet.value != blank -%}
+            <tr>
+              <th scope="row">{{ 'luviona.product.gpsr.compliance' | t }}</th>
+              <td>{{ gpsr.material_konformitaet.value | newline_to_br }}</td>
+            </tr>
+          {%- endif -%}
+        </tbody>
+      </table>
+      {%- if block.settings.footnote != blank -%}
+        <p class="caption">{{ block.settings.footnote }}</p>
+      {%- endif -%}
+    </div>
+  </details>
+</div>

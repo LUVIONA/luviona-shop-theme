@@ -60,7 +60,8 @@
   "newsletter": {
     "label": "Email",
     "success": "Thanks for subscribing",
-    "button_label": "Subscribe"
+    "button_label": "Subscribe",
+    "consent_html": "By subscribing you agree to receive our newsletter (double opt-in). Unsubscribe any time via the link in every email. See our <a href=\"{{ link }}\">privacy policy</a>."
   },
   "accessibility": {
     "skip_to_text": "Skip to content",
@@ -263,7 +264,8 @@
     },
     "404": {
       "title": "Page not found",
-      "subtext": "404"
+      "subtext": "404",
+      "text": "The page you are looking for does not exist. Maybe you will find what you need in the collection."
     }
   },
   "sections": {
@@ -274,7 +276,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -527,6 +528,76 @@
       "max_characters": "{{ max_chars }} characters max",
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
+    }
+  },
+  "luviona": {
+    "cart": {
+      "prices_prefix": "All prices:",
+      "discounts_at_checkout": "Discount codes can be entered at checkout."
+    },
+    "product": {
+      "ai_more": "About our images",
+      "gpsr": {
+        "manufacturer": "Manufacturer",
+        "eu_responsible": "Responsible person in the EU",
+        "product_id": "Product identifier",
+        "warnings": "Safety warnings",
+        "compliance": "Material compliance"
+      },
+      "cosmetics": {
+        "purpose": "Function",
+        "content": "Net content",
+        "inci": "Ingredients (INCI)",
+        "pao": "Period after opening",
+        "best_before": "Best before",
+        "batch": "Batch number",
+        "responsible": "Responsible person (EU Cosmetics Regulation)",
+        "allergens": "Fragrance allergens",
+        "warnings": "Warnings"
+      }
+    },
+    "addon": {
+      "variant_label": "Choose colour"
+    },
+    "sets": {
+      "choose_product": "Choose product",
+      "together": "Together"
+    },
+    "widerruf": {
+      "step_person": "Your details",
+      "step_order": "Your order",
+      "name": "Full name",
+      "email": "Email address",
+      "address": "Address (optional)",
+      "order_number": "Order number",
+      "order_date": "Order date",
+      "items": "Items you want to withdraw (optional)",
+      "items_hint": "Leave empty to withdraw the whole order.",
+      "privacy_html": "We use your details only to process your withdrawal. See our <a href=\"{{ link }}\">privacy policy</a>.",
+      "next": "Continue to confirmation",
+      "back": "Back",
+      "summary_heading": "Please check your details"
+    },
+    "consent": {
+      "privacy": "Privacy policy",
+      "imprint": "Legal notice",
+      "cat_necessary": "Necessary",
+      "cat_necessary_text": "Required for cart, login and security – always active.",
+      "cat_preferences": "Preferences",
+      "cat_preferences_text": "Remembers settings such as language or view.",
+      "cat_analytics": "Statistics",
+      "cat_analytics_text": "Helps us understand how the shop is used.",
+      "cat_marketing": "Marketing",
+      "cat_marketing_text": "For personalised advertising, e.g. Meta or TikTok – only with your consent.",
+      "reject_all": "Reject all",
+      "accept_all": "Accept all",
+      "save": "Save selection",
+      "settings": "Adjust settings"
+    },
+    "footer": {
+      "cookie_settings": "Cookie settings",
+      "tax_note_prefix": "All prices:",
+      "tax_note_regel": "All prices incl. VAT."
     }
   }
 }

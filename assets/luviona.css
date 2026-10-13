@@ -1,0 +1,326 @@
+/* =============================================================================
+   LUVIONA – Court Style Accessories
+   Marken-Stylesheet (lädt nach base.css). Farben/Schriften kommen aus theme.liquid.
+   ============================================================================= */
+
+/* ---------- Typografie ---------------------------------------------------- */
+h1, h2, h3, h4, .h0, .h1, .h2, .h3, .h4, .hxl, .hxxl,
+.product__title h1, .card__heading, .main-page-title, .title {
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+h1, .h1, .h0, .hxl, .hxxl { font-weight: 500; }
+h2, .h2 { font-weight: 500; }
+
+.caption-with-letter-spacing,
+.luviona-eyebrow,
+.header__menu-item,
+.list-menu__item--link,
+.facets__summary,
+.product-form__submit,
+.button,
+.shopify-payment-button__button--unbranded,
+.footer-block__heading,
+.caption-large,
+.cart__checkout-button {
+  letter-spacing: var(--luviona-letter-spacing, 0.18em);
+  text-transform: uppercase;
+}
+.header__menu-item { font-size: 1.25rem; font-weight: 500; }
+.header__menu-item:hover { text-decoration-color: var(--luviona-gold); }
+.list-menu__item--link { font-size: 1.2rem; }
+.button, .shopify-payment-button__button--unbranded, .product-form__submit, .cart__checkout-button {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.luviona-eyebrow {
+  display: block;
+  font-size: 1.1rem;
+  color: var(--luviona-gold-dark);
+  margin-bottom: 1rem;
+}
+.color-scheme-3 .luviona-eyebrow,
+.color-scheme-5 .luviona-eyebrow,
+.color-scheme-6 .luviona-eyebrow { color: var(--luviona-gold); }
+
+/* Fließtext etwas luftiger */
+.rte { line-height: 1.7; }
+
+/* ---------- Buttons: Hover in Champagner-Gold ------------------------------ */
+.button:not([disabled]):not(.button--secondary):not(.button--tertiary):hover,
+.product-form__submit:not([disabled]):hover,
+.cart__checkout-button:not([disabled]):hover,
+.shopify-payment-button__button--unbranded:not([disabled]):hover {
+  background-color: var(--luviona-gold);
+  color: var(--luviona-navy);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.button:not([disabled]):not(.button--secondary):hover::after,
+.product-form__submit:not([disabled]):hover::after,
+.cart__checkout-button:not([disabled]):hover::after {
+  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset)) var(--luviona-gold);
+}
+.button--secondary:not([disabled]):hover { color: var(--luviona-gold-dark); }
+
+/* Sichtbarer Fokus (WCAG 2.4.7) – gold auf hell, creme auf dunkel */
+.focus-inset:focus-visible, .button:focus-visible, .link:focus-visible,
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible {
+  outline: 0.2rem solid var(--luviona-gold-dark) !important;
+  outline-offset: 0.2rem;
+  box-shadow: 0 0 0 0.4rem rgb(var(--color-background)) !important;
+}
+.color-scheme-3 a:focus-visible, .color-scheme-3 button:focus-visible, .color-scheme-3 input:focus-visible,
+.color-scheme-5 a:focus-visible, .color-scheme-5 button:focus-visible,
+.color-scheme-6 a:focus-visible, .color-scheme-6 button:focus-visible {
+  outline-color: var(--luviona-gold) !important;
+}
+
+/* ---------- Goldene Trennlinien & Ornament -------------------------------- */
+.luviona-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  justify-content: center;
+  margin: 2.4rem auto;
+  max-width: 32rem;
+  color: var(--luviona-gold);
+}
+.luviona-divider::before, .luviona-divider::after {
+  content: '';
+  flex: 1 1 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--luviona-gold) 50%, transparent);
+}
+.luviona-divider--left { margin-left: 0; justify-content: flex-start; }
+.luviona-divider--left::before { display: none; }
+.luviona-ornament { width: 2.6rem; height: 2.6rem; flex: 0 0 auto; }
+.luviona-ornament svg { width: 100%; height: 100%; display: block; }
+.luviona-hairline { border: 0; height: 1px; background: var(--luviona-gold); opacity: 0.6; margin: 0; }
+
+.header__heading-logo { object-fit: contain; }
+.header { position: relative; }
+.header-wrapper--border-bottom { border-bottom: 1px solid var(--luviona-gold) !important; }
+.announcement-bar__message { font-size: 1.15rem; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* Satin-/Travertin-Anmutung: sehr dezente Textur auf Creme-Flächen */
+.luviona-texture {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.45), transparent 45%),
+    radial-gradient(circle at 80% 90%, rgba(201, 162, 122, 0.12), transparent 50%);
+}
+
+/* ---------- Preise & Pflichtangaben --------------------------------------- */
+.luviona-price-note {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: rgba(var(--color-foreground), 0.8);
+}
+.luviona-price-note a { color: inherit; text-underline-offset: 0.2em; }
+.luviona-price-note--compact { font-size: 1.05rem; margin-top: 0.3rem; }
+.luviona-price-note__item + .luviona-price-note__item::before { content: ' · '; }
+.luviona-price-note--cart { margin-top: 1rem; }
+.product__info-container .luviona-price-note { margin-bottom: 0.4rem; }
+.card-information .luviona-price-note { margin-top: 0.2rem; }
+.price .unit-price { display: block; margin-top: 0.4rem; }
+.product__delivery { display: flex; align-items: center; gap: 0.8rem; margin: 0.8rem 0 1.2rem; font-size: 1.3rem; }
+.product__delivery .svg-wrapper { width: 1.8rem; height: 1.8rem; color: var(--luviona-gold-dark); }
+
+/* Produktseite: Hinweisboxen */
+.luviona-note {
+  border: 1px solid var(--luviona-gold);
+  padding: 1.2rem 1.6rem;
+  margin: 1.2rem 0;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  background: rgba(201, 162, 122, 0.08);
+}
+.luviona-note--gift { display: flex; gap: 1rem; align-items: flex-start; }
+.luviona-note--gift .svg-wrapper { flex: 0 0 2rem; width: 2rem; height: 2rem; color: var(--luviona-gold-dark); }
+.luviona-ai-notice {
+  margin: 0.8rem 0 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.8);
+  text-align: center;
+}
+.luviona-ai-notice a { color: inherit; }
+.luviona-legal-table { width: 100%; border-collapse: collapse; font-size: 1.35rem; }
+.luviona-legal-table th { text-align: left; font-weight: 500; padding: 0.5rem 1rem 0.5rem 0; vertical-align: top; width: 40%; }
+.luviona-legal-table td { padding: 0.5rem 0; vertical-align: top; }
+.luviona-legal-table tr + tr th, .luviona-legal-table tr + tr td { border-top: 1px solid rgba(var(--color-foreground), 0.12); }
+.luviona-inci { word-break: break-word; }
+.luviona-placeholder {
+  background: repeating-linear-gradient(45deg, rgba(122, 31, 43, 0.06), rgba(122, 31, 43, 0.06) 6px, transparent 6px, transparent 12px);
+  border: 1px dashed var(--luviona-bordeaux);
+  color: var(--luviona-bordeaux);
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+}
+.luviona-pao {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.luviona-pao svg { width: 2.4rem; height: 2.4rem; }
+
+/* Akkordeon-Titel */
+.accordion summary .h4 { letter-spacing: 0.06em; text-transform: uppercase; font-family: var(--font-body-family); font-size: 1.25rem; font-weight: 500; }
+.product__accordion .accordion__content { font-size: 1.4rem; }
+
+/* ---------- Produktkarten --------------------------------------------------- */
+.card__heading { font-family: var(--font-heading-family); font-size: calc(var(--font-heading-scale) * 1.9rem); }
+.card-information .price { font-family: var(--font-body-family); }
+.card--standard .card__inner { background: #fff; }
+.card-wrapper .card__media .media img { transition: transform 0.6s ease; }
+.card-wrapper:hover .card__media .media img { transform: scale(1.03); }
+.badge { letter-spacing: 0.1em; text-transform: uppercase; font-size: 1rem; }
+
+/* ---------- Vertrauensleiste ----------------------------------------------- */
+.luviona-trust { padding: 2rem 0; }
+.luviona-trust__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem 1.2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.luviona-trust__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem; }
+.luviona-trust__item--row { flex-direction: row; text-align: left; }
+.luviona-trust__icon { width: 3.2rem; height: 3.2rem; flex: 0 0 auto; color: var(--luviona-gold-dark); }
+.color-scheme-3 .luviona-trust__icon, .color-scheme-5 .luviona-trust__icon { color: var(--luviona-gold); }
+.luviona-trust__icon svg { width: 100%; height: 100%; }
+.luviona-trust__title { font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; margin: 0; }
+.luviona-trust__text { font-size: 1.25rem; margin: 0; opacity: 0.85; line-height: 1.4; }
+@media screen and (min-width: 750px) {
+  .luviona-trust__list { grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+}
+.luviona-trust--bordered { border-top: 1px solid var(--luviona-gold); border-bottom: 1px solid var(--luviona-gold); }
+
+/* ---------- Instagram-Bereich (nur Bilder + Link, kein Embed) --------------- */
+.luviona-instagram__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-mobile-horizontal-spacing);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+@media screen and (min-width: 750px) {
+  .luviona-instagram__grid { grid-template-columns: repeat(var(--luviona-ig-columns, 4), 1fr); gap: var(--grid-desktop-horizontal-spacing); }
+}
+.luviona-instagram__item { position: relative; overflow: hidden; }
+.luviona-instagram__item .media { aspect-ratio: 1 / 1; }
+.luviona-instagram__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.luviona-instagram__item a:hover img { transform: scale(1.04); }
+.luviona-instagram__handle { display: inline-block; margin-top: 2rem; }
+
+/* ---------- Set-Vorschläge ------------------------------------------------- */
+.luviona-sets__grid { display: grid; grid-template-columns: 1fr; gap: 2.4rem; }
+@media screen and (min-width: 990px) { .luviona-sets__grid { grid-template-columns: repeat(var(--luviona-sets-columns, 2), 1fr); } }
+.luviona-set { border: 1px solid var(--luviona-gold); padding: 2rem; text-align: center; }
+.luviona-set__products { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1.2rem; margin: 1.6rem 0; }
+.luviona-set__plus { font-family: var(--font-heading-family); font-size: 3.2rem; color: var(--luviona-gold); line-height: 1; }
+.luviona-set__product img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.luviona-set__product a { color: inherit; text-decoration: none; display: block; }
+.luviona-set__product-title { font-size: 1.3rem; margin: 0.8rem 0 0.2rem; }
+.luviona-set__price { font-size: 1.3rem; }
+.luviona-set__sum { margin: 0.4rem 0 1.2rem; font-size: 1.4rem; }
+
+/* ---------- Warenkorb: Add-on „Noch dazu?“ ---------------------------------- */
+.luviona-addon { border: 1px solid var(--luviona-gold); padding: 2rem; display: grid; grid-template-columns: 9rem 1fr; gap: 1.6rem; align-items: center; }
+.luviona-addon__media img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
+.luviona-addon__heading { margin: 0 0 0.4rem; font-size: calc(var(--font-heading-scale) * 2rem); }
+.luviona-addon__price { font-size: 1.4rem; margin: 0.4rem 0 1rem; }
+.luviona-addon__form { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.luviona-addon__form .select { min-width: 14rem; }
+.luviona-addon__form .button { min-height: 4rem; padding: 0 2rem; }
+@media screen and (min-width: 750px) { .luviona-addon { grid-template-columns: 14rem 1fr; padding: 2.4rem; } }
+
+/* ---------- Widerrufsformular ---------------------------------------------- */
+.luviona-widerruf { max-width: 72rem; margin: 0 auto; }
+.luviona-widerruf__intro { margin-bottom: 2.4rem; }
+.luviona-widerruf fieldset { border: 0; padding: 0; margin: 0 0 2rem; }
+.luviona-widerruf legend { font-size: 1.2rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; color: var(--luviona-gold-dark); }
+.luviona-widerruf .field { margin-bottom: 1.4rem; }
+.luviona-widerruf__grid { display: grid; grid-template-columns: 1fr; gap: 0 1.6rem; }
+@media screen and (min-width: 750px) { .luviona-widerruf__grid { grid-template-columns: 1fr 1fr; } }
+.luviona-widerruf__summary { border: 1px solid var(--luviona-gold); padding: 2rem; margin: 2rem 0; }
+.luviona-widerruf__summary dl { display: grid; grid-template-columns: max-content 1fr; gap: 0.6rem 1.6rem; margin: 0; font-size: 1.4rem; }
+.luviona-widerruf__summary dt { font-weight: 500; }
+.luviona-widerruf__summary dd { margin: 0; overflow-wrap: anywhere; }
+.luviona-widerruf__actions { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.luviona-widerruf [hidden] { display: none !important; }
+.luviona-widerruf__legal { font-size: 1.25rem; opacity: 0.85; }
+.luviona-widerruf__confirm { border-top: 1px solid var(--luviona-gold); padding-top: 2rem; }
+.luviona-checkbox { display: flex; gap: 1rem; align-items: flex-start; font-size: 1.35rem; line-height: 1.5; }
+.luviona-checkbox input { margin-top: 0.3rem; width: 1.8rem; height: 1.8rem; flex: 0 0 auto; accent-color: var(--luviona-navy); }
+
+/* ---------- Kontaktformular --------------------------------------------------- */
+.luviona-privacy-hint { font-size: 1.25rem; opacity: 0.85; margin: 1.2rem 0 2rem; }
+
+/* ---------- Footer: Rechtsleiste --------------------------------------------- */
+.luviona-footer-legal { padding: 2rem 0 0; }
+.luviona-footer-legal__actions { display: flex; flex-wrap: wrap; gap: 1rem 1.6rem; align-items: center; justify-content: center; margin: 0 0 1.6rem; }
+.luviona-footer-legal__actions .button { min-height: 4rem; font-size: 1.15rem; padding: 0 1.8rem; }
+.luviona-footer-legal__taxnote { text-align: center; font-size: 1.15rem; opacity: 0.85; margin: 0 0 1rem; }
+.footer__content-bottom { border-top: 1px solid var(--luviona-gold); }
+.footer .policies { margin-top: 0.6rem; }
+.footer-block__heading { font-size: 1.2rem; font-weight: 500; }
+.footer__copyright .copyright__content { letter-spacing: 0.04em; }
+.luviona-cookie-link { background: none; border: 0; padding: 0; font: inherit; color: inherit; text-decoration: underline; text-underline-offset: 0.3rem; cursor: pointer; }
+
+/* ---------- Consent-Banner (§ 25 TDDDG) ------------------------------------ */
+.luviona-consent {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 100;
+  padding: 2rem 1.6rem;
+  box-shadow: 0 -0.4rem 2.4rem rgba(11, 28, 61, 0.18);
+  border-top: 1px solid var(--luviona-gold);
+  max-height: 85vh;
+  overflow: auto;
+}
+.luviona-consent[hidden] { display: none; }
+.luviona-consent__inner { max-width: var(--page-width); margin: 0 auto; }
+.luviona-consent__title { margin: 0 0 0.8rem; font-size: calc(var(--font-heading-scale) * 2.2rem); }
+.luviona-consent__text { font-size: 1.35rem; line-height: 1.55; }
+.luviona-consent__text p { margin: 0 0 0.8rem; }
+.luviona-consent__links { font-size: 1.25rem; margin: 0 0 1.2rem; }
+.luviona-consent__links a { color: inherit; margin-right: 1.4rem; }
+.luviona-consent__categories { display: grid; gap: 0.8rem; margin: 1.2rem 0 1.6rem; padding: 0; list-style: none; }
+.luviona-consent__categories[hidden] { display: none; }
+@media screen and (min-width: 750px) { .luviona-consent__categories { grid-template-columns: repeat(3, 1fr); } }
+.luviona-consent__categories .luviona-checkbox { font-size: 1.3rem; }
+.luviona-consent__categories small { display: block; opacity: 0.8; font-size: 1.15rem; }
+.luviona-consent__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.luviona-consent__actions .button { min-height: 4.4rem; width: 100%; font-size: 1.2rem; padding: 0 1rem; }
+.luviona-consent__actions .luviona-consent__save { grid-column: 1 / -1; }
+.luviona-consent__actions .luviona-consent__save[hidden] { display: none; }
+.luviona-consent__more { grid-column: 1 / -1; justify-self: center; }
+@media screen and (min-width: 990px) {
+  .luviona-consent__inner { display: grid; grid-template-columns: 1fr minmax(32rem, 40rem); gap: 3.2rem; align-items: start; }
+  .luviona-consent__categories { grid-column: 1 / -1; }
+}
+/* Beide Hauptbuttons bewusst identisch gestaltet (gleiche Größe, Farbe, Ebene) */
+.luviona-consent__actions .button--primary-equal { background: rgb(var(--color-button)); color: rgb(var(--color-button-text)); }
+
+/* ---------- 404 ------------------------------------------------------------- */
+.template-404 { padding: 6rem 0; }
+.template-404 .title { font-size: calc(var(--font-heading-scale) * 4rem); }
+.template-404 p:first-child { letter-spacing: 0.3em; text-transform: uppercase; color: var(--luviona-gold-dark); font-size: 1.2rem; }
+
+/* ---------- Diverses --------------------------------------------------------- */
+.newsletter__subheading, .footer-block__newsletter .caption { font-size: 1.3rem; }
+.luviona-newsletter-hint { font-size: 1.2rem; opacity: 0.85; margin-top: 1rem; }
+.product__info-container .product__title h1 { font-size: calc(var(--font-heading-scale) * 3.2rem); }
+.banner__heading { font-weight: 400; }
+.banner__box .luviona-eyebrow { margin-bottom: 1.6rem; }
+.collection-hero__title { font-weight: 400; }
+.facets__summary { font-size: 1.15rem; }
+.rte a { text-underline-offset: 0.25em; }
+.skip-to-content-link:focus-visible { background: var(--luviona-navy); color: var(--luviona-creme); }
+@media (prefers-reduced-motion: reduce) {
+  .card-wrapper:hover .card__media .media img, .luviona-instagram__item a:hover img { transform: none; }
+}

@@ -1,0 +1,24 @@
+{%- doc -%}
+  LUVIONA – gibt ein Produkt-Metafeld typgerecht aus (Rich Text, mehrzeilig, einzeilig, Liste).
+  Fehlt das Metafeld, wird optional ein Platzhalter angezeigt (nur im Theme-Editor sichtbar).
+
+  @param {object} field - das Metafeld-Objekt, z. B. product.metafields.luviona.inci
+  @param {string} [placeholder] - Platzhaltertext, wenn leer (wird nur im Editor/Design-Modus gezeigt)
+  @param {string} [class] - zusätzliche CSS-Klasse
+{%- enddoc -%}
+{%- if field != blank and field.value != blank -%}
+  {%- case field.type -%}
+    {%- when 'rich_text_field' -%}
+      <div class="rte {{ class }}">{{ field | metafield_tag }}</div>
+    {%- when 'multi_line_text_field' -%}
+      <div class="rte {{ class }}">{{ field.value | newline_to_br }}</div>
+    {%- when 'list.single_line_text_field' -%}
+      <div class="rte {{ class }}">{{ field.value | join: ', ' }}</div>
+    {%- when 'url' -%}
+      <a class="link {{ class }}" href="{{ field.value }}">{{ field.value }}</a>
+    {%- else -%}
+      <span class="{{ class }}">{{ field.value }}</span>
+  {%- endcase -%}
+{%- elsif placeholder != blank and request.design_mode -%}
+  <div class="luviona-placeholder {{ class }}">{{ placeholder }}</div>
+{%- endif -%}

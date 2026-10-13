@@ -28,7 +28,7 @@
         "tiktok": "TikTok"
       }
     },
-    "continue_shopping": "Weiter shoppen",
+    "continue_shopping": "Weiter stöbern",
     "pagination": {
       "label": "Seitennummerierung",
       "page": "Seite {{ number }}",
@@ -58,9 +58,10 @@
     }
   },
   "newsletter": {
-    "label": "E-Mail",
-    "success": "Danke für deine Anmeldung",
-    "button_label": "Abonnieren"
+    "label": "E-Mail-Adresse",
+    "success": "Fast geschafft: Bitte bestätige deine Anmeldung über den Link in der E-Mail, die wir dir gerade geschickt haben.",
+    "button_label": "Anmelden",
+    "consent_html": "Mit der Anmeldung stimmst du dem Erhalt unseres Newsletters zu (Double-Opt-in). Abmeldung jederzeit über den Link in jeder E-Mail. Infos in der <a href=\"{{ link }}\">Datenschutzerklärung</a>."
   },
   "accessibility": {
     "skip_to_text": "Direkt zum Inhalt",
@@ -106,7 +107,7 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "In den Warenkorb legen",
+      "add_to_cart": "In den Warenkorb",
       "description": "Beschreibung",
       "on_sale": "Sale",
       "quantity": {
@@ -177,9 +178,9 @@
         "price_at_each_html": "bei {{ price }}/Stück"
       },
       "product_variants": "Produktvarianten",
-      "taxes_included": "Inkl. Steuern.",
-      "duties_included": "Inkl. Zollgebühren.",
-      "duties_and_taxes_included": "Inkl. Zollgebühren und Steuern."
+      "taxes_included": "",
+      "duties_included": "",
+      "duties_and_taxes_included": ""
     },
     "modal": {
       "label": "Medien-Galerie"
@@ -251,19 +252,20 @@
     },
     "contact": {
       "form": {
-        "name": "Name",
+        "name": "Name (optional)",
         "email": "E-Mail",
         "phone": "Telefonnummer",
-        "comment": "Kommentar",
-        "send": "Senden",
-        "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
+        "comment": "Deine Nachricht",
+        "send": "Nachricht senden",
+        "post_success": "Danke für deine Nachricht. Wir melden uns so schnell wie möglich bei dir – in der Regel innerhalb von zwei Werktagen.",
         "error_heading": "Bitte passe Folgendes an:",
         "title": "Kontaktformular"
       }
     },
     "404": {
-      "title": "Seite nicht gefunden",
-      "subtext": "404"
+      "title": "Diese Seite ist nicht im Spiel",
+      "subtext": "Fehler 404",
+      "text": "Die Seite, die du suchst, gibt es nicht (mehr). Vielleicht findest du in der Kollektion, was du suchst."
     }
   },
   "sections": {
@@ -280,7 +282,7 @@
       "caption": "Artikel im Warenkorb",
       "remove_title": "{{ title }} entfernen",
       "note": "Spezielle Bestellanweisungen",
-      "checkout": "Auschecken",
+      "checkout": "Zur Kasse",
       "empty": "Dein Warenkorb ist leer",
       "product_disclosure": "Produktoffenlegung",
       "product_disclosures": "Produktoffenlegungen",
@@ -298,7 +300,7 @@
         "title": "Hast du ein Konto?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Logge dich ein</a>, damit es beim Checkout schneller geht."
       },
-      "estimated_total": "Geschätzte Gesamtkosten",
+      "estimated_total": "Gesamtsumme",
       "new_estimated_total": "Neuer geschätzter Gesamtbetrag",
       "duties_and_taxes_included_shipping_at_checkout_with_policy_html": "Inkl. Zollgebühren und Steuern. Rabatte und <a href=\"{{ link }}\">Versand</a> werden beim Checkout berechnet.",
       "duties_and_taxes_included_shipping_at_checkout_without_policy": "Inkl. Zollgebühren und Steuern. Rabatte und Versand werden beim Checkout berechnet.",
@@ -526,6 +528,76 @@
       "send_on_label": "Senden am (optional)",
       "expanded": "Formular für den Empfänger des Gutscheins erweitert",
       "collapsed": "Formular für den Empfänger des Gutscheins minimiert"
+    }
+  },
+  "luviona": {
+    "cart": {
+      "prices_prefix": "Alle Preise:",
+      "discounts_at_checkout": "Rabattcodes kannst du im Checkout eingeben."
+    },
+    "product": {
+      "ai_more": "Mehr zu unseren Bildern",
+      "gpsr": {
+        "manufacturer": "Hersteller",
+        "eu_responsible": "Verantwortliche Person in der EU",
+        "product_id": "Produktkennung",
+        "warnings": "Warn- und Sicherheitshinweise",
+        "compliance": "Materialkonformität"
+      },
+      "cosmetics": {
+        "purpose": "Verwendungszweck",
+        "content": "Füllmenge",
+        "inci": "Inhaltsstoffe (INCI)",
+        "pao": "Haltbarkeit nach dem Öffnen",
+        "best_before": "Mindestens haltbar bis",
+        "batch": "Chargennummer",
+        "responsible": "Verantwortliche Person (EU-KosmetikVO)",
+        "allergens": "Duftstoff-Allergene",
+        "warnings": "Warnhinweise"
+      }
+    },
+    "addon": {
+      "variant_label": "Farbe wählen"
+    },
+    "sets": {
+      "choose_product": "Produkt wählen",
+      "together": "Zusammen"
+    },
+    "widerruf": {
+      "step_person": "Deine Angaben",
+      "step_order": "Deine Bestellung",
+      "name": "Vor- und Nachname",
+      "email": "E-Mail-Adresse",
+      "address": "Anschrift (optional)",
+      "order_number": "Bestellnummer",
+      "order_date": "Bestelldatum",
+      "items": "Artikel, die du widerrufen möchtest (optional)",
+      "items_hint": "Leer lassen, wenn du die gesamte Bestellung widerrufen möchtest.",
+      "privacy_html": "Deine Angaben verwenden wir ausschließlich zur Bearbeitung deines Widerrufs. Mehr in der <a href=\"{{ link }}\">Datenschutzerklärung</a>.",
+      "next": "Weiter zur Bestätigung",
+      "back": "Zurück",
+      "summary_heading": "Bitte prüfe deine Angaben"
+    },
+    "consent": {
+      "privacy": "Datenschutzerklärung",
+      "imprint": "Impressum",
+      "cat_necessary": "Notwendig",
+      "cat_necessary_text": "Für Warenkorb, Login und Sicherheit erforderlich – immer aktiv.",
+      "cat_preferences": "Präferenzen",
+      "cat_preferences_text": "Merkt sich Einstellungen wie Sprache oder Ansicht.",
+      "cat_analytics": "Statistik",
+      "cat_analytics_text": "Hilft uns zu verstehen, wie der Shop genutzt wird.",
+      "cat_marketing": "Marketing",
+      "cat_marketing_text": "Für personalisierte Werbung, z. B. Meta oder TikTok – nur mit deiner Einwilligung.",
+      "reject_all": "Alle ablehnen",
+      "accept_all": "Alle akzeptieren",
+      "save": "Auswahl speichern",
+      "settings": "Einstellungen anpassen"
+    },
+    "footer": {
+      "cookie_settings": "Cookie-Einstellungen",
+      "tax_note_prefix": "Alle Preise:",
+      "tax_note_regel": "Alle Preise inkl. MwSt."
     }
   }
 }

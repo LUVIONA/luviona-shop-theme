@@ -1,0 +1,120 @@
+{%- comment -%}
+  LUVIONA – Warenkorb-Add-on „Noch dazu?“ (z. B. Love Charm). Keine Vorauswahl, ein Klick zum Hinzufügen,
+  Preis mit Pflichtangaben. Wird ausgeblendet, wenn das Produkt bereits im Warenkorb liegt oder der Warenkorb leer ist.
+{%- endcomment -%}
+{%- liquid
+  assign addon = section.settings.product
+  assign in_cart = false
+  for item in cart.items
+    if item.product_id == addon.id
+      assign in_cart = true
+    endif
+  endfor
+-%}
+{%- if addon != blank and addon.available and cart != empty and in_cart == false -%}
+  {{ 'component-price.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {%- style -%}
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    }
+    @media screen and (min-width: 750px) {
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+      }
+    }
+  {%- endstyle -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+    <div class="page-width">
+      <div class="luviona-addon" {{ section.shopify_attributes }}>
+        <div class="luviona-addon__media">
+          <a href="{{ addon.url }}" tabindex="-1" aria-hidden="true">
+            {%- if addon.featured_media -%}
+              {{ addon.featured_media | image_url: width: 400 | image_tag: loading: 'lazy', widths: '140, 280, 400', sizes: '14rem', alt: addon.featured_media.alt | escape }}
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </a>
+        </div>
+        <div>
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="luviona-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          <h2 class="luviona-addon__heading">
+            <a class="link" href="{{ addon.url }}">{{ section.settings.heading | default: addon.title | escape }}</a>
+          </h2>
+          {%- if section.settings.text != blank -%}
+            <p class="luviona-addon__text">{{ section.settings.text | escape }}</p>
+          {%- endif -%}
+          <div class="luviona-addon__price">
+            {% render 'price', product: addon, use_variant: true, show_price_note: 'compact' %}
+          </div>
+          <product-form data-section-id="{{ section.id }}" data-hide-errors="false">
+            {%- form 'product', addon, id: 'luviona-addon-form', class: 'luviona-addon__form', novalidate: 'novalidate' -%}
+              {%- unless addon.has_only_default_variant -%}
+                <div class="select">
+                  <label class="visually-hidden" for="luviona-addon-variant">{{ 'luviona.addon.variant_label' | t }}</label>
+                  <select id="luviona-addon-variant" name="id" class="select__select">
+                    {%- for variant in addon.variants -%}
+                      <option value="{{ variant.id }}"{% unless variant.available %} disabled{% endunless %}>
+                        {{ variant.title }}{% unless variant.available %} – {{ 'products.product.sold_out' | t }}{% endunless %}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+                </div>
+              {%- else -%}
+                <input type="hidden" name="id" value="{{ addon.selected_or_first_available_variant.id }}">
+              {%- endunless -%}
+              <input type="hidden" name="quantity" value="1">
+              <button type="submit" name="add" class="button" aria-haspopup="dialog">
+                <span>{{ section.settings.button_label | default: 'products.product.add_to_cart' | t }}</span>
+                {%- render 'loading-spinner' -%}
+              </button>
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                <span class="product-form__error-message"></span>
+              </div>
+            {%- endform -%}
+          </product-form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Add-on nach erfolgreichem Hinzufügen ausblenden (Warenkorbliste aktualisiert sich über cart-items).
+    document.addEventListener('DOMContentLoaded', function () {
+      if (typeof subscribe !== 'function' || typeof PUB_SUB_EVENTS === 'undefined') return;
+      subscribe(PUB_SUB_EVENTS.cartUpdate, function (event) {
+        if (event && event.source === 'product-form') {
+          var el = document.querySelector('.luviona-addon');
+          if (el) el.closest('.section-{{ section.id }}-padding').hidden = true;
+        }
+      });
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "LUVIONA: Warenkorb-Add-on",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": { "templates": ["cart"] },
+  "settings": [
+    { "type": "paragraph", "content": "Seriöser Zusatzverkauf: Produkt wird nur angeboten, nie vorausgewählt. Ein Klick legt es in den Warenkorb." },
+    { "type": "product", "id": "product", "label": "Produkt (z. B. Love Charm)" },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Überschrift", "default": "Noch dazu?" },
+    { "type": "text", "id": "heading", "label": "Überschrift (leer = Produkttitel)", "default": "" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Dein Gloss immer griffbereit – an der Tasche, am Schläger-Bag, am Schlüsselbund." },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "In den Warenkorb" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 24 }
+  ],
+  "presets": [ { "name": "LUVIONA: Warenkorb-Add-on" } ]
+}
+{% endschema %}

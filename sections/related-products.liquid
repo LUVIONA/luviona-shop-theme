@@ -23,7 +23,7 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <product-recommendations
     class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
+    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}&intent={{ section.settings.intent | default: 'related' }}"
     data-section-id="{{ section.id }}"
     data-product-id="{{ product.id }}"
   >
@@ -102,6 +102,17 @@
       ],
       "default": "h1",
       "label": "t:sections.all.heading_size.label"
+    },
+    {
+      "type": "select",
+      "id": "intent",
+      "label": "Empfehlungstyp",
+      "info": "„Passt dazu“ nutzt die Ergänzungsprodukte aus der Shopify-App „Search & Discovery“ (manuell pflegbar). „Ähnliche Produkte“ wird automatisch ermittelt.",
+      "options": [
+        { "value": "complementary", "label": "Passt dazu (Ergänzungsprodukte)" },
+        { "value": "related", "label": "Ähnliche Produkte" }
+      ],
+      "default": "related"
     },
     {
       "type": "range",

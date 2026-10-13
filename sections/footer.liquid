@@ -170,6 +170,9 @@
               {%- if section.settings.newsletter_heading != blank -%}
                 <h2 class="footer-block__heading inline-richtext">{{ section.settings.newsletter_heading }}</h2>
               {%- endif -%}
+              {%- if section.settings.newsletter_text != blank -%}
+                <div class="footer-block__details-content rte">{{ section.settings.newsletter_text }}</div>
+              {%- endif -%}
               {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
                 <input type="hidden" name="contact[tags]" value="newsletter">
                 <div class="newsletter-form__field-wrapper">
@@ -232,6 +235,7 @@
                     {{- 'newsletter.success' | t }}
                   </h3>
                 {%- endif -%}
+                <p class="luviona-newsletter-hint caption">{{ 'newsletter.consent_html' | t: link: shop.privacy_policy.url }}</p>
               {%- endform -%}
             </div>
           {%- endif -%}
@@ -297,12 +301,35 @@
         {%- endif -%}
       </div>
     </div>
+    {%- comment -%} LUVIONA: Rechtsleiste – Widerrufsbutton (EU-RL 2023/2673), Cookie-Einstellungen (§ 25 TDDDG), § 19 UStG {%- endcomment -%}
+    <div class="luviona-footer-legal page-width">
+      <div class="luviona-footer-legal__actions">
+        {%- if section.settings.show_withdrawal_button and settings.luviona_withdrawal_page != blank -%}
+          <a class="button button--secondary" href="{{ settings.luviona_withdrawal_page.url }}">{{ settings.luviona_withdrawal_label | escape }}</a>
+        {%- endif -%}
+        {%- if section.settings.show_cookie_settings -%}
+          {% render 'luviona-cookie-link', class: 'link link--text' %}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_tax_note -%}
+        <p class="luviona-footer-legal__taxnote">
+          {%- if settings.luviona_tax_mode == 'regelbesteuerung' -%}
+            {{ 'luviona.footer.tax_note_regel' | t }}
+          {%- else -%}
+            {{ 'luviona.footer.tax_note_prefix' | t }} {{ settings.luviona_tax_note_kleinunternehmer }}
+          {%- endif -%}
+          {%- if settings.luviona_shipping_note_enabled and settings.luviona_shipping_note != blank %} {{ settings.luviona_shipping_note | capitalize }}.{% endif -%}
+        </p>
+      {%- endif -%}
+    </div>
     <div class="footer__content-bottom-wrapper page-width{% if section.settings.enable_country_selector == false and section.settings.enable_language_selector == false %} footer__content-bottom-wrapper--center{% endif %}">
       <div class="footer__copyright caption">
         <small class="copyright__content"
           >&copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: routes.root_url -}}
         </small>
-        <small class="copyright__content">{{ powered_by_link }}</small>
+        {%- if section.settings.show_powered_by -%}
+          <small class="copyright__content">{{ powered_by_link }}</small>
+        {%- endif -%}
         {%- if section.settings.show_policy -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
@@ -448,6 +475,12 @@
       "label": "t:sections.footer.settings.newsletter_heading.label"
     },
     {
+      "type": "richtext",
+      "id": "newsletter_text",
+      "label": "Newsletter-Text (Vorteil klar benennen, kein Gutschein-Zwang)",
+      "default": "<p>Neue Designs, Court-Style-Inspiration und gelegentlich ein Vorteil für Abonnentinnen – maximal zweimal im Monat.</p>"
+    },
+    {
       "type": "header",
       "content": "t:sections.footer.settings.header__9.content"
     },
@@ -491,6 +524,35 @@
       "default": true,
       "label": "t:sections.footer.settings.show_policy.label",
       "info": "t:sections.footer.settings.show_policy.info"
+    },
+    {
+      "type": "header",
+      "content": "LUVIONA: Rechtsleiste"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_withdrawal_button",
+      "default": true,
+      "label": "Button „Vertrag widerrufen“ anzeigen",
+      "info": "Seite und Beschriftung unter Theme-Einstellungen → LUVIONA – Rechtliches."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cookie_settings",
+      "default": true,
+      "label": "Link „Cookie-Einstellungen“ anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_tax_note",
+      "default": true,
+      "label": "Hinweis § 19 UStG / Versand im Footer anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_powered_by",
+      "default": false,
+      "label": "„Powered by Shopify“ anzeigen"
     },
     {
       "type": "header",

@@ -1,0 +1,13 @@
+{%- doc -%}
+  LUVIONA – Link „Cookie-Einstellungen“ (Footer). Öffnet das Theme-Consent-Banner erneut.
+  Ist das Theme-Banner aus (z. B. Shopify-Banner/App im Einsatz), wird der Link für Shopifys Banner
+  ausgegeben: Shopify erkennt den Link über die Klasse „shopify-pc__banner__link“ nicht automatisch,
+  daher stattdessen Link auf die Datenschutzerklärung mit Anker #cookies.
+
+  @param {string} [class] - zusätzliche CSS-Klasse
+{%- enddoc -%}
+{%- if settings.luviona_consent_enabled -%}
+  <a href="#LuvionaConsent" class="{{ class }}" data-luviona-cookie-settings>{{ 'luviona.footer.cookie_settings' | t }}</a>
+{%- elsif shop.privacy_policy != blank -%}
+  <a href="{{ shop.privacy_policy.url }}#cookies" class="{{ class }}">{{ 'luviona.footer.cookie_settings' | t }}</a>
+{%- endif -%}

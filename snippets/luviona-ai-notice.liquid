@@ -1,0 +1,21 @@
+{%- doc -%}
+  LUVIONA – Transparenzhinweis für KI-generierte/KI-bearbeitete Produktbilder
+  (EU AI Act Art. 50, § 5 UWG). Wird unter der Produktgalerie ausgegeben.
+  Pro Produkt abschaltbar über das Metafeld luviona.ki_bilder = false (z. B. bei reinen Fotos).
+
+  @param {object} product - Produkt-Objekt
+{%- enddoc -%}
+{%- liquid
+  assign show_notice = settings.luviona_ai_notice_enabled
+  if product.metafields.luviona.ki_bilder.value == false
+    assign show_notice = false
+  endif
+-%}
+{%- if show_notice and settings.luviona_ai_notice != blank -%}
+  <p class="luviona-ai-notice caption">
+    {{ settings.luviona_ai_notice }}
+    {%- if settings.luviona_ai_page != blank %}
+      <a href="{{ settings.luviona_ai_page.url }}">{{ 'luviona.product.ai_more' | t }}</a>
+    {%- endif -%}
+  </p>
+{%- endif -%}

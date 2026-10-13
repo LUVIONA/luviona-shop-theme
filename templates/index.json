@@ -1,62 +1,129 @@
 {
   "sections": {
-    "image_banner": {
+    "hero": {
       "type": "image-banner",
       "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "Court Style Accessories",
+            "text_style": "caption-with-letter-spacing"
+          }
+        },
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "heading": "Dein Spiel. Dein Style.",
+            "heading_size": "hxl"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Schmuck und Taschen-Charms, inspiriert vom Sommer auf dem Sandplatz – entworfen und versendet aus Deutschland.",
+            "text_style": "body"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
+            "button_label_1": "Kollektion entdecken",
             "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_1": false,
+            "button_label_2": "Love Charm",
+            "button_link_2": "shopify://products/love-charm",
+            "button_style_secondary_2": true
           }
         }
       },
       "block_order": [
+        "eyebrow",
         "heading",
+        "text",
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image_overlay_opacity": 20,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
         "image_behavior": "none",
-        "desktop_content_alignment": "center",
+        "desktop_content_alignment": "left",
         "color_scheme": "scheme-3",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": false
+        "show_text_below": true
       }
     },
-    "featured_collection": {
+    "trust": {
+      "type": "luviona-trust-bar",
+      "blocks": {
+        "t1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Kostenloser Versand",
+            "text": "innerhalb Deutschlands"
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "icon": "germany",
+            "title": "Versand aus Deutschland",
+            "text": "Lieferzeit 2–4 Werktage"
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "14 Tage Widerruf",
+            "text": "gesetzliches Widerrufsrecht"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "icon": "gift",
+            "title": "Geschenkverpackung",
+            "text": "navy LUVIONA-Box auf Wunsch"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
+      "settings": {
+        "heading": "",
+        "layout": "stack",
+        "show_borders": true,
+        "color_scheme": "scheme-1",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
+        "title": "Die Kollektion",
+        "heading_size": "h1",
+        "description": "<p>Geflochtene Kordelarmbänder, feine Gliederketten und der Love Charm mit Lipgloss. Jedes Stück versandkostenfrei in Deutschland.</p>",
+        "show_description": true,
         "description_style": "body",
         "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "products_to_show": 6,
+        "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "outline",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -66,10 +133,243 @@
         "padding_top": 44,
         "padding_bottom": 36
       }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Über LUVIONA",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Für alle, die den Court lieben",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>LUVIONA ist aus der Liebe zum Tennis entstanden: dem Knirschen des Sands, weißen Linien in der Sonne und dem Gefühl nach einem guten Match. Unsere Armbänder, Ketten und Charms bringen genau das in deinen Alltag – zeitlos, feminin und hochwertig verarbeitet, zu einem Preis, der sich gut anfühlt.</p><p>Entworfen in Deutschland, verpackt mit Sorgfalt in unserer navy Box.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Unsere Geschichte",
+            "button_link": "shopify://pages/ueber-uns",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "sets": {
+      "type": "luviona-sets",
+      "blocks": {
+        "s1": {
+          "type": "set",
+          "settings": {
+            "title": "Match Point Armband + Kette",
+            "product_1": "match-point-armband",
+            "product_2": "match-point-kette",
+            "set_price": "",
+            "text": "",
+            "link_label": "Zur Kollektion",
+            "link": "shopify://collections/all"
+          }
+        },
+        "s2": {
+          "type": "set",
+          "settings": {
+            "title": "Court Classic + Love Charm",
+            "product_1": "court-classic-gruen-weiss",
+            "product_2": "love-charm",
+            "set_price": "",
+            "text": "Der Love Charm passt zu jedem Armband – und an jede Tasche.",
+            "link_label": "Love Charm ansehen",
+            "link": "shopify://products/love-charm"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2"
+      ],
+      "settings": {
+        "eyebrow": "Kombinieren",
+        "heading": "Schöner zu zweit",
+        "heading_size": "h1",
+        "text": "<p>Armband und Kette im gleichen Design – oder dein Lieblingsarmband mit dem Love Charm. Jedes Teil ist einzeln bestellbar.</p>",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "gift": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Geschenkidee",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "small"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Für die Tennispartnerin, die Trainerin, das Team",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Geburtstag, Vereinsfeier, Turnier oder einfach so: Auf Wunsch verpacken wir dein Schmuckstück in der navy LUVIONA-Box und legen eine Grußkarte bei. Sag uns im Warenkorb einfach Bescheid.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Geschenke entdecken",
+            "button_link": "shopify://collections/all",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    },
+    "instagram": {
+      "type": "luviona-instagram",
+      "blocks": {
+        "i1": {
+          "type": "image",
+          "settings": {
+            "alt": "LUVIONA Court Classic Armband am Handgelenk"
+          }
+        },
+        "i2": {
+          "type": "image",
+          "settings": {
+            "alt": "LUVIONA Match Point Kette"
+          }
+        },
+        "i3": {
+          "type": "image",
+          "settings": {
+            "alt": "LUVIONA Love Charm an einer Tasche"
+          }
+        },
+        "i4": {
+          "type": "image",
+          "settings": {
+            "alt": "Tennisplatz im Sommer"
+          }
+        }
+      },
+      "block_order": [
+        "i1",
+        "i2",
+        "i3",
+        "i4"
+      ],
+      "settings": {
+        "eyebrow": "Instagram",
+        "heading": "Zeig uns deinen Court Style",
+        "heading_size": "h1",
+        "handle": "@luviona.de",
+        "profile_url": "",
+        "columns_desktop": 4,
+        "ad_note": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bleib am Ball",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Neue Designs, Court-Style-Inspiration und gelegentlich ein Vorteil für Abonnentinnen – maximal zweimal im Monat, jederzeit abbestellbar.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form"
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "trust",
+    "collection",
+    "story",
+    "sets",
+    "gift",
+    "instagram",
+    "newsletter"
   ]
 }

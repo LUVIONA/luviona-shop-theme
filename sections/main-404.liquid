@@ -17,6 +17,8 @@
   <h1 class="title">
     {{ 'templates.404.title' | t }}
   </h1>
+  {% render 'luviona-ornament' %}
+  <p class="rte">{{ 'templates.404.text' | t }}</p>
   <a href="{{ routes.all_products_collection_url }}" class="button">
     {{ 'general.continue_shopping' | t }}
   </a>
