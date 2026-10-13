@@ -723,11 +723,13 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .price .luviona-price-note, .price--large .luviona-price-note, .luviona-feature__price .luviona-price-note { font-family: var(--font-body-family); }
 
 /* „In den Warenkorb“ immer als gefüllter Hauptbutton */
-.product-form__submit.button--secondary { background: rgb(var(--color-button)); color: rgb(var(--color-button-text)); }
-.product-form__submit.button--secondary::after { box-shadow: 0 0 0 var(--buttons-border-width) rgb(var(--color-button)); }
+.product-form__submit.button.button--secondary { --color-button: 11, 28, 61; --color-button-text: 246, 240, 230; background: var(--luviona-navy); color: var(--luviona-creme); }
+.product-form__submit.button.button--secondary::after { box-shadow: 0 0 0 1px var(--luviona-navy); }
+.product-form__submit.button.button--secondary:not([disabled]):hover { background: var(--luviona-gold); color: var(--luviona-navy); }
+.product-form__submit.button.button--secondary:not([disabled]):hover::after { box-shadow: 0 0 0 1px var(--luviona-gold); }
 
 /* Badges in Dawn-.media-Containern nicht vollflächig strecken */
-.media > .luviona-ai-badge, .global-media-settings > .luviona-ai-badge {
+.media > .luviona-ai-badge.luviona-ai-badge.luviona-ai-badge, .global-media-settings > .luviona-ai-badge.luviona-ai-badge.luviona-ai-badge {
   position: absolute; top: auto; left: auto; right: 0.8rem; bottom: 0.8rem;
   width: auto; height: auto; max-width: calc(100% - 1.6rem); display: inline-block;
 }
