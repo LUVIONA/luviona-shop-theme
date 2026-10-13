@@ -198,7 +198,7 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .header__heading-logo { max-height: 5.2rem; width: auto; }
 .luviona-wordmark { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; color: rgb(var(--color-foreground)); }
 .luviona-wordmark__name { font-family: var(--font-heading-family); font-weight: 500; font-size: 2.5rem; letter-spacing: 0.36em; margin-right: -0.36em; }
-.luviona-wordmark__claim { margin-top: 0.7rem; font-family: var(--font-body-family); font-size: 0.8rem; letter-spacing: 0.44em; margin-right: -0.44em; text-transform: uppercase; color: var(--luviona-gold-dark); font-weight: 500; }
+.luviona-wordmark__claim { white-space: nowrap; margin-top: 0.7rem; font-family: var(--font-body-family); font-size: 0.8rem; letter-spacing: 0.44em; margin-right: -0.44em; text-transform: uppercase; color: var(--luviona-gold-dark); font-weight: 500; }
 .luviona-wordmark--compact .luviona-wordmark__name { font-size: 2.2rem; }
 .header__menu-item { font-size: 1.1rem; letter-spacing: 0.26em; padding: 1rem 1.6rem; color: rgba(var(--color-foreground), 0.82); }
 .header__menu-item span { transition: color 0.2s; }
@@ -708,3 +708,11 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
   .luviona-colors__link:hover img, .luviona-instagram__item a:hover img { transform: none; }
   .luviona-link-arrow, .button { transition: none; }
 }
+
+/* ---------- 15. Feinschliff nach Live-Prüfung -------------------------------------- */
+@media screen and (max-width: 749px) {
+  .luviona-wordmark__name { font-size: 2.2rem; letter-spacing: 0.3em; margin-right: -0.3em; }
+  .luviona-wordmark__claim { font-size: 0.72rem; letter-spacing: 0.32em; margin-right: -0.32em; margin-top: 0.5rem; }
+}
+.header__icon--cart .icon, .header__icon--cart svg { width: 2.2rem; height: 2.2rem; }
+.header__icon--cart .svg-wrapper { width: 4.4rem; height: 4.4rem; }

@@ -1,5 +1,6 @@
 <!doctype html>
-<html class="js" lang="{{ request.locale.iso_code }}">
+{%- comment -%} LUVIONA verkauft nur in Deutschland: auch bei englischer Shop-Hauptsprache ist der Inhalt deutsch. {%- endcomment -%}
+<html class="js" lang="{% if request.locale.iso_code == 'en' %}de{% else %}{{ request.locale.iso_code }}{% endif %}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
