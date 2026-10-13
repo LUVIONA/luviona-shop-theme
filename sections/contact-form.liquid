@@ -52,6 +52,7 @@
         </ul>
       {%- endif -%}
       <div class="contact__fields">
+        {%- if section.settings.show_name -%}
         <div class="field">
           <input
             class="field__input"
@@ -64,6 +65,7 @@
           >
           <label class="field__label" for="ContactForm-name">{{ 'templates.contact.form.name' | t }}</label>
         </div>
+        {%- endif -%}
         <div class="field field--with-error">
           <input
             autocomplete="email"
@@ -99,6 +101,7 @@
           {%- endif -%}
         </div>
       </div>
+      {%- if section.settings.show_phone -%}
       <div class="field">
         <input
           type="tel"
@@ -112,6 +115,7 @@
         >
         <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
+      {%- endif -%}
       <div class="field">
         <textarea
           rows="10"
@@ -119,13 +123,19 @@
           class="text-area field__input"
           name="contact[{{ 'templates.contact.form.comment' | t }}]"
           placeholder="{{ 'templates.contact.form.comment' | t }}"
+          required
+          aria-required="true"
         >
           {{- form.body -}}
         </textarea>
         <label class="form__label field__label" for="ContactForm-body">
-          {{- 'templates.contact.form.comment' | t -}}
-        </label>
+          {{- 'templates.contact.form.comment' | t }}
+          <span aria-hidden="true">*</span></label
+        >
       </div>
+      {%- if section.settings.privacy_hint != blank -%}
+        <div class="luviona-privacy-hint rte">{{ section.settings.privacy_hint }}</div>
+      {%- endif -%}
       <div class="contact__button">
         <button type="submit" class="button">
           {{ 'templates.contact.form.send' | t }}
@@ -183,6 +193,29 @@
       "id": "color_scheme",
       "label": "t:sections.all.colors.label",
       "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "LUVIONA: Datensparsamkeit (DSGVO)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_name",
+      "label": "Namensfeld anzeigen (freiwillig)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Telefonfeld anzeigen",
+      "default": false,
+      "info": "Nur einschalten, wenn wirklich nötig. Pflichtfelder sind nur E-Mail und Nachricht."
+    },
+    {
+      "type": "richtext",
+      "id": "privacy_hint",
+      "label": "Datenschutzhinweis unter dem Formular",
+      "default": "<p>Deine Angaben nutzen wir ausschließlich zur Bearbeitung deiner Anfrage. Details findest du in unserer <a href=\"/policies/privacy-policy\">Datenschutzerklärung</a>.</p>"
     },
     {
       "type": "header",

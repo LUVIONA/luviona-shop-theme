@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 52
+      }
+    },
+    "hint": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{%- if request.design_mode and page.content == blank -%}<div class=\"page-width page-width--narrow\"><p class=\"luviona-placeholder\">[PLATZHALTER: Hier den geprüften Rechtstext aus dem Abmahnschutz-Paket einfügen (Inhalt der Seite im Shopify-Admin). Siehe docs/04-rechts-checkliste.md.]</p></div>{%- endif -%}",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "hint"
+  ]
+}

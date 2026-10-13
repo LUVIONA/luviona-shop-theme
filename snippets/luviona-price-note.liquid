@@ -1,0 +1,59 @@
+{%- doc -%}
+  LUVIONA – Pflichtangaben direkt am Preis (PAngV, § 19 UStG).
+
+  Zeigt je nach Theme-Einstellung „Steuermodus“ den Kleinunternehmer-Hinweis
+  („Gemäß § 19 UStG wird keine Umsatzsteuer berechnet.“) oder „inkl. MwSt.“ sowie den
+  Versandhinweis. Niemals „inkl. Steuern“ aus den Shopify-Standardtexten verwenden.
+
+  @param {string} [style] - 'full' (Produktseite), 'compact' (Produktkarten), 'cart' (Warenkorb/Drawer)
+  @param {boolean} [show_delivery] - Lieferzeit mit ausgeben (Produktseite: eigener Block, daher hier meist false)
+  @param {string} [delivery_time] - Lieferzeit-Text (überschreibt die Theme-Einstellung)
+
+  @example
+  {% render 'luviona-price-note', style: 'full' %}
+{%- enddoc -%}
+{%- liquid
+  assign note_style = style | default: 'full'
+  if settings.luviona_tax_mode == 'regelbesteuerung'
+    assign tax_note = settings.luviona_tax_note_regel
+  else
+    assign tax_note = settings.luviona_tax_note_kleinunternehmer
+  endif
+  assign shipping_note = settings.luviona_shipping_note
+  assign shipping_page = settings.luviona_shipping_page
+  assign delivery = delivery_time | default: settings.luviona_delivery_time
+-%}
+<small class="luviona-price-note luviona-price-note--{{ note_style }}">
+  {%- if note_style == 'cart' -%}
+    <span class="luviona-price-note__item">
+      {{- 'luviona.cart.prices_prefix' | t }} {{ tax_note -}}
+    </span>
+    {%- if settings.luviona_shipping_note_enabled and shipping_note != blank -%}
+      <span class="luviona-price-note__item">
+        {%- if shipping_page != blank -%}
+          <a href="{{ shipping_page.url }}">{{ shipping_note | capitalize }}</a>
+        {%- else -%}
+          {{ shipping_note | capitalize }}
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+    {%- if show_delivery and delivery != blank -%}
+      <span class="luviona-price-note__item">{{ delivery }}</span>
+    {%- endif -%}
+    <span class="luviona-price-note__item">{{ 'luviona.cart.discounts_at_checkout' | t }}</span>
+  {%- else -%}
+    {%- if settings.luviona_shipping_note_enabled and shipping_note != blank -%}
+      <span class="luviona-price-note__item">
+        {%- if shipping_page != blank and note_style == 'full' -%}
+          <a href="{{ shipping_page.url }}">{{ shipping_note }}</a>
+        {%- else -%}
+          {{ shipping_note }}
+        {%- endif -%}
+      </span>
+    {%- endif -%}
+    <span class="luviona-price-note__item">{{ tax_note }}</span>
+    {%- if show_delivery and delivery != blank -%}
+      <span class="luviona-price-note__item">{{ delivery }}</span>
+    {%- endif -%}
+  {%- endif -%}
+</small>

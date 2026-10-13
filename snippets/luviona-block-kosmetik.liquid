@@ -1,0 +1,95 @@
+{%- doc -%}
+  LUVIONA – Akkordeon „Inhaltsstoffe & Kosmetik-Angaben“ (EU-KosmetikVO 1223/2009).
+  Wird aus sections/main-product.liquid für den Block luviona_kosmetik gerendert.
+
+  @param {object} block - Section-Block
+  @param {object} product - Produkt
+  @param {object} section - Section (für IDs)
+{%- enddoc -%}
+{%- liquid
+  assign kos = product.metafields.luviona
+  assign is_cosmetic = false
+  if kos.inci.value != blank or product.type == block.settings.cosmetic_product_type
+    assign is_cosmetic = true
+  endif
+-%}
+{%- if is_cosmetic -%}
+  <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+    <details id="Details-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
+      <summary>
+        <div class="summary__title">
+          {% render 'icon-accordion', icon: 'lipstick' %}
+          <h2 class="h4 accordion__title inline-richtext">{{ block.settings.heading | escape }}</h2>
+        </div>
+        {{- 'icon-caret.svg' | inline_asset_content -}}
+      </summary>
+      <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+        <table class="luviona-legal-table">
+          <tbody>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.purpose' | t }}</th>
+              <td>{{ kos.verwendungszweck.value | default: block.settings.default_purpose }}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.content' | t }}</th>
+              <td>
+                {%- if kos.fuellmenge.value != blank -%}
+                  {{ kos.fuellmenge.value }}
+                  {%- if product.selected_or_first_available_variant.unit_price_measurement %}
+                    ({{ product.selected_or_first_available_variant.unit_price | unit_price_with_measurement: product.selected_or_first_available_variant.unit_price_measurement }})
+                  {%- endif -%}
+                {%- else -%}
+                  <span class="luviona-placeholder">[PLATZHALTER: Füllmenge in ml – Metafeld luviona.fuellmenge; Grundpreis über Shopify-Einheitspreis an der Variante]</span>
+                {%- endif -%}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.inci' | t }}</th>
+              <td class="luviona-inci">
+                {%- if kos.inci.value != blank -%}{{ kos.inci.value | newline_to_br }}{%- else -%}<span class="luviona-placeholder">[PLATZHALTER: vollständige INCI-Liste vom Hersteller – Metafeld luviona.inci]</span>{%- endif -%}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.pao' | t }}</th>
+              <td>
+                {%- if kos.pao.value != blank -%}
+                  <span class="luviona-pao">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 9h14v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2z"/><path d="M4 7h16l2-3"/></svg>
+                    <span>{{ kos.pao.value }}</span>
+                  </span>
+                {%- elsif kos.mhd.value != blank -%}
+                  {{ 'luviona.product.cosmetics.best_before' | t }}: {{ kos.mhd.value }}
+                {%- else -%}
+                  <span class="luviona-placeholder">[PLATZHALTER: PAO (z. B. „12M“) oder Mindesthaltbarkeitsdatum – Metafeld luviona.pao bzw. luviona.mhd]</span>
+                {%- endif -%}
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.batch' | t }}</th>
+              <td>{{ kos.charge_hinweis.value | default: block.settings.default_batch_note }}</td>
+            </tr>
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.responsible' | t }}</th>
+              <td>
+                {%- if kos.kosmetik_verantwortliche.value != blank -%}{{ kos.kosmetik_verantwortliche.value | newline_to_br }}{%- else -%}<span class="luviona-placeholder">[PLATZHALTER: Verantwortliche Person in der EU nach Art. 4 KosmetikVO (Name + Anschrift) – Metafeld luviona.kosmetik_verantwortliche]</span>{%- endif -%}
+              </td>
+            </tr>
+            {%- if kos.allergene.value != blank -%}
+              <tr>
+                <th scope="row">{{ 'luviona.product.cosmetics.allergens' | t }}</th>
+                <td>{{ kos.allergene.value | newline_to_br }}</td>
+              </tr>
+            {%- endif -%}
+            <tr>
+              <th scope="row">{{ 'luviona.product.cosmetics.warnings' | t }}</th>
+              <td>{{ kos.kosmetik_warnhinweise.value | default: block.settings.default_warnings | newline_to_br }}</td>
+            </tr>
+          </tbody>
+        </table>
+        {%- if block.settings.hygiene_note != blank -%}
+          <p class="caption">{{ block.settings.hygiene_note }}</p>
+        {%- endif -%}
+      </div>
+    </details>
+  </div>
+{%- endif -%}

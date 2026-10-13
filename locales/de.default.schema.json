@@ -673,7 +673,7 @@
       }
     },
     "custom-liquid": {
-      "name": "Benutzerdefiniertes Liquid",
+      "name": "Eigenes Liquid",
       "settings": {
         "custom_liquid": {
           "label": "Liquid-Code",
@@ -1539,7 +1539,7 @@
       }
     },
     "main-list-collections": {
-      "name": "Listenseite für Kollektionen",
+      "name": "Kollektionsliste",
       "settings": {
         "title": {
           "label": "Überschrift",
@@ -2637,7 +2637,7 @@
       }
     },
     "email-signup-banner": {
-      "name": "Banner für E-Mail-Anmeldung",
+      "name": "E-Mail-Anmeldung Banner",
       "settings": {
         "paragraph": {
           "content": "Registrierungen hinzufügen [Kundenprofile](https://help.shopify.com/manual/customers/manage-customers)"

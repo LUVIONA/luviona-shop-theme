@@ -113,6 +113,7 @@
                   {{- 'newsletter.success' | t }}
                 </h3>
               {%- endif -%}
+              <p class="luviona-newsletter-hint caption">{{ 'newsletter.consent_html' | t: link: shop.privacy_policy.url }}</p>
             {% endform %}
           </div>
       {%- endcase -%}

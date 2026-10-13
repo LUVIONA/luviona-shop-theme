@@ -1,0 +1,94 @@
+{%- comment -%}
+  LUVIONA – Instagram-Bereich: nur eigene Bilder + Link zum Profil.
+  Kein eingebettetes Instagram-Plugin (würde ohne Einwilligung Daten an Meta übertragen).
+{%- endcomment -%}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="luviona-instagram color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding" style="--luviona-ig-columns: {{ section.settings.columns_desktop }};">
+  <div class="page-width center">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="luviona-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title inline-richtext {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.blocks.size > 0 -%}
+      <ul class="luviona-instagram__grid" role="list">
+        {%- for block in section.blocks -%}
+          <li class="luviona-instagram__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}" {{ block.shopify_attributes }}>
+            {%- liquid
+              assign link = block.settings.link | default: section.settings.profile_url
+            -%}
+            {%- if link != blank -%}<a href="{{ link }}" target="_blank" rel="noopener">{%- endif -%}
+            <div class="media global-media-settings">
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '300, 400, 600, 800', sizes: '(min-width: 990px) 25vw, 50vw', alt: block.settings.image.alt | default: block.settings.alt | escape }}
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            {%- if link != blank -%}<span class="visually-hidden">{{ 'accessibility.link_messages.new_window' | t }}</span></a>{%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if section.settings.profile_url != blank and section.settings.handle != blank -%}
+      <a class="button button--secondary luviona-instagram__handle" href="{{ section.settings.profile_url }}" target="_blank" rel="noopener">
+        {{ section.settings.handle | escape }}
+        <span class="visually-hidden">{{ 'accessibility.link_messages.new_window' | t }}</span>
+      </a>
+    {%- endif -%}
+    {%- if section.settings.ad_note != blank -%}
+      <p class="caption luviona-newsletter-hint">{{ section.settings.ad_note | escape }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LUVIONA: Instagram",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "max_blocks": 8,
+  "settings": [
+    { "type": "paragraph", "content": "Eigene Bilder hochladen und auf das Profil verlinken. Kein Instagram-Embed – so werden ohne Einwilligung keine Daten an Meta übertragen." },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Überschrift", "default": "Instagram" },
+    { "type": "inline_richtext", "id": "heading", "label": "Überschrift", "default": "Zeig uns deinen Court Style" },
+    { "type": "select", "id": "heading_size", "label": "Größe der Überschrift", "options": [ { "value": "h2", "label": "Klein" }, { "value": "h1", "label": "Mittel" }, { "value": "h0", "label": "Groß" } ], "default": "h1" },
+    { "type": "text", "id": "handle", "label": "Profilname", "default": "@luviona.de" },
+    { "type": "url", "id": "profile_url", "label": "Link zum Instagram-Profil" },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 6, "step": 1, "label": "Spalten (Desktop)", "default": 4 },
+    { "type": "text", "id": "ad_note", "label": "Hinweis (z. B. zu Werbekennzeichnung)", "default": "" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 36 }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Bild",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Bild" },
+        { "type": "text", "id": "alt", "label": "Alt-Text (falls im Bild nicht gesetzt)", "default": "LUVIONA Tennis-Schmuck auf Instagram" },
+        { "type": "url", "id": "link", "label": "Link (optional, sonst Profil-Link)" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "LUVIONA: Instagram", "blocks": [ { "type": "image" }, { "type": "image" }, { "type": "image" }, { "type": "image" } ] }
+  ]
+}
+{% endschema %}

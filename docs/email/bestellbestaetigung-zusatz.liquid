@@ -1,0 +1,48 @@
+{% comment %}
+  LUVIONA – Ergänzung für die Shopify-E-Mail-Vorlage „Bestellbestätigung“.
+  Einfügen in: Einstellungen → Benachrichtigungen → Bestellbestätigung → Code bearbeiten,
+  nach dem Abschnitt mit der Bestellübersicht (vor </body>).
+  Zieht Widerrufsbelehrung und AGB aus den Shopify-Richtlinien, damit beides auf einem
+  dauerhaften Datenträger (E-Mail) übermittelt wird.
+{% endcomment %}
+<table class="row section" width="100%" style="border-top: 1px solid #c9a27a; margin-top: 24px;">
+  <tr>
+    <td class="section__cell" style="padding: 24px 0; font-family: Helvetica, Arial, sans-serif; color: #0b1c3d; font-size: 14px; line-height: 1.5;">
+      <p style="margin: 0 0 8px;"><strong>Preise:</strong> Gemäß § 19 UStG wird keine Umsatzsteuer berechnet. Versandkostenfrei innerhalb Deutschlands.</p>
+      <p style="margin: 0 0 8px;"><strong>Lieferzeit:</strong> 2–4 Werktage nach Zahlungseingang. Du erhältst eine Versandbestätigung mit Sendungsnummer.</p>
+      <p style="margin: 0 0 8px;"><strong>Rechnung:</strong> Deine Rechnung erhältst du separat per E-Mail von der LUVIONA GbR.</p>
+      <p style="margin: 0 0 8px;"><strong>Vertragspartnerin:</strong> LUVIONA GbR, [PLATZHALTER: Anschrift], vertreten durch [PLATZHALTER: Name 1, Name 2], info@luviona.de</p>
+      <p style="margin: 0;"><strong>Widerruf:</strong> Du kannst diesen Vertrag innerhalb von 14 Tagen ohne Angabe von Gründen widerrufen – online über <a href="{{ shop.url }}/pages/widerruf" style="color: #0b1c3d;">{{ shop.url }}/pages/widerruf</a>, per E-Mail an widerruf@luviona.de oder mit dem Muster-Widerrufsformular unten.</p>
+    </td>
+  </tr>
+</table>
+
+{% if shop.refund_policy.body != blank %}
+<table class="row section" width="100%">
+  <tr>
+    <td class="section__cell" style="padding: 16px 0; font-family: Helvetica, Arial, sans-serif; color: #0b1c3d; font-size: 13px; line-height: 1.5;">
+      <h3 style="font-size: 16px; margin: 0 0 8px;">Widerrufsbelehrung und Muster-Widerrufsformular</h3>
+      {{ shop.refund_policy.body }}
+    </td>
+  </tr>
+</table>
+{% endif %}
+
+{% if shop.terms_of_service.body != blank %}
+<table class="row section" width="100%">
+  <tr>
+    <td class="section__cell" style="padding: 16px 0; font-family: Helvetica, Arial, sans-serif; color: #0b1c3d; font-size: 13px; line-height: 1.5;">
+      <h3 style="font-size: 16px; margin: 0 0 8px;">Allgemeine Geschäftsbedingungen</h3>
+      {{ shop.terms_of_service.body }}
+    </td>
+  </tr>
+</table>
+{% endif %}
+
+<table class="row section" width="100%">
+  <tr>
+    <td class="section__cell" style="padding: 16px 0; font-family: Helvetica, Arial, sans-serif; color: #0b1c3d; font-size: 12px; line-height: 1.5;">
+      <p style="margin: 0;">Datenschutzerklärung: <a href="{{ shop.url }}/policies/privacy-policy" style="color: #0b1c3d;">{{ shop.url }}/policies/privacy-policy</a> · Impressum: <a href="{{ shop.url }}/pages/impressum" style="color: #0b1c3d;">{{ shop.url }}/pages/impressum</a></p>
+    </td>
+  </tr>
+</table>

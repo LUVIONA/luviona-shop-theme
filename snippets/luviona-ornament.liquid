@@ -1,0 +1,8 @@
+{%- doc -%}
+  LUVIONA – goldene Trennlinie mit Herz/Schläger-Ornament aus dem Logo.
+
+  @param {string} [align] - 'center' (Standard) oder 'left'
+{%- enddoc -%}
+<div class="luviona-divider{% if align == 'left' %} luviona-divider--left{% endif %}" aria-hidden="true">
+  <span class="luviona-ornament">{% render 'luviona-icon', icon: 'heart_racket' %}</span>
+</div>

@@ -1,11 +1,201 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Dawn",
-    "theme_version": "16.0.0",
-    "theme_author": "Shopify",
-    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_name": "LUVIONA – Court Style Accessories",
+    "theme_version": "1.0.0",
+    "theme_author": "LUVIONA GbR (basierend auf Shopify Dawn 16.0.0)",
+    "theme_documentation_url": "https://github.com/luviona/luviona-shop-theme/blob/main/README.md",
+    "theme_support_url": "https://github.com/luviona/luviona-shop-theme/issues"
+  },
+  {
+    "name": "LUVIONA – Schriften",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Die Marken-Schriften Cormorant Garamond (Headlines) und Jost (Fließtext) liegen als Dateien im Theme (assets/) und werden lokal geladen – kein Abruf von Google Fonts. Ist die Option aus, greifen die Shopify-Schriften aus dem Bereich „Typografie“ (Shopify-CDN)."
+      },
+      {
+        "type": "checkbox",
+        "id": "luviona_custom_fonts",
+        "label": "Eigene Schriftdateien lokal laden (empfohlen)",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "luviona_nav_letter_spacing",
+        "min": 0,
+        "max": 30,
+        "step": 2,
+        "unit": "%",
+        "label": "Buchstabenabstand Navigation / Captions (in % der Schriftgröße)",
+        "default": 18
+      }
+    ]
+  },
+  {
+    "name": "LUVIONA – Preise & Steuern (PAngV, § 19 UStG)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Steuermodus des Shops. Als Kleinunternehmer darf nirgends „inkl. MwSt.“ stehen. Bei späterem Wechsel zur Regelbesteuerung hier umstellen und in Shopify unter Einstellungen → Steuern die Steuer für Deutschland aktivieren."
+      },
+      {
+        "type": "select",
+        "id": "luviona_tax_mode",
+        "label": "Steuermodus",
+        "options": [
+          {
+            "value": "kleinunternehmer",
+            "label": "Kleinunternehmer (§ 19 UStG, keine Umsatzsteuer)"
+          },
+          {
+            "value": "regelbesteuerung",
+            "label": "Regelbesteuerung (Preise inkl. MwSt.)"
+          }
+        ],
+        "default": "kleinunternehmer"
+      },
+      {
+        "type": "text",
+        "id": "luviona_tax_note_kleinunternehmer",
+        "label": "Hinweis unter dem Preis (Kleinunternehmer)",
+        "default": "Gemäß § 19 UStG wird keine Umsatzsteuer berechnet."
+      },
+      {
+        "type": "text",
+        "id": "luviona_tax_note_regel",
+        "label": "Hinweis unter dem Preis (Regelbesteuerung)",
+        "default": "inkl. MwSt."
+      },
+      {
+        "type": "checkbox",
+        "id": "luviona_shipping_note_enabled",
+        "label": "Versandhinweis direkt am Preis anzeigen",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "luviona_shipping_note",
+        "label": "Versandhinweis",
+        "default": "versandkostenfrei in Deutschland"
+      },
+      {
+        "type": "page",
+        "id": "luviona_shipping_page",
+        "label": "Seite „Versand & Zahlung“ (wird am Preis verlinkt)"
+      },
+      {
+        "type": "text",
+        "id": "luviona_delivery_time",
+        "label": "Lieferzeit (Standard, konkret – nicht „ca.“)",
+        "default": "Lieferzeit 2–4 Werktage",
+        "info": "Kann pro Produkt über das Metafeld luviona.lieferzeit überschrieben werden."
+      }
+    ]
+  },
+  {
+    "name": "LUVIONA – Rechtliches",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Widerrufsbutton (EU-RL 2023/2673)"
+      },
+      {
+        "type": "page",
+        "id": "luviona_withdrawal_page",
+        "label": "Seite mit dem Widerrufsformular (Vorlage „page.widerruf“)"
+      },
+      {
+        "type": "text",
+        "id": "luviona_withdrawal_label",
+        "label": "Beschriftung des Buttons",
+        "default": "Vertrag widerrufen"
+      },
+      {
+        "type": "header",
+        "content": "KI-generierte Bilder (EU AI Act Art. 50, § 5 UWG)"
+      },
+      {
+        "type": "checkbox",
+        "id": "luviona_ai_notice_enabled",
+        "label": "Hinweis unter der Produktgalerie anzeigen",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "luviona_ai_notice",
+        "label": "Hinweistext",
+        "default": "Abbildung KI-generiert. Das Originalprodukt kann in Farbe und Details leicht abweichen."
+      },
+      {
+        "type": "page",
+        "id": "luviona_ai_page",
+        "label": "Seite „Hinweis zu unseren Bildern“"
+      },
+      {
+        "type": "header",
+        "content": "Geschenkhinweis"
+      },
+      {
+        "type": "checkbox",
+        "id": "luviona_gift_enabled",
+        "label": "„Perfekt als Geschenk“ auf Produktseiten anzeigen",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "luviona_gift_note",
+        "label": "Text",
+        "default": "Perfekt als Geschenk: Auf Wunsch verpacken wir dein Schmuckstück in der navy LUVIONA-Box – mit Grußkarte."
+      },
+      {
+        "type": "header",
+        "content": "Bewertungen (§ 5b Abs. 3 UWG)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Vor dem Launch keine Bewertungen anzeigen. Wird später eine Bewertungs-App genutzt, muss auf der Produktseite stehen, ob und wie geprüft wird, dass Bewertungen von echten Käufer:innen stammen."
+      },
+      {
+        "type": "text",
+        "id": "luviona_reviews_note",
+        "label": "Hinweis zur Echtheit von Bewertungen (leer = ausblenden)",
+        "default": ""
+      }
+    ]
+  },
+  {
+    "name": "LUVIONA – Cookie-Einwilligung (§ 25 TDDDG)",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Theme-eigenes Consent-Banner auf Basis der Shopify Customer Privacy API. „Alle ablehnen“ und „Alle akzeptieren“ sind gleichwertig, keine Kategorie ist vorausgewählt, Rechtsseiten bleiben erreichbar. Voraussetzung: In Shopify unter Einstellungen → Kundendatenschutz die Datenerhebung für die EU auf „erst nach Einwilligung“ stellen. Wenn du stattdessen Shopifys eigenes Banner oder eine Consent-App nutzt, dieses Banner ausschalten."
+      },
+      {
+        "type": "checkbox",
+        "id": "luviona_consent_enabled",
+        "label": "Theme-Consent-Banner aktivieren",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "luviona_consent_title",
+        "label": "Überschrift",
+        "default": "Cookies & Datenschutz"
+      },
+      {
+        "type": "richtext",
+        "id": "luviona_consent_text",
+        "label": "Text",
+        "default": "<p>Wir verwenden technisch notwendige Cookies. Statistik- und Marketing-Cookies setzen wir nur mit deiner Einwilligung. Du kannst deine Auswahl jederzeit über „Cookie-Einstellungen“ im Footer ändern.</p>"
+      },
+      {
+        "type": "color_scheme",
+        "id": "luviona_consent_color_scheme",
+        "label": "Farbschema",
+        "default": "scheme-2"
+      }
+    ]
   },
   {
     "name": "t:settings_schema.logo.name",

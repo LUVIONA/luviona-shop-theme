@@ -112,7 +112,8 @@
                       product: product,
                       use_variant: true,
                       show_badges: true,
-                      price_class: 'price--large'
+                      price_class: 'price--large',
+                      show_price_note: 'full'
                     -%}
                   </div>
                   {%- if product.quantity_price_breaks_configured? -%}
@@ -120,20 +121,10 @@
                       <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                     </div>
                   {%- endif -%}
-                  {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                    <div class="product__tax caption rte">
-                      {%- if cart.duties_included and cart.taxes_included -%}
-                        {{ 'products.product.duties_and_taxes_included' | t }}
-                      {%- elsif cart.taxes_included -%}
-                        {{ 'products.product.taxes_included' | t }}
-                      {%- elsif cart.duties_included -%}
-                        {{ 'products.product.duties_included' | t }}
-                      {%- endif -%}
-                      {%- if shop.shipping_policy.body != blank -%}
-                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                      {%- endif -%}
-                    </div>
-                  {%- endif -%}
+                  {%- comment -%}
+                    LUVIONA: Shopify-Steuerhinweis („inkl. Steuern“) entfernt. Pflichtangaben kommen
+                    aus snippets/luviona-price-note.liquid (über show_price_note im Preis-Snippet).
+                  {%- endcomment -%}
                   <div {{ block.shopify_attributes }}>
                     {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                     {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -537,6 +528,9 @@
                       </p>
                     </div>
                   {%- endif -%}
+                  {%- if settings.luviona_reviews_note != blank and product.metafields.reviews.rating.value != blank -%}
+                    <p class="caption">{{ settings.luviona_reviews_note }}</p>
+                  {%- endif -%}
                 {%- when 'complementary' -%}
                   <product-recommendations
                     class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -686,6 +680,59 @@
                       <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                     {%- endif -%}
                   </product-recommendations>
+                {%- when 'luviona_delivery' -%}
+                  {%- liquid
+                    assign delivery_text = product.metafields.luviona.lieferzeit.value | default: settings.luviona_delivery_time
+                  -%}
+                  {%- if delivery_text != blank -%}
+                    <p class="product__delivery" {{ block.shopify_attributes }}>
+                      <span class="svg-wrapper">{% render 'luviona-icon', icon: 'truck' %}</span>
+                      <span>
+                        {{ delivery_text }}
+                        {%- if block.settings.show_shipping_note and settings.luviona_shipping_note != blank %} · {{ settings.luviona_shipping_note }}{% endif -%}
+                      </span>
+                    </p>
+                  {%- endif -%}
+                {%- when 'luviona_gift' -%}
+                  {%- if settings.luviona_gift_enabled and settings.luviona_gift_note != blank -%}
+                    <div class="luviona-note luviona-note--gift quick-add-hidden" {{ block.shopify_attributes }}>
+                      <span class="svg-wrapper">{% render 'luviona-icon', icon: 'gift' %}</span>
+                      <span>{{ settings.luviona_gift_note }}</span>
+                    </div>
+                  {%- endif -%}
+                {%- when 'luviona_metafield_tab' -%}
+                  {%- liquid
+                    assign mf_key = block.settings.metafield_key
+                    assign mf = product.metafields.luviona[mf_key]
+                    assign has_content = false
+                    if mf != blank and mf.value != blank
+                      assign has_content = true
+                    endif
+                    if block.settings.content != blank
+                      assign has_content = true
+                    endif
+                  -%}
+                  {%- if has_content or request.design_mode -%}
+                    <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
+                      <details id="Details-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
+                        <summary>
+                          <div class="summary__title">
+                            {% render 'icon-accordion', icon: block.settings.icon %}
+                            <h2 class="h4 accordion__title inline-richtext">{{ block.settings.heading | escape }}</h2>
+                          </div>
+                          {{- 'icon-caret.svg' | inline_asset_content -}}
+                        </summary>
+                        <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                          {% render 'luviona-metafield', field: mf, placeholder: block.settings.placeholder %}
+                          {{ block.settings.content }}
+                        </div>
+                      </details>
+                    </div>
+                  {%- endif -%}
+                {%- when 'luviona_gpsr' -%}
+                  {% render 'luviona-block-gpsr', block: block, product: product, section: section %}
+                {%- when 'luviona_kosmetik' -%}
+                  {% render 'luviona-block-kosmetik', block: block, product: product, section: section %}
                 {%- when 'icon-with-text' -%}
                   {% render 'icon-with-text', block: block %}
               {%- endcase -%}
@@ -1220,6 +1267,90 @@
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
         }
+      ]
+    },
+    {
+      "type": "luviona_delivery",
+      "name": "LUVIONA: Lieferzeit",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Zeigt die konkrete Lieferzeit (Theme-Einstellung „Preise & Steuern“ oder Produkt-Metafeld luviona.lieferzeit). Pflicht nach § 312d BGB / Art. 246a EGBGB – keine „ca.“-Angaben." },
+        { "type": "checkbox", "id": "show_shipping_note", "label": "Versandhinweis anhängen", "default": false }
+      ]
+    },
+    {
+      "type": "luviona_gift",
+      "name": "LUVIONA: Geschenkhinweis",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Text und Sichtbarkeit unter Theme-Einstellungen → LUVIONA – Rechtliches → Geschenkhinweis." }
+      ]
+    },
+    {
+      "type": "luviona_metafield_tab",
+      "name": "LUVIONA: Akkordeon aus Metafeld",
+      "settings": [
+        { "type": "paragraph", "content": "Gibt ein Produkt-Metafeld (Namespace „luviona“) als Akkordeon aus, z. B. Material & Maße oder Pflegehinweise. Optionaler Inhalt unten wird zusätzlich angezeigt (gilt für alle Produkte)." },
+        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Material & Maße" },
+        {
+          "type": "select", "id": "metafield_key", "label": "Metafeld (luviona.…)",
+          "options": [
+            { "value": "material", "label": "material – Material & Maße" },
+            { "value": "pflege", "label": "pflege – Pflegehinweise" },
+            { "value": "lieferumfang", "label": "lieferumfang – Lieferumfang" },
+            { "value": "groesse", "label": "groesse – Größe & Verstellbarkeit" },
+            { "value": "hinweise", "label": "hinweise – Sonstige Hinweise" }
+          ],
+          "default": "material"
+        },
+        {
+          "type": "select", "id": "icon", "label": "Symbol",
+          "options": [
+            { "value": "none", "label": "Keins" },
+            { "value": "ruler", "label": "Lineal" },
+            { "value": "heart", "label": "Herz" },
+            { "value": "washing", "label": "Pflege" },
+            { "value": "box", "label": "Box" },
+            { "value": "leaf", "label": "Blatt" },
+            { "value": "check_mark", "label": "Haken" },
+            { "value": "price_tag", "label": "Etikett" }
+          ],
+          "default": "ruler"
+        },
+        { "type": "richtext", "id": "content", "label": "Zusätzlicher Inhalt (alle Produkte)" },
+        { "type": "text", "id": "placeholder", "label": "Platzhalter-Hinweis (nur im Editor sichtbar)", "default": "[PLATZHALTER: Metafeld befüllen]" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Standardmäßig geöffnet", "default": false }
+      ]
+    },
+    {
+      "type": "luviona_gpsr",
+      "name": "LUVIONA: Hersteller & Sicherheit (GPSR)",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Pflichtangaben nach Produktsicherheitsverordnung (EU) 2023/988: Hersteller (Name, Postanschrift, elektronische Kontaktadresse), ggf. verantwortliche Person in der EU, Produktkennung, Warnhinweise. Produkt-Metafelder luviona.hersteller_name, luviona.hersteller_anschrift, luviona.hersteller_kontakt, luviona.eu_verantwortliche, luviona.produktkennung, luviona.warnhinweise, luviona.material_konformitaet überschreiben die Standardwerte unten." },
+        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Hersteller & Produktsicherheit" },
+        { "type": "text", "id": "default_manufacturer_name", "label": "Hersteller – Name (Standard)", "default": "LUVIONA GbR [PLATZHALTER: Name 1, Name 2]" },
+        { "type": "textarea", "id": "default_manufacturer_address", "label": "Hersteller – Postanschrift (Standard)", "default": "[PLATZHALTER: Straße Hausnummer]\n[PLATZHALTER: PLZ Ort]\nDeutschland" },
+        { "type": "text", "id": "default_manufacturer_contact", "label": "Hersteller – elektronische Kontaktadresse (Standard)", "default": "info@luviona.de" },
+        { "type": "textarea", "id": "default_eu_responsible", "label": "Verantwortliche Person in der EU (Standard, nur bei Nicht-EU-Hersteller)", "default": "" },
+        { "type": "textarea", "id": "default_warnings", "label": "Warn- und Sicherheitshinweise (Standard)", "default": "Enthält Kleinteile – nicht für Kinder unter 3 Jahren geeignet. Verschluckungsgefahr. Kein Spielzeug. Von Hitze, Feuchtigkeit, Parfum und Kosmetik fernhalten." },
+        { "type": "text", "id": "footnote", "label": "Fußnote", "default": "" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Standardmäßig geöffnet", "default": false }
+      ]
+    },
+    {
+      "type": "luviona_kosmetik",
+      "name": "LUVIONA: Kosmetik-Angaben (Lipgloss)",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Angaben nach EU-Kosmetikverordnung 1223/2009. Erscheint nur, wenn das Metafeld luviona.inci befüllt ist oder der Produkttyp dem unten genannten Typ entspricht. Metafelder: luviona.verwendungszweck, luviona.fuellmenge, luviona.inci, luviona.pao, luviona.mhd, luviona.charge_hinweis, luviona.kosmetik_verantwortliche, luviona.allergene, luviona.kosmetik_warnhinweise." },
+        { "type": "text", "id": "heading", "label": "Überschrift", "default": "Inhaltsstoffe & Kosmetik-Angaben" },
+        { "type": "text", "id": "cosmetic_product_type", "label": "Produkttyp, der als Kosmetik gilt", "default": "Kosmetik" },
+        { "type": "text", "id": "default_purpose", "label": "Verwendungszweck (Standard)", "default": "Lipgloss" },
+        { "type": "text", "id": "default_batch_note", "label": "Chargennummer-Hinweis (Standard)", "default": "Die Chargennummer findest du auf dem Produkt bzw. der Hülle." },
+        { "type": "textarea", "id": "default_warnings", "label": "Warnhinweise (Standard)", "default": "Nur zur äußerlichen Anwendung auf den Lippen. Bei Reizung Anwendung abbrechen. Kontakt mit den Augen vermeiden. Außerhalb der Reichweite von Kindern aufbewahren." },
+        { "type": "textarea", "id": "hygiene_note", "label": "Hygiene-/Widerrufshinweis", "default": "Der Lipgloss wird versiegelt geliefert. Bitte beachte: Bei geöffneten oder entsiegelten Kosmetikartikeln kann das Widerrufsrecht aus Gründen des Gesundheitsschutzes und der Hygiene erlöschen (§ 312g Abs. 2 Nr. 3 BGB)." },
+        { "type": "checkbox", "id": "open_by_default", "label": "Standardmäßig geöffnet", "default": false }
       ]
     },
     {

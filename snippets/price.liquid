@@ -8,6 +8,7 @@
   - show_badges: {Boolean} Renders 'Sale' and 'Sold Out' tags if the product matches the condition (optional)
   - price_class: {String} Adds a price class to the price element (optional)
   - show_compare_at_price: {Boolean} Renders the compare at price if the product matches the condition (optional)
+  - show_price_note: {String} LUVIONA: 'full' | 'compact' – Pflichtangaben (§ 19 UStG / Versand) direkt am Preis (optional)
 
   Usage:
   {% render 'price', product: product %}
@@ -110,6 +111,9 @@
       </div>
       {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
         {% render 'unit-price', price: product.selected_or_first_available_variant.unit_price, measurement: product.selected_or_first_available_variant.unit_price_measurement %}
+      {%- endif -%}
+      {%- if show_price_note -%}
+        {% render 'luviona-price-note', style: show_price_note %}
       {%- endif -%}
     </div>
     {%- if show_badges -%}

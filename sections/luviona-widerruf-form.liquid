@@ -1,0 +1,167 @@
+{%- comment -%}
+  LUVIONA – Elektronischer Widerrufsbutton / Online-Widerrufsformular (EU-RL 2023/2673, §§ 355 ff. BGB).
+  Ablauf: 1) Angaben erfassen → 2) Zusammenfassung + Button „Widerruf bestätigen“ → 3) Bestätigungsseite.
+  Technik: Shopify-Kontaktformular (form 'contact'); die Nachricht geht an die in Shopify hinterlegte
+  Absender-/Kontakt-E-Mail (bitte widerruf@luviona.de als Weiterleitung einrichten, siehe docs/).
+  Hinweis: Die gesetzlich geforderte automatische Eingangsbestätigung an die Kundin muss zusätzlich über
+  eine Formular-App oder einen Mail-Autoresponder erfolgen (siehe docs/05-shopify-einrichtung.md).
+{%- endcomment -%}
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'luviona-widerruf.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="luviona-widerruf page-width section-{{ section.id }}-padding">
+    <h1 class="title title-wrapper--no-top-margin h1">{{ section.settings.heading | default: page.title | escape }}</h1>
+    {%- if section.settings.intro != blank -%}
+      <div class="luviona-widerruf__intro rte">{{ section.settings.intro }}</div>
+    {%- endif -%}
+
+    {%- form 'contact', id: 'LuvionaWiderrufForm', class: 'isolate' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="luviona-widerruf__summary" role="status" tabindex="-1" autofocus>
+          <h2 class="h2 form-status">
+            <span class="svg-wrapper">{{- 'icon-success.svg' | inline_asset_content -}}</span>
+            {{ section.settings.success_heading | escape }}
+          </h2>
+          <div class="rte">{{ section.settings.success_text }}</div>
+        </div>
+      {%- else -%}
+        {%- if form.errors -%}
+          <div class="form__message">
+            <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+              <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+              {{ 'templates.contact.form.error_heading' | t }}
+            </h2>
+          </div>
+          <ul class="form-status-list caption-large" role="list">
+            <li>
+              <a href="#Widerruf-email" class="link">
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}
+              </a>
+            </li>
+          </ul>
+        {%- endif -%}
+
+        <input type="hidden" name="contact[Betreff]" value="{{ section.settings.mail_subject | escape }}">
+        <input type="hidden" name="contact[Erklärung]" value="{{ section.settings.declaration | strip_html | escape }}">
+
+        <div data-widerruf-step="1">
+          <fieldset>
+            <legend>{{ 'luviona.widerruf.step_person' | t }}</legend>
+            <div class="luviona-widerruf__grid">
+              <div class="field">
+                <input class="field__input" autocomplete="name" type="text" id="Widerruf-name" name="contact[Name]" placeholder="{{ 'luviona.widerruf.name' | t }}" required aria-required="true" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+                <label class="field__label" for="Widerruf-name">{{ 'luviona.widerruf.name' | t }} <span aria-hidden="true">*</span></label>
+              </div>
+              <div class="field field--with-error">
+                <input autocomplete="email" type="email" id="Widerruf-email" class="field__input" name="contact[email]" spellcheck="false" autocapitalize="off" placeholder="{{ 'luviona.widerruf.email' | t }}" required aria-required="true" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+                <label class="field__label" for="Widerruf-email">{{ 'luviona.widerruf.email' | t }} <span aria-hidden="true">*</span></label>
+              </div>
+            </div>
+            <div class="field">
+              <textarea rows="3" id="Widerruf-adresse" class="text-area field__input" name="contact[Anschrift]" placeholder="{{ 'luviona.widerruf.address' | t }}"></textarea>
+              <label class="form__label field__label" for="Widerruf-adresse">{{ 'luviona.widerruf.address' | t }}</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>{{ 'luviona.widerruf.step_order' | t }}</legend>
+            <div class="luviona-widerruf__grid">
+              <div class="field">
+                <input class="field__input" type="text" id="Widerruf-bestellnummer" name="contact[Bestellnummer]" placeholder="{{ 'luviona.widerruf.order_number' | t }}" required aria-required="true" inputmode="numeric">
+                <label class="field__label" for="Widerruf-bestellnummer">{{ 'luviona.widerruf.order_number' | t }} <span aria-hidden="true">*</span></label>
+              </div>
+              <div class="field">
+                <input class="field__input" type="date" id="Widerruf-datum" name="contact[Bestelldatum]" placeholder="{{ 'luviona.widerruf.order_date' | t }}">
+                <label class="field__label" for="Widerruf-datum">{{ 'luviona.widerruf.order_date' | t }}</label>
+              </div>
+            </div>
+            <div class="field">
+              <textarea rows="4" id="Widerruf-artikel" class="text-area field__input" name="contact[Artikel]" placeholder="{{ 'luviona.widerruf.items' | t }}"></textarea>
+              <label class="form__label field__label" for="Widerruf-artikel">{{ 'luviona.widerruf.items' | t }}</label>
+            </div>
+            <p class="luviona-widerruf__legal">{{ 'luviona.widerruf.items_hint' | t }}</p>
+          </fieldset>
+
+          <p class="luviona-widerruf__legal">
+            {{ 'luviona.widerruf.privacy_html' | t: link: shop.privacy_policy.url }}
+          </p>
+
+          <div class="luviona-widerruf__actions">
+            <button type="button" class="button" data-widerruf-next>{{ 'luviona.widerruf.next' | t }}</button>
+          </div>
+        </div>
+
+        <div data-widerruf-step="2" hidden>
+          <div class="luviona-widerruf__summary">
+            <h2 class="h3">{{ 'luviona.widerruf.summary_heading' | t }}</h2>
+            <dl>
+              <dt>{{ 'luviona.widerruf.name' | t }}</dt><dd data-summary-for="Widerruf-name"></dd>
+              <dt>{{ 'luviona.widerruf.email' | t }}</dt><dd data-summary-for="Widerruf-email"></dd>
+              <dt>{{ 'luviona.widerruf.address' | t }}</dt><dd data-summary-for="Widerruf-adresse"></dd>
+              <dt>{{ 'luviona.widerruf.order_number' | t }}</dt><dd data-summary-for="Widerruf-bestellnummer"></dd>
+              <dt>{{ 'luviona.widerruf.order_date' | t }}</dt><dd data-summary-for="Widerruf-datum"></dd>
+              <dt>{{ 'luviona.widerruf.items' | t }}</dt><dd data-summary-for="Widerruf-artikel"></dd>
+            </dl>
+          </div>
+          <div class="rte luviona-widerruf__confirm">
+            {{ section.settings.declaration }}
+          </div>
+          <div class="luviona-widerruf__actions">
+            <button type="button" class="button button--secondary" data-widerruf-back>{{ 'luviona.widerruf.back' | t }}</button>
+            <button type="submit" class="button">{{ section.settings.confirm_label | escape }}</button>
+          </div>
+        </div>
+
+        <noscript>
+          <div class="luviona-widerruf__actions">
+            <button type="submit" class="button">{{ section.settings.confirm_label | escape }}</button>
+          </div>
+        </noscript>
+      {%- endif -%}
+    {%- endform -%}
+
+    {%- if section.settings.footer_text != blank -%}
+      <div class="rte luviona-widerruf__legal" style="margin-top: 3rem;">{{ section.settings.footer_text }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LUVIONA Widerrufsformular",
+  "tag": "section",
+  "class": "section",
+  "enabled_on": { "templates": ["page"] },
+  "settings": [
+    { "type": "paragraph", "content": "Elektronischer Widerrufsbutton nach EU-Richtlinie 2023/2673: Angaben erfassen, Zusammenfassung prüfen, „Widerruf bestätigen“. Die Nachricht geht an die Shopify-Kontakt-E-Mail. Die Pflicht-Eingangsbestätigung an die Kundin per E-Mail über eine Formular-App/Autoresponder einrichten (siehe docs/05-shopify-einrichtung.md)." },
+    { "type": "text", "id": "heading", "label": "Überschrift", "default": "Vertrag widerrufen" },
+    { "type": "richtext", "id": "intro", "label": "Einleitung", "default": "<p>Du möchtest deine Bestellung ganz oder teilweise widerrufen? Fülle einfach das Formular aus – innerhalb von 14 Tagen nach Erhalt der Ware. Alternativ kannst du das <a href=\"/pages/muster-widerrufsformular\">Muster-Widerrufsformular</a> nutzen oder uns formlos an widerruf@luviona.de schreiben.</p>" },
+    { "type": "richtext", "id": "declaration", "label": "Erklärungstext (wird mit dem Widerruf gesendet)", "default": "<p>Hiermit widerrufe ich den von mir abgeschlossenen Vertrag über den Kauf der oben genannten Waren.</p>" },
+    { "type": "text", "id": "confirm_label", "label": "Bestätigungs-Button", "default": "Widerruf bestätigen" },
+    { "type": "text", "id": "mail_subject", "label": "Betreff in der E-Mail an euch", "default": "Widerruf über das Online-Formular" },
+    { "type": "text", "id": "success_heading", "label": "Überschrift nach dem Absenden", "default": "Dein Widerruf ist bei uns eingegangen." },
+    { "type": "richtext", "id": "success_text", "label": "Text nach dem Absenden", "default": "<p>Vielen Dank. Wir haben deine Widerrufserklärung erhalten und senden dir eine Eingangsbestätigung per E-Mail an die angegebene Adresse. Bitte sende die Ware innerhalb von 14 Tagen an die in der Widerrufsbelehrung genannte Adresse zurück. Die Erstattung erfolgt innerhalb von 14 Tagen nach Eingang deiner Erklärung – spätestens, wenn die Ware bei uns eingetroffen ist.</p>" },
+    { "type": "richtext", "id": "footer_text", "label": "Hinweis unten", "default": "<p>Die vollständige <a href=\"/policies/refund-policy\">Widerrufsbelehrung</a> findest du im Footer. Bei geöffneten oder entsiegelten Kosmetikartikeln (z. B. Lipgloss) kann das Widerrufsrecht aus Hygienegründen erlöschen (§ 312g Abs. 2 Nr. 3 BGB).</p>" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 36 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 52 }
+  ],
+  "presets": [ { "name": "LUVIONA Widerrufsformular" } ]
+}
+{% endschema %}
