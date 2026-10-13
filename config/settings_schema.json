@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "LUVIONA – Court Style Accessories",
+    "theme_name": "LUVIONA",
     "theme_version": "1.0.0",
-    "theme_author": "LUVIONA GbR (basierend auf Shopify Dawn 16.0.0)",
+    "theme_author": "LUVIONA GbR",
     "theme_documentation_url": "https://github.com/luviona/luviona-shop-theme/blob/main/README.md",
     "theme_support_url": "https://github.com/luviona/luviona-shop-theme/issues"
   },
@@ -172,8 +172,7 @@
       {
         "type": "text",
         "id": "luviona_reviews_note",
-        "label": "Hinweis zur Echtheit von Bewertungen (leer = ausblenden)",
-        "default": ""
+        "label": "Hinweis zur Echtheit von Bewertungen (leer = ausblenden)"
       }
     ]
   },

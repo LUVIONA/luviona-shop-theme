@@ -52,30 +52,149 @@
   "name": "LUVIONA: Vertrauensleiste",
   "tag": "section",
   "class": "section",
-  "disabled_on": { "groups": ["header"] },
+  "disabled_on": {
+    "groups": [
+      "header"
+    ]
+  },
   "max_blocks": 6,
   "settings": [
-    { "type": "text", "id": "heading", "label": "Kleine Überschrift (optional)", "default": "" },
-    { "type": "select", "id": "layout", "label": "Anordnung", "options": [ { "value": "stack", "label": "Symbol über Text" }, { "value": "row", "label": "Symbol neben Text" } ], "default": "stack" },
-    { "type": "checkbox", "id": "show_borders", "label": "Goldene Linien oben/unten", "default": true },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
-    { "type": "header", "content": "Abstände" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 24 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 24 }
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Kleine Überschrift (optional)"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Anordnung",
+      "options": [
+        {
+          "value": "stack",
+          "label": "Symbol über Text"
+        },
+        {
+          "value": "row",
+          "label": "Symbol neben Text"
+        }
+      ],
+      "default": "stack"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_borders",
+      "label": "Goldene Linien oben/unten",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Farbschema",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Abstände"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand oben",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Abstand unten",
+      "default": 24
+    }
   ],
   "blocks": [
     {
       "type": "item",
       "name": "Vorteil",
       "settings": [
-        { "type": "select", "id": "icon", "label": "Symbol", "options": [
-          { "value": "truck", "label": "Versand" }, { "value": "germany", "label": "Standort / Deutschland" }, { "value": "return", "label": "Widerruf / Rückgabe" },
-          { "value": "gift", "label": "Geschenk" }, { "value": "lock", "label": "Sichere Zahlung" }, { "value": "shield", "label": "Schutz / Qualität" },
-          { "value": "heart_racket", "label": "Herz & Schläger" }, { "value": "ball", "label": "Tennisball" }, { "value": "sparkle", "label": "Glanz" }, { "value": "mail", "label": "Kontakt" }, { "value": "clock", "label": "Lieferzeit" }, { "value": "leaf", "label": "Nachhaltig" }
-        ], "default": "truck" },
-        { "type": "text", "id": "title", "label": "Titel", "default": "Kostenloser Versand" },
-        { "type": "text", "id": "text", "label": "Text", "default": "innerhalb Deutschlands" },
-        { "type": "url", "id": "link", "label": "Link (optional)" }
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Symbol",
+          "options": [
+            {
+              "value": "truck",
+              "label": "Versand"
+            },
+            {
+              "value": "germany",
+              "label": "Standort / Deutschland"
+            },
+            {
+              "value": "return",
+              "label": "Widerruf / Rückgabe"
+            },
+            {
+              "value": "gift",
+              "label": "Geschenk"
+            },
+            {
+              "value": "lock",
+              "label": "Sichere Zahlung"
+            },
+            {
+              "value": "shield",
+              "label": "Schutz / Qualität"
+            },
+            {
+              "value": "heart_racket",
+              "label": "Herz & Schläger"
+            },
+            {
+              "value": "ball",
+              "label": "Tennisball"
+            },
+            {
+              "value": "sparkle",
+              "label": "Glanz"
+            },
+            {
+              "value": "mail",
+              "label": "Kontakt"
+            },
+            {
+              "value": "clock",
+              "label": "Lieferzeit"
+            },
+            {
+              "value": "leaf",
+              "label": "Nachhaltig"
+            }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Kostenloser Versand"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "innerhalb Deutschlands"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
       ]
     }
   ],
@@ -83,10 +202,38 @@
     {
       "name": "LUVIONA: Vertrauensleiste",
       "blocks": [
-        { "type": "item", "settings": { "icon": "truck", "title": "Kostenloser Versand", "text": "innerhalb Deutschlands" } },
-        { "type": "item", "settings": { "icon": "germany", "title": "Versand aus Deutschland", "text": "Lieferzeit 2–4 Werktage" } },
-        { "type": "item", "settings": { "icon": "return", "title": "14 Tage Widerruf", "text": "gesetzliches Widerrufsrecht" } },
-        { "type": "item", "settings": { "icon": "gift", "title": "Geschenkverpackung", "text": "navy LUVIONA-Box auf Wunsch" } }
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Kostenloser Versand",
+            "text": "innerhalb Deutschlands"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "germany",
+            "title": "Versand aus Deutschland",
+            "text": "Lieferzeit 2–4 Werktage"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "14 Tage Widerruf",
+            "text": "gesetzliches Widerrufsrecht"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "gift",
+            "title": "Geschenkverpackung",
+            "text": "navy LUVIONA-Box auf Wunsch"
+          }
+        }
       ]
     }
   ]
