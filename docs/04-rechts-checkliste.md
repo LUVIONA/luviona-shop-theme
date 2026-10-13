@@ -24,7 +24,7 @@ Legende: ✅ im Theme umgesetzt · ⚙️ Shopify-Admin-Einstellung (siehe `05-s
 - [ ] ⚙️ Einstellungen → Steuern: keine Steuer für Deutschland; Produkte als „steuerpflichtig“ belassen, Steuersatz 0 % (später Umstellung auf Regelbesteuerung: Theme-Einstellung „Steuermodus“ + Steuern aktivieren)
 - [ ] ⚙️ Bestellbestätigung/Rechnung mit § 19-Hinweis (siehe `06-checkout-und-emails.md`), Rechnungs-App mit Kleinunternehmer-Option
 - [ ] ✅ Streichpreise: Dawn zeigt Vergleichspreis; **du** trägst beim Rabatt den niedrigsten Preis der letzten 30 Tage als Vergleichspreis ein (§ 11 PAngV) – 📝 vor jeder Aktion prüfen
-- [ ] ✅/⚙️ Grundpreis Lipgloss (§ 4 PAngV): Shopify-Einheitspreis an der Love-Charm-Variante pflegen („[PLATZHALTER: x] ml“, Basis 1 ml) → Theme zeigt ihn automatisch am Preis und im Kosmetik-Block
+- [ ] ✅ Grundpreis (§ 4 PAngV): entfällt, solange kein Kosmetikprodukt beiliegt – im Love Charm ist kein Gloss enthalten (Hinweis steht in der Produktbeschreibung)
 - [ ] ✅ Lieferzeit konkret („Lieferzeit 2–4 Werktage“) auf Produktseite, im Warenkorb, in Vertrauensleiste – 📝 Zeitraum bestätigen
 
 ## C. Checkout (§§ 312i, 312j BGB)
@@ -45,7 +45,6 @@ Legende: ✅ im Theme umgesetzt · ⚙️ Shopify-Admin-Einstellung (siehe `05-s
 - [ ] ⚙️ Eingang an `widerruf@luviona.de` (Shopify-Kontakt-E-Mail bzw. Weiterleitungsfilter auf Betreff „Widerruf über das Online-Formular“)
 - [ ] ⚙️ Link „Vertrag widerrufen“ im Kundenkonto-Menü (Navigation → Kundenkonto-Hauptmenü)
 - [ ] 📝 Regelung Rücksendekosten in Belehrung + FAQ einheitlich (**[PLATZHALTER]**)
-- [ ] ✅ Hinweis Hygiene-Ausnahme für entsiegelten Lipgloss (§ 312g Abs. 2 Nr. 3 BGB) im Kosmetik-Block, FAQ und Widerrufsseite – 📝 auch in der Belehrung; Gloss versiegelt liefern
 
 ## E. AGB & Gewährleistung
 - [ ] 📝 AGB aus dem Paket → Shopify-Richtlinie „AGB“ (Vertragspartner: LUVIONA GbR)
@@ -81,7 +80,11 @@ Legende: ✅ im Theme umgesetzt · ⚙️ Shopify-Admin-Einstellung (siehe `05-s
 - [ ] 📝 REACH-Konformität (Nickel, Blei, Cadmium): **[PLATZHALTER: Prüfbericht des Lieferanten]** → Metafeld `luviona.material_konformitaet`
 - [ ] 📝 „nickelfrei“/„hypoallergen“ nur mit Prüfnachweis – aktuell nirgends behauptet ✅
 
-## J. Kosmetik – Lipgloss (EU-KosmetikVO 1223/2009)
+## J. Kosmetik – entfällt (Love Charm wird ohne Lipgloss verkauft)
+
+> Der Love Charm ist eine Hülle für den eigenen Lipgloss; es liegt **kein** kosmetisches Mittel bei. Die folgenden Punkte gelten nur, falls später ein Gloss beigelegt oder einzeln verkauft wird. Im Theme bleibt der Kosmetik-Block vorhanden, er erscheint nur bei Produkttyp „Kosmetik“ oder befülltem INCI-Metafeld.
+
+### Falls später doch Kosmetik verkauft wird
 - [ ] 📝 Verantwortliche Person in der EU klären (bei Nicht-EU-Herkunft + Eigenmarke = **ihr**) → Name + Anschrift auf dem Gloss **und** Metafeld `luviona.kosmetik_verantwortliche`
 - [ ] 📝 CPNP-Notifizierung vor Verkauf, CPSR (Sicherheitsbewertung) und PIF (Produktinformationsdatei) → **[PLATZHALTER: Nachweise vom Hersteller]**
 - [ ] ✅/📝 Produktseite zeigt: INCI, Füllmenge + Grundpreis, PAO/MHD, Chargen-Hinweis, Verwendungszweck, Warnhinweise, Allergene → Metafelder befüllen
@@ -120,7 +123,7 @@ Legende: ✅ im Theme umgesetzt · ⚙️ Shopify-Admin-Einstellung (siehe `05-s
 | 5 | Aktivierte Zahlungsanbieter | FAQ, Seite „Versand & Zahlung“, Vertrauensleiste |
 | 6 | Hersteller/EU-Verantwortliche (Schmuck), Prüfberichte REACH | Metafelder `luviona.hersteller_*`, `luviona.eu_verantwortliche`, `luviona.material_konformitaet` |
 | 7 | Echte Produktfotos mit Größenvergleich | Produktmedien |
-| 8 | Lipgloss: INCI, Füllmenge (ml), PAO/MHD, CPNP-Nachweis, Verantwortliche Person, Allergene | Metafelder `luviona.inci`, `luviona.fuellmenge`, `luviona.pao`/`mhd`, `luviona.kosmetik_verantwortliche`, `luviona.allergene` + Einheitspreis |
+| 8 | Love Charm: Innenmaße der Hülle (passende Tubengröße) | Produkttext, FAQ |
 | 9 | Rücksendekosten-Regelung | Widerrufsbelehrung, FAQ Nr. 5 |
 | 10 | Instagram-Profil-URL, Bilder | Theme-Einstellungen Social, Instagram-Sektion |
 | 11 | Logo (SVG/PNG, Navy-Hintergrund + Freisteller), Favicon | Theme-Einstellungen Logo |

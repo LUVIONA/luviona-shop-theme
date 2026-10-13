@@ -244,10 +244,7 @@ def step_products():
             "variants": variants, "files": files,
             "metafields": [{"namespace": "luviona", "key": "ki_bilder", "type": "boolean", "value": "true"}],
         }
-        if p["type"] == "Kosmetik":
-            inp["templateSuffix"] = "kosmetik"
-            inp["metafields"].append({"namespace": "luviona", "key": "verwendungszweck",
-                                      "type": "single_line_text_field", "value": "Lipgloss"})
+        inp["templateSuffix"] = ""  # Standard-Produktvorlage (keine Kosmetik-Vorlage mehr)
         pid = find_id("products", p["handle"])
         if pid:
             inp["id"] = pid
@@ -288,8 +285,8 @@ COLLECTIONS = [
      "<p>Geflochtene Kordelarmbänder und feine Gliederketten mit Tennisschläger und Tennisball – goldfarben oder silberfarben, versandkostenfrei in Deutschland.</p>"),
     ("ketten", "Ketten", "TYPE", "Kette",
      "<p>Die Match Point Kette: feine goldfarbene Gliederkette mit Schläger-Anhänger und Tennisball.</p>"),
-    ("taschen-charms", "Taschen-Charms & Kosmetik", "TYPE", "Kosmetik",
-     "<p>Der Love Charm: Taschenanhänger aus Kunstleder mit herausnehmbarem Lipgloss – in fünf Farben.</p>"),
+    ("taschen-charms", "Taschen-Charms", "TYPE", "Taschen-Charm",
+     "<p>Der Love Charm: Taschenanhänger aus Kunstleder mit Hülle für deinen Lipgloss – in fünf Farben.</p>"),
     ("geschenke", "Geschenke", "TAG", "geschenk",
      "<p>Für Tennispartnerin, Trainerin oder Team – auf Wunsch in der navy LUVIONA-Box mit Grußkarte.</p>"),
 ]
@@ -300,7 +297,14 @@ def step_collections():
     for handle, title, column, cond, desc in COLLECTIONS:
         cid = find_id("collections", handle)
         if cid:
-            log(f"  = {title} existiert")
+            log(f"  ~ {title} (Regel {column} = {cond})")
+            r = gql("""mutation($input: CollectionInput!) {
+              collectionUpdate(input: $input) { userErrors { field message } } }""",
+                    {"input": {"id": cid, "title": title, "descriptionHtml": desc,
+                               "ruleSet": {"appliedDisjunctively": False,
+                                           "rules": [{"column": column, "relation": "EQUALS", "condition": cond}]}}})
+            if not DRY:
+                user_errors(r, "collectionUpdate")
             publish(cid)
             continue
         log(f"  + {title} ({column} = {cond})")

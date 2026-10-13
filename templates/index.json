@@ -66,8 +66,8 @@
         "layout": "stack",
         "show_borders": true,
         "color_scheme": "scheme-1",
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "tiles": {
@@ -104,7 +104,7 @@
             "media_index": 2,
             "kicker": "Taschen-Charm",
             "title": "Love Charm",
-            "text": "Kunstleder in Saffiano-Optik mit Lipgloss in der Hülle. Für Tasche, Schläger-Bag und Schlüsselbund.",
+            "text": "Kunstleder in Saffiano-Optik mit Hülle für deinen Lipgloss. Für Tasche, Schläger-Bag und Schlüsselbund.",
             "link_label": "Fünf Farben ansehen",
             "link": "shopify://products/love-charm"
           }
@@ -241,15 +241,15 @@
         "view_all_style": "outline",
         "enable_desktop_slider": false,
         "swipe_on_mobile": false,
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 56,
-        "padding_bottom": 64
+        "padding_top": 64,
+        "padding_bottom": 72
       }
     },
     "colors": {
@@ -257,8 +257,8 @@
       "settings": {
         "product": "love-charm",
         "eyebrow": "Love Charm",
-        "heading": "Fünf Farben. <em>Ein Gloss.</em>",
-        "text": "<p>„Love“ heißt beim Tennis null Punkte – bei uns heißt es: dein Gloss ist immer griffbereit. Hülle und Kordel aus Kunstleder in Saffiano-Optik, Karabiner und Endkappen goldfarben. Der Lipgloss steckt in der Hülle und ist herausnehmbar.</p>",
+        "heading": "Fünf Farben. <em>Dein Gloss.</em>",
+        "text": "<p>„Love“ heißt beim Tennis null Punkte – bei uns heißt es: dein Gloss ist immer griffbereit. Hülle und Kordel aus Kunstleder in Saffiano-Optik, Karabiner und Endkappen goldfarben. Dein eigener Lipgloss steckt von oben in der Hülle (nicht im Lieferumfang).</p>",
         "button_label": "Love Charm entdecken",
         "color_scheme": "scheme-4",
         "padding_top": 80,
@@ -304,7 +304,7 @@
         "text": "<p>Armband und Kette im gleichen Design – oder dein Lieblingsarmband mit dem Love Charm. Jedes Teil ist einzeln bestellbar.</p>",
         "color_scheme": "scheme-1",
         "padding_top": 72,
-        "padding_bottom": 56
+        "padding_bottom": 72
       }
     },
     "gift": {
@@ -371,7 +371,7 @@
         "i2": {
           "type": "image",
           "settings": {
-            "alt": "Love Charm Lipgloss-Taschenanhänger in Rosé",
+            "alt": "Love Charm Taschenanhänger mit Lipgloss-Hülle in Rosé",
             "luviona_asset": "luviona-insta-2"
           }
         },
@@ -405,8 +405,8 @@
         "columns_desktop": 4,
         "ad_note": "",
         "color_scheme": "scheme-1",
-        "padding_top": 64,
-        "padding_bottom": 48
+        "padding_top": 72,
+        "padding_bottom": 56
       }
     },
     "newsletter": {
@@ -437,8 +437,8 @@
       "settings": {
         "color_scheme": "scheme-4",
         "full_width": true,
-        "padding_top": 64,
-        "padding_bottom": 72
+        "padding_top": 72,
+        "padding_bottom": 80
       }
     }
   },

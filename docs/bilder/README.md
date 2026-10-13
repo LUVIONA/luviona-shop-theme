@@ -23,16 +23,16 @@ Format: JPEG, 1254 × 1254 px (Hero 1448 × 1086 px), Qualität 88, 200–390 KB
 | `match-point-armband-tragebild-satin.jpg` | Match Point Armband | 4 | Match Point Armband goldfarben am Handgelenk auf Satin |
 | `match-point-kette-tragebild.jpg` | Match Point Kette | 1 | Tennisschläger Kette goldfarben mit Tennisball – LUVIONA Match Point, Tragebild am Hals |
 | `match-point-kette-tragebild-hero.jpg` | Match Point Kette · **Startseiten-Hero** | 2 | Match Point Kette goldfarben auf Satin, Tragebild |
-| `love-charm-taupe-produktfoto.jpg` | Love Charm · Variante Taupe (Variantenbild) | 1 | Love Charm Lipgloss-Taschenanhänger in Taupe, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
-| `love-charm-taupe-lifestyle.jpg` | Love Charm · Taupe, Stimmungsbild an der Tasche | 2 | Taschenanhänger Lipgloss Bag Charm Damen in Taupe an einer Tasche – LUVIONA Love Charm |
-| `love-charm-rose-produktfoto.jpg` | Love Charm · Variante Rosé (Variantenbild) | 3 | Love Charm Lipgloss-Taschenanhänger in Rosé, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
-| `love-charm-rose-lifestyle.jpg` | Love Charm · Rosé, Stimmungsbild an der Tasche | 4 | Taschenanhänger Lipgloss Bag Charm Damen in Rosé an einer Tasche – LUVIONA Love Charm |
-| `love-charm-lavendel-produktfoto.jpg` | Love Charm · Variante Lavendel (Variantenbild) | 5 | Love Charm Lipgloss-Taschenanhänger in Lavendel, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
-| `love-charm-lavendel-lifestyle.jpg` | Love Charm · Lavendel, Stimmungsbild an der Tasche | 6 | Taschenanhänger Lipgloss Bag Charm Damen in Lavendel an einer Tasche – LUVIONA Love Charm |
-| `love-charm-olive-produktfoto.jpg` | Love Charm · Variante Olive (Variantenbild) | 7 | Love Charm Lipgloss-Taschenanhänger in Olive, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
-| `love-charm-olive-lifestyle.jpg` | Love Charm · Olive, Stimmungsbild an der Tasche | 8 | Taschenanhänger Lipgloss Bag Charm Damen in Olive an einer Tasche – LUVIONA Love Charm |
-| `love-charm-creme-produktfoto.jpg` | Love Charm · Variante Creme (Variantenbild) | 9 | Love Charm Lipgloss-Taschenanhänger in Creme, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
-| `love-charm-creme-lifestyle.jpg` | Love Charm · Creme, Stimmungsbild an der Tasche | 10 | Taschenanhänger Lipgloss Bag Charm Damen in Creme an einer Tasche – LUVIONA Love Charm |
+| `love-charm-taupe-produktfoto.jpg` | Love Charm · Variante Taupe (Variantenbild) | 1 | Love Charm Taschenanhänger mit Lipgloss-Hülle in Taupe, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-taupe-lifestyle.jpg` | Love Charm · Taupe, Stimmungsbild an der Tasche | 2 | Taschenanhänger mit Lipgloss-Hülle, Bag Charm Damen in Taupe an einer Tasche – LUVIONA Love Charm |
+| `love-charm-rose-produktfoto.jpg` | Love Charm · Variante Rosé (Variantenbild) | 3 | Love Charm Taschenanhänger mit Lipgloss-Hülle in Rosé, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-rose-lifestyle.jpg` | Love Charm · Rosé, Stimmungsbild an der Tasche | 4 | Taschenanhänger mit Lipgloss-Hülle, Bag Charm Damen in Rosé an einer Tasche – LUVIONA Love Charm |
+| `love-charm-lavendel-produktfoto.jpg` | Love Charm · Variante Lavendel (Variantenbild) | 5 | Love Charm Taschenanhänger mit Lipgloss-Hülle in Lavendel, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-lavendel-lifestyle.jpg` | Love Charm · Lavendel, Stimmungsbild an der Tasche | 6 | Taschenanhänger mit Lipgloss-Hülle, Bag Charm Damen in Lavendel an einer Tasche – LUVIONA Love Charm |
+| `love-charm-olive-produktfoto.jpg` | Love Charm · Variante Olive (Variantenbild) | 7 | Love Charm Taschenanhänger mit Lipgloss-Hülle in Olive, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-olive-lifestyle.jpg` | Love Charm · Olive, Stimmungsbild an der Tasche | 8 | Taschenanhänger mit Lipgloss-Hülle, Bag Charm Damen in Olive an einer Tasche – LUVIONA Love Charm |
+| `love-charm-creme-produktfoto.jpg` | Love Charm · Variante Creme (Variantenbild) | 9 | Love Charm Taschenanhänger mit Lipgloss-Hülle in Creme, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-creme-lifestyle.jpg` | Love Charm · Creme, Stimmungsbild an der Tasche | 10 | Taschenanhänger mit Lipgloss-Hülle, Bag Charm Damen in Creme an einer Tasche – LUVIONA Love Charm |
 
 **Noch fehlend:** je Artikel ein echtes Foto mit Lineal/Münze · Packshot der Match Point Kette (nur Tragebilder vorhanden) · freigestelltes Logo (SVG/PNG) für Header und Favicon.
 

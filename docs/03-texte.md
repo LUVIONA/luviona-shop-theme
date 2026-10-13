@@ -14,7 +14,7 @@ Tonalität: warm, kurz, selbstbewusst. Keine Superlative („beste“, „Nr. 1�
 | Hero – Text | Schmuck und Taschen-Charms, inspiriert vom Sommer auf dem Sandplatz – entworfen und versendet aus Deutschland. |
 | Hero – Buttons | Kollektion entdecken · Love Charm |
 | Vertrauensleiste | Kostenloser Versand – innerhalb Deutschlands · Versand aus Deutschland – Lieferzeit 2–4 Werktage · 14 Tage Widerruf – gesetzliches Widerrufsrecht · Geschenkverpackung – navy LUVIONA-Box auf Wunsch |
-| Kollektion – Titel/Intro | Die Kollektion – Geflochtene Kordelarmbänder, feine Gliederketten und der Love Charm mit Lipgloss. Jedes Stück versandkostenfrei in Deutschland. |
+| Kollektion – Titel/Intro | Die Kollektion – Geflochtene Kordelarmbänder, feine Gliederketten und der Love Charm mit Lipgloss-Hülle. Jedes Stück versandkostenfrei in Deutschland. |
 | Markengeschichte | **Über LUVIONA · Für alle, die den Court lieben** – LUVIONA ist aus der Liebe zum Tennis entstanden: dem Knirschen des Sands, weißen Linien in der Sonne und dem Gefühl nach einem guten Match. Unsere Armbänder, Ketten und Charms bringen genau das in deinen Alltag – zeitlos, feminin und hochwertig verarbeitet, zu einem Preis, der sich gut anfühlt. Entworfen in Deutschland, verpackt mit Sorgfalt in unserer navy Box. |
 | Sets | **Kombinieren · Schöner zu zweit** – Armband und Kette im gleichen Design – oder dein Lieblingsarmband mit dem Love Charm. Jedes Teil ist einzeln bestellbar. |
 | Geschenk | **Geschenkidee · Für die Tennispartnerin, die Trainerin, das Team** – Geburtstag, Vereinsfeier, Turnier oder einfach so: Auf Wunsch verpacken wir dein Schmuckstück in der navy LUVIONA-Box und legen eine Grußkarte bei. Sag uns im Warenkorb einfach Bescheid. |
@@ -53,8 +53,8 @@ Alle Schmuckstücke **34,90 €**, Love Charm **27,90 €** – versandkostenfre
 - **Material & Maße:** Länge [PLATZHALTER: cm] + Verlängerung, Anhänger [PLATZHALTER: mm], goldfarben beschichtet.
 - **SEO-Titel:** Tennisschläger Kette Gold Damen – Match Point | LUVIONA
 
-### Love Charm – Lipgloss-Taschenanhänger (27,90 €)
-- **Produkttyp:** Kosmetik (eigene Produktlinie, Template `product.kosmetik`) · **Varianten:** Taupe · Rosé · Lavendel · Olive · Creme · **Tags:** charm, taschenanhaenger, lipgloss, kosmetik, geschenk
+### Love Charm – Taschenanhänger mit Lipgloss-Hülle (27,90 €)
+- **Produkttyp:** Taschen-Charm (kein Lipgloss enthalten, Standard-Produktvorlage) · **Varianten:** Taupe · Rosé · Lavendel · Olive · Creme · **Tags:** charm, taschenanhaenger, lipgloss, kosmetik, geschenk
 - **Beschreibung:** „Love“ heißt beim Tennis null Punkte – bei uns heißt es: dein Gloss immer griffbereit. Der Love Charm ist ein Taschen- und Schlüsselanhänger aus Kunstleder in Saffiano-Optik mit goldfarbenem Karabiner, drehbarem Ring und kleinem LUVIONA-Schild. In der genähten Hülle mit geprägtem Logo steckt ein Lipgloss in Koralle/Pfirsich mit feinem Schimmer – herausnehmbar und nachkaufbar. An der Tasche, am Schläger-Bag, am Schlüsselbund.
 - **Material:** Hülle und Anhänger aus Kunstleder (Saffiano-Optik), Metallteile goldfarben beschichtet, Kordel mit zwei goldfarbenen Endkappen. [PLATZHALTER: „vegan“ nur, wenn Kleber, Farbe und Gloss belegt frei von tierischen Stoffen sind.]
 - **Kosmetik-Angaben (Metafelder):** Verwendungszweck: Lipgloss · Füllmenge: [PLATZHALTER: x ml] (Grundpreis über Shopify-Einheitspreis) · INCI: [PLATZHALTER: vollständige Liste] · PAO: [PLATZHALTER: z. B. 12M] · Verantwortliche Person (EU): [PLATZHALTER] · Allergene: [PLATZHALTER, falls Duftstoffe]

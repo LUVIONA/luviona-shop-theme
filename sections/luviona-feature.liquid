@@ -3,7 +3,7 @@
 {%- endcomment -%}
 {% render 'luviona-section-padding', section: section %}
 {%- liquid
-  assign p = section.settings.product
+  assign p = section.settings.product | default: product
   assign media = p.featured_media
   if section.settings.media_index > 1 and p.media.size >= section.settings.media_index
     assign idx = section.settings.media_index | minus: 1
