@@ -324,3 +324,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   .card-wrapper:hover .card__media .media img, .luviona-instagram__item a:hover img { transform: none; }
 }
+
+/* ---------- Mitgelieferte Theme-Bilder + KI-Hinweis ------------------------ */
+.image-with-text__media.luviona-asset-media { position: relative; overflow: hidden; }
+.luviona-asset-media > img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.image-with-text__media.luviona-asset-media { padding-bottom: 100%; }
+.image-with-text__media--small.luviona-asset-media, .image-with-text__media--medium.luviona-asset-media, .image-with-text__media--large.luviona-asset-media { padding-bottom: 0; }
+.luviona-instagram__item .media { position: relative; }
+.luviona-instagram__item .media > img { position: absolute; inset: 0; }
+.luviona-ai-badge {
+  position: absolute;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  z-index: 2;
+  padding: 0.2rem 0.8rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--luviona-creme);
+  background: rgba(11, 28, 61, 0.78);
+  pointer-events: none;
+}
+.banner .luviona-ai-badge { bottom: auto; top: 0.8rem; }

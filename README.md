@@ -58,3 +58,9 @@ Dawn-Updates können weiterhin per `git pull upstream main` eingespielt werden (
 
 ## Lizenz
 Theme-Code: MIT (Dawn, Shopify Inc.) – siehe `LICENSE.md`. Schriften: SIL Open Font License 1.1 – siehe `docs/lizenzen/`. Marken- und Textinhalte: © LUVIONA GbR.
+
+## Shop automatisch einrichten (Produkte, Bilder, Seiten, Menüs)
+
+`scripts/shopify_setup.py` legt über die Shopify Admin API alle Produkte inkl. Bilder und Varianten, die Metafelddefinitionen `luviona.*`, vier Kollektionen, alle Seiten mit den richtigen Vorlagen sowie Hauptmenü, Service- und Rechtliches-Menü an. Das Skript ist mehrfach ausführbar und überschreibt keine bereits befüllten Seiteninhalte. Benötigt `SHOPIFY_STORE` (myshopify-Adresse) und `SHOPIFY_ADMIN_TOKEN` (Admin-API-Token mit read/write für products, content, online_store_navigation, publications).
+
+Startseite und „Über LUVIONA“ zeigen die KI-Bilder bereits ohne Upload: Sie liegen als WebP in `assets/` und werden genutzt, solange im Theme-Editor kein eigenes Bild gewählt ist – jeweils mit dem Hinweis „Abbildung KI-generiert“.

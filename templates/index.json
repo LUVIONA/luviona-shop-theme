@@ -52,7 +52,9 @@
         "color_scheme": "scheme-3",
         "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
-        "show_text_below": true
+        "show_text_below": true,
+        "luviona_asset": "luviona-hero",
+        "luviona_asset_alt": "Match Point Kette goldfarben mit Tennisschläger-Anhänger und Tennisball, Tragebild auf Satin"
       }
     },
     "trust": {
@@ -186,7 +188,9 @@
         "section_color_scheme": "scheme-4",
         "color_scheme": "scheme-4",
         "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 36,
+        "luviona_asset": "luviona-story",
+        "luviona_asset_alt": "Court Classic Tennis Armband grün weiß mit goldfarbenem Schläger am Handgelenk"
       }
     },
     "sets": {
@@ -288,25 +292,29 @@
         "i1": {
           "type": "image",
           "settings": {
-            "alt": "LUVIONA Court Classic Armband am Handgelenk"
+            "alt": "Match Point Armband goldfarben am Handgelenk",
+            "luviona_asset": "luviona-insta-1"
           }
         },
         "i2": {
           "type": "image",
           "settings": {
-            "alt": "LUVIONA Match Point Kette"
+            "alt": "Love Charm Lipgloss-Taschenanhänger in Rosé",
+            "luviona_asset": "luviona-insta-2"
           }
         },
         "i3": {
           "type": "image",
           "settings": {
-            "alt": "LUVIONA Love Charm an einer Tasche"
+            "alt": "Court Classic Armband Bordeaux/Weiß auf Satin",
+            "luviona_asset": "luviona-insta-3"
           }
         },
         "i4": {
           "type": "image",
           "settings": {
-            "alt": "Tennisplatz im Sommer"
+            "alt": "Court Classic Armband Navy/Weiß silberfarben am Handgelenk",
+            "luviona_asset": "luviona-insta-4"
           }
         }
       },

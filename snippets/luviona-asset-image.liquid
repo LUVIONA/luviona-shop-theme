@@ -1,0 +1,50 @@
+{%- doc -%}
+  LUVIONA – gibt ein im Theme mitgeliefertes Bild (assets/<name>-<breite>.webp) responsiv aus.
+  Wird verwendet, solange im Theme-Editor kein eigenes Bild gewählt ist. Sobald dort ein Bild
+  gesetzt wird, hat dieses Vorrang. Alle mitgelieferten Bilder sind KI-generiert und erhalten
+  daher einen sichtbaren Hinweis (EU AI Act Art. 50, § 5 UWG).
+
+  @param {string} name - Basisname, z. B. 'luviona-hero'
+  @param {string} [alt] - Alternativtext
+  @param {string} [class] - CSS-Klasse für das img-Element
+  @param {string} [sizes] - sizes-Attribut
+  @param {boolean} [eager] - true für das erste sichtbare Bild (kein Lazy Loading, hohe Priorität)
+  @param {boolean} [hide_ai_badge] - Hinweis „KI-generiert“ ausblenden (z. B. wenn er bereits daneben steht)
+{%- enddoc -%}
+{%- liquid
+  case name
+    when 'luviona-hero'
+      assign w1 = 750
+      assign w2 = 1448
+      assign ratio_h = 1086
+    when 'luviona-story', 'luviona-about-1', 'luviona-about-2'
+      assign w1 = 600
+      assign w2 = 1200
+      assign ratio_h = 1200
+    else
+      assign w1 = 400
+      assign w2 = 800
+      assign ratio_h = 800
+  endcase
+  assign file_1 = name | append: '-' | append: w1 | append: '.webp'
+  assign file_2 = name | append: '-' | append: w2 | append: '.webp'
+-%}
+<img
+  src="{{ file_2 | asset_url }}"
+  srcset="{{ file_1 | asset_url }} {{ w1 }}w, {{ file_2 | asset_url }} {{ w2 }}w"
+  sizes="{{ sizes | default: '100vw' }}"
+  width="{{ w2 }}"
+  height="{{ ratio_h }}"
+  alt="{{ alt | escape }}"
+  {% if class %}
+    class="{{ class }}"
+  {% endif %}
+  {% if eager %}
+    fetchpriority="high"
+  {% else %}
+    loading="lazy"
+  {% endif %}
+>
+{%- unless hide_ai_badge -%}
+  <span class="luviona-ai-badge">{{ 'luviona.product.ai_badge' | t }}</span>
+{%- endunless -%}
