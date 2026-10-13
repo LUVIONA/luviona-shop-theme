@@ -31,9 +31,9 @@
     {%- if settings.luviona_shipping_note_enabled and shipping_note != blank -%}
       <span class="luviona-price-note__item">
         {%- if shipping_page != blank -%}
-          <a href="{{ shipping_page.url }}">{{ shipping_note | capitalize }}</a>
+          <a href="{{ shipping_page.url }}">{{ shipping_note | slice: 0 | upcase }}{{ shipping_note | slice: 1, 200 }}</a>
         {%- else -%}
-          {{ shipping_note | capitalize }}
+          {{ shipping_note | slice: 0 | upcase }}{{ shipping_note | slice: 1, 200 }}
         {%- endif -%}
       </span>
     {%- endif -%}

@@ -608,6 +608,9 @@
       "cookie_settings": "Cookie-Einstellungen",
       "tax_note_prefix": "Alle Preise:",
       "tax_note_regel": "Alle Preise inkl. MwSt."
+    },
+    "collection": {
+      "all_title": "Alle Stücke"
     }
   }
 }

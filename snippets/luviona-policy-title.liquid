@@ -1,0 +1,23 @@
+{%- doc -%}
+  LUVIONA – deutsche Titel für Shopify-Richtlinien, unabhängig von der Shop-Sprache.
+  @param {object} policy - Richtlinie aus shop.policies
+{%- enddoc -%}
+{%- liquid
+  assign handle = policy.url | split: '/' | last
+  case handle
+    when 'privacy-policy'
+      echo 'Datenschutzerklärung'
+    when 'refund-policy'
+      echo 'Widerrufsbelehrung'
+    when 'terms-of-service'
+      echo 'AGB'
+    when 'shipping-policy'
+      echo 'Versand & Zahlung'
+    when 'legal-notice'
+      echo 'Impressum'
+    when 'contact-information'
+      echo 'Kontakt'
+    else
+      echo policy.title | escape
+  endcase
+-%}

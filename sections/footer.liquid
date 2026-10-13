@@ -318,7 +318,7 @@
           {%- else -%}
             {{ 'luviona.footer.tax_note_prefix' | t }} {{ settings.luviona_tax_note_kleinunternehmer }}
           {%- endif -%}
-          {%- if settings.luviona_shipping_note_enabled and settings.luviona_shipping_note != blank %} {{ settings.luviona_shipping_note | capitalize }}.{% endif -%}
+          {%- if settings.luviona_shipping_note_enabled and settings.luviona_shipping_note != blank %} {{ settings.luviona_shipping_note | slice: 0 | upcase }}{{ settings.luviona_shipping_note | slice: 1, 200 }}.{% endif -%}
         </p>
       {%- endif -%}
     </div>
@@ -336,7 +336,7 @@
               {%- if policy != blank -%}
                 <li>
                   <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                    ><a href="{{ policy.url }}">{% render 'luviona-policy-title', policy: policy %}</a></small
                   >
                 </li>
               {%- endif -%}

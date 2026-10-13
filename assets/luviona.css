@@ -206,7 +206,7 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .header__active-menu-item { text-decoration: none; }
 .header__active-menu-item span { border-bottom: 1px solid var(--luviona-gold); padding-bottom: 0.3rem; }
 .header__inline-menu { margin-top: 0.4rem; }
-.header__icon .icon { width: 2rem; height: 2rem; }
+.header__icon:not(.header__icon--cart) .icon { width: 2rem; height: 2rem; }
 .header__icon, .header__icon--cart .icon { color: rgba(var(--color-foreground), 0.85); }
 .header__icon:hover .icon { color: var(--luviona-gold-dark); transform: none; }
 .cart-count-bubble { background: var(--luviona-gold); color: var(--luviona-navy); font-weight: 600; width: 1.6rem; height: 1.6rem; font-size: 0.85rem; bottom: 0.4rem; left: 2.6rem; }
@@ -714,5 +714,31 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
   .luviona-wordmark__name { font-size: 2.2rem; letter-spacing: 0.3em; margin-right: -0.3em; }
   .luviona-wordmark__claim { font-size: 0.72rem; letter-spacing: 0.32em; margin-right: -0.32em; margin-top: 0.5rem; }
 }
-.header__icon--cart .icon, .header__icon--cart svg { width: 2.2rem; height: 2.2rem; }
+
+/* Warenkorb-Symbol: Dawn-Grafik füllt nur die Mitte der 40er-Box */
+.header__icon--cart .icon { width: 4.4rem; height: 4.4rem; padding: 0; }
 .header__icon--cart .svg-wrapper { width: 4.4rem; height: 4.4rem; }
+
+/* Preis-Hinweis immer in der Fließtextschrift */
+.price .luviona-price-note, .price--large .luviona-price-note, .luviona-feature__price .luviona-price-note { font-family: var(--font-body-family); }
+
+/* „In den Warenkorb“ immer als gefüllter Hauptbutton */
+.product-form__submit.button--secondary { background: rgb(var(--color-button)); color: rgb(var(--color-button-text)); }
+.product-form__submit.button--secondary::after { box-shadow: 0 0 0 var(--buttons-border-width) rgb(var(--color-button)); }
+
+/* Badges in Dawn-.media-Containern nicht vollflächig strecken */
+.media > .luviona-ai-badge, .global-media-settings > .luviona-ai-badge {
+  position: absolute; top: auto; left: auto; right: 0.8rem; bottom: 0.8rem;
+  width: auto; height: auto; max-width: calc(100% - 1.6rem); display: inline-block;
+}
+.banner__media > .luviona-ai-badge { top: 0.8rem; bottom: auto; }
+
+/* Links auf dunklen Flächen und im Newsletter-Hinweis */
+.luviona-newsletter-hint a, .footer a:not(.button) { color: inherit; text-decoration-color: var(--luviona-gold); text-underline-offset: 0.25em; }
+.color-scheme-3 .rte a, .color-scheme-3 .luviona-newsletter-hint a { color: var(--luviona-gold); }
+
+/* Footer-Newsletter mobil linksbündig wie die übrigen Spalten */
+@media screen and (max-width: 749px) {
+  .footer-block--newsletter, .footer-block__newsletter { text-align: left; align-items: flex-start; }
+  .footer-block__newsletter .footer-block__heading { text-align: left; }
+}
