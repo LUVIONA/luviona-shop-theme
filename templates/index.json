@@ -1,60 +1,22 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
-      "blocks": {
-        "eyebrow": {
-          "type": "text",
-          "settings": {
-            "text": "Court Style Accessories",
-            "text_style": "caption-with-letter-spacing"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Dein Spiel. Dein Style.",
-            "heading_size": "hxl"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "Schmuck und Taschen-Charms, inspiriert vom Sommer auf dem Sandplatz – entworfen und versendet aus Deutschland.",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Kollektion entdecken",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "Love Charm",
-            "button_link_2": "shopify://products/love-charm",
-            "button_style_secondary_2": true
-          }
-        }
-      },
-      "block_order": [
-        "eyebrow",
-        "heading",
-        "text",
-        "button"
-      ],
+      "type": "luviona-hero",
       "settings": {
-        "image_overlay_opacity": 20,
-        "image_height": "large",
-        "desktop_content_position": "middle-left",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": true,
         "luviona_asset": "luviona-hero",
-        "luviona_asset_alt": "Match Point Kette goldfarben mit Tennisschläger-Anhänger und Tennisball, Tragebild auf Satin"
+        "image_alt": "Match Point Kette goldfarben mit Tennisschläger-Anhänger, Tragebild auf Satin",
+        "layout": "text-left",
+        "eyebrow": "Court Style Accessories",
+        "heading": "Dein Spiel. <em>Dein Style.</em>",
+        "text": "<p>Armbänder, Ketten und Taschen-Charms, die nach Sandplatz, weißen Linien und langen Sommerabenden im Club aussehen.</p>",
+        "button_label_1": "Kollektion entdecken",
+        "button_link_1": "shopify://collections/all",
+        "button_label_2": "Zum Love Charm",
+        "button_link_2": "shopify://products/love-charm",
+        "footnote": "Versandkostenfrei in Deutschland · 14 Tage Widerruf",
+        "color_scheme": "scheme-1",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "trust": {
@@ -104,27 +66,181 @@
         "layout": "stack",
         "show_borders": true,
         "color_scheme": "scheme-1",
-        "padding_top": 24,
-        "padding_bottom": 24
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "tiles": {
+      "type": "luviona-collection-tiles",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "product": "court-classic-gruen-weiss",
+            "media_index": 1,
+            "kicker": "Kordelarmband",
+            "title": "Court Classic",
+            "text": "Geflochtene Kordel, kleiner Schläger, Tennisball. In Grün, Bordeaux und Navy.",
+            "link_label": "Drei Farben ansehen",
+            "link": "shopify://collections/armbaender"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "product": "match-point-armband",
+            "media_index": 1,
+            "kicker": "Armband & Kette",
+            "title": "Match Point",
+            "text": "Feine Gliederkette, Schläger mit Flechtnetz, Ball an der Y-Kette. Als Armband und als Halskette.",
+            "link_label": "Entdecken",
+            "link": "shopify://products/match-point-armband"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "product": "love-charm",
+            "media_index": 2,
+            "kicker": "Taschen-Charm",
+            "title": "Love Charm",
+            "text": "Kunstleder in Saffiano-Optik mit Lipgloss in der Hülle. Für Tasche, Schläger-Bag und Schlüsselbund.",
+            "link_label": "Fünf Farben ansehen",
+            "link": "shopify://products/love-charm"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "settings": {
+        "eyebrow": "Die Kollektion",
+        "heading": "Drei Linien, <em>ein Gefühl</em>",
+        "text": "",
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 64
+      }
+    },
+    "feature_court": {
+      "type": "luviona-feature",
+      "blocks": {
+        "d1": {
+          "type": "detail",
+          "settings": {
+            "title": "Geflochtene Kordel",
+            "text": "Zweifarbig gedreht – Grün, Bordeaux oder Navy mit Weiß."
+          }
+        },
+        "d2": {
+          "type": "detail",
+          "settings": {
+            "title": "Emaillierter Griff",
+            "text": "Der Schlägergriff ist farbig emailliert, passend zur Kordel."
+          }
+        },
+        "d3": {
+          "type": "detail",
+          "settings": {
+            "title": "Schiebeknoten",
+            "text": "Stufenlos verstellbar, ohne Verschluss. Einfach an- und ausziehen."
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "settings": {
+        "product": "court-classic-gruen-weiss",
+        "media_index": 3,
+        "image_position": "left",
+        "eyebrow": "Court Classic",
+        "heading": "Geflochten wie ein <em>Griffband</em>",
+        "text": "<p>Eine Kordel in Clubfarben, ein kleiner Schläger und ein Ball, der bei jeder Bewegung mitschwingt. Das Court Classic ist das Armband für jeden Tag – vom Training bis zum Abendessen auf der Terrasse.</p>",
+        "button_label": "Court Classic ansehen",
+        "button_link": "shopify://collections/armbaender",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "quote": {
+      "type": "luviona-quote",
+      "settings": {
+        "quote": "Für alle, die den Court lieben – <em>und den Look dazu.</em>",
+        "attribution": "LUVIONA · Court Style Accessories",
+        "link_label": "Über LUVIONA",
+        "link": "shopify://pages/ueber-uns",
+        "color_scheme": "scheme-3",
+        "padding_top": 88,
+        "padding_bottom": 88
+      }
+    },
+    "feature_match": {
+      "type": "luviona-feature",
+      "blocks": {
+        "d1": {
+          "type": "detail",
+          "settings": {
+            "title": "Flechtnetz",
+            "text": "Das Netz im Schlägerkopf ist als Flechtmuster gearbeitet – kein flaches Gitter."
+          }
+        },
+        "d2": {
+          "type": "detail",
+          "settings": {
+            "title": "Griff in Clubfarben",
+            "text": "Grün, Rot und Weiß, emailliert."
+          }
+        },
+        "d3": {
+          "type": "detail",
+          "settings": {
+            "title": "Karabiner & Verlängerung",
+            "text": "Mit der Verlängerungskette passt du die Länge an."
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2",
+        "d3"
+      ],
+      "settings": {
+        "product": "match-point-armband",
+        "media_index": 3,
+        "image_position": "right",
+        "eyebrow": "Match Point",
+        "heading": "Das Netz im <em>Detail</em>",
+        "text": "<p>Fein genug für jeden Tag, detailliert genug für einen zweiten Blick. Der Ball hängt an einer kleinen Y-Kette und bewegt sich frei. Die Match Point Kette trägt dasselbe Motiv – zusammen ein Set.</p>",
+        "button_label": "Match Point ansehen",
+        "button_link": "shopify://products/match-point-armband",
+        "color_scheme": "scheme-1",
+        "padding_top": 64,
+        "padding_bottom": 72
       }
     },
     "collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Die Kollektion",
+        "title": "Alle Stücke",
         "heading_size": "h1",
-        "description": "<p>Geflochtene Kordelarmbänder, feine Gliederketten und der Love Charm mit Lipgloss. Jedes Stück versandkostenfrei in Deutschland.</p>",
-        "show_description": true,
+        "description": "",
+        "show_description": false,
         "description_style": "body",
         "collection": "all",
         "products_to_show": 6,
         "columns_desktop": 3,
         "color_scheme": "scheme-1",
         "full_width": false,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "outline",
         "enable_desktop_slider": false,
-        "swipe_on_mobile": true,
+        "swipe_on_mobile": false,
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -132,65 +248,21 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 56,
+        "padding_bottom": 64
       }
     },
-    "story": {
-      "type": "image-with-text",
-      "blocks": {
-        "caption": {
-          "type": "caption",
-          "settings": {
-            "caption": "Über LUVIONA",
-            "text_style": "caption-with-letter-spacing",
-            "text_size": "small"
-          }
-        },
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Für alle, die den Court lieben",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>LUVIONA ist aus der Liebe zum Tennis entstanden: dem Knirschen des Sands, weißen Linien in der Sonne und dem Gefühl nach einem guten Match. Unsere Armbänder, Ketten und Charms bringen genau das in deinen Alltag – zeitlos, feminin und hochwertig verarbeitet, zu einem Preis, der sich gut anfühlt.</p><p>Entworfen in Deutschland, verpackt mit Sorgfalt in unserer navy Box.</p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Unsere Geschichte",
-            "button_link": "shopify://pages/ueber-uns",
-            "button_style_secondary": true
-          }
-        }
-      },
-      "block_order": [
-        "caption",
-        "heading",
-        "text",
-        "button"
-      ],
+    "colors": {
+      "type": "luviona-color-story",
       "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-4",
+        "product": "love-charm",
+        "eyebrow": "Love Charm",
+        "heading": "Fünf Farben. <em>Ein Gloss.</em>",
+        "text": "<p>„Love“ heißt beim Tennis null Punkte – bei uns heißt es: dein Gloss ist immer griffbereit. Hülle und Kordel aus Kunstleder in Saffiano-Optik, Karabiner und Endkappen goldfarben. Der Lipgloss steckt in der Hülle und ist herausnehmbar.</p>",
+        "button_label": "Love Charm entdecken",
         "color_scheme": "scheme-4",
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "luviona_asset": "luviona-story",
-        "luviona_asset_alt": "Court Classic Tennis Armband grün weiß mit goldfarbenem Schläger am Handgelenk"
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "sets": {
@@ -231,8 +303,8 @@
         "heading_size": "h1",
         "text": "<p>Armband und Kette im gleichen Design – oder dein Lieblingsarmband mit dem Love Charm. Jedes Teil ist einzeln bestellbar.</p>",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 72,
+        "padding_bottom": 56
       }
     },
     "gift": {
@@ -282,8 +354,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-3",
         "full_width": true,
-        "padding_top": 56,
-        "padding_bottom": 56
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "instagram": {
@@ -333,8 +405,8 @@
         "columns_desktop": 4,
         "ad_note": "",
         "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 64,
+        "padding_bottom": 48
       }
     },
     "newsletter": {
@@ -365,16 +437,20 @@
       "settings": {
         "color_scheme": "scheme-4",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 64,
+        "padding_bottom": 72
       }
     }
   },
   "order": [
     "hero",
     "trust",
+    "tiles",
+    "feature_court",
+    "quote",
+    "feature_match",
+    "colors",
     "collection",
-    "story",
     "sets",
     "gift",
     "instagram",

@@ -8,8 +8,21 @@
     "theme_support_url": "https://github.com/luviona/luviona-shop-theme/issues"
   },
   {
-    "name": "LUVIONA – Schriften",
+    "name": "LUVIONA – Marke & Schriften",
     "settings": [
+      {
+        "type": "text",
+        "id": "luviona_brand_name",
+        "label": "Markenname (Wortmarke, Browsertitel)",
+        "default": "LUVIONA",
+        "info": "Wird im Header angezeigt, solange kein Logo-Bild hochgeladen ist, und ersetzt den Shopnamen im Browsertab."
+      },
+      {
+        "type": "text",
+        "id": "luviona_brand_claim",
+        "label": "Claim unter der Wortmarke",
+        "default": "Court Style Accessories"
+      },
       {
         "type": "paragraph",
         "content": "Die Marken-Schriften Cormorant Garamond (Headlines) und Jost (Fließtext) liegen als Dateien im Theme (assets/) und werden lokal geladen – kein Abruf von Google Fonts. Ist die Option aus, greifen die Shopify-Schriften aus dem Bereich „Typografie“ (Shopify-CDN)."

@@ -222,7 +222,9 @@
       "luviona_consent_enabled": true,
       "luviona_consent_title": "Cookies & Datenschutz",
       "luviona_consent_text": "<p>Wir verwenden technisch notwendige Cookies. Statistik- und Marketing-Cookies setzen wir nur mit deiner Einwilligung. Du kannst deine Auswahl jederzeit über „Cookie-Einstellungen“ im Footer ändern.</p>",
-      "luviona_consent_color_scheme": "scheme-2"
+      "luviona_consent_color_scheme": "scheme-2",
+      "luviona_brand_name": "LUVIONA",
+      "luviona_brand_claim": "Court Style Accessories"
     }
   }
 }

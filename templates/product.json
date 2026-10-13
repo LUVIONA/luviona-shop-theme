@@ -32,9 +32,6 @@
             "show_gift_card_recipient": false
           }
         },
-        "gift": {
-          "type": "luviona_gift"
-        },
         "description": {
           "type": "description"
         },
@@ -92,16 +89,26 @@
             "icon": "truck",
             "content": "<p>Versandkostenfrei innerhalb Deutschlands, Versand aus Deutschland. Lieferzeit 2–4 Werktage. Du hast 14 Tage Widerrufsrecht – ganz einfach über den Button „Vertrag widerrufen“ im Footer. Details in unserer <a href=\"/policies/shipping-policy\">Versandinformation</a> und der <a href=\"/policies/refund-policy\">Widerrufsbelehrung</a>.</p>"
           }
+        },
+        "subtitle": {
+          "type": "luviona_subtitle"
+        },
+        "highlights": {
+          "type": "luviona_highlights",
+          "settings": {
+            "default_items": "Versandkostenfrei aus Deutschland\nGeschenkverpackung in der navy LUVIONA-Box auf Wunsch\n14 Tage Widerruf"
+          }
         }
       },
       "block_order": [
         "title",
+        "subtitle",
         "price",
         "delivery",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "gift",
+        "highlights",
         "description",
         "material",
         "care",
@@ -114,7 +121,7 @@
         "color_scheme": "scheme-1",
         "media_position": "left",
         "gallery_layout": "thumbnail_slider",
-        "media_size": "medium",
+        "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "image_zoom": "lightbox",

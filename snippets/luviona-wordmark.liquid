@@ -1,0 +1,12 @@
+{%- doc -%}
+  LUVIONA – Wortmarke als Text (wird genutzt, solange kein Logo-Bild hochgeladen ist).
+  Herz/Schläger-Ornament, Markenname in Cormorant Garamond, Claim in gesperrten Versalien.
+
+  @param {boolean} [compact] - nur Markenname ohne Claim (z. B. im Footer)
+{%- enddoc -%}
+<span class="luviona-wordmark{% if compact %} luviona-wordmark--compact{% endif %}">
+  <span class="luviona-wordmark__name">{{ settings.luviona_brand_name | default: 'LUVIONA' }}</span>
+  {%- unless compact or settings.luviona_brand_claim == blank -%}
+    <span class="luviona-wordmark__claim">{{ settings.luviona_brand_claim }}</span>
+  {%- endunless -%}
+</span>
