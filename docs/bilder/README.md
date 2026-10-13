@@ -10,13 +10,17 @@ Format: JPEG, 1254 × 1254 px (Hero 1448 × 1086 px), Qualität 88, 200–390 KB
 |---|---|---|---|
 | `court-classic-gruen-weiss-packshot.jpg` | Court Classic – Grün/Weiß | 1 | Tennis Armband Damen grün weiß mit goldfarbenem Tennisschläger und Tennisball – LUVIONA Court Classic, Packshot mit Geschenkbox |
 | `court-classic-gruen-weiss-tragebild.jpg` | Court Classic – Grün/Weiß | 2 | Court Classic Armband grün weiß am Handgelenk, Tragebild |
+| `court-classic-gruen-weiss-tragebild-satin.jpg` | Court Classic – Grün/Weiß | 3 | Court Classic Armband grün weiß am Handgelenk auf Satin |
 | `court-classic-bordeaux-weiss-packshot.jpg` | Court Classic – Bordeaux/Weiß | 1 | Tennis Armband Damen bordeaux weiß mit goldfarbenem Tennisschläger – LUVIONA Court Classic, Packshot mit Geschenkbox |
 | `court-classic-bordeaux-weiss-tragebild.jpg` | Court Classic – Bordeaux/Weiß | 2 | Court Classic Armband bordeaux weiß am Handgelenk, Tragebild |
 | `court-classic-bordeaux-weiss-tragebild-satin.jpg` | Court Classic – Bordeaux/Weiß | 3 | Court Classic Armband bordeaux weiß am Handgelenk auf Satin |
 | `court-classic-navy-weiss-silber-packshot.jpg` | Court Classic – Navy/Weiß (Silber) | 1 | Tennis Armband Damen navy weiß mit silberfarbenem Tennisschläger – LUVIONA Court Classic, Packshot mit Geschenkbox |
 | `court-classic-navy-weiss-silber-tragebild.jpg` | Court Classic – Navy/Weiß (Silber) | 2 | Court Classic Armband navy weiß silberfarben am Handgelenk, Tragebild |
+| `court-classic-navy-weiss-silber-tragebild-satin.jpg` | Court Classic – Navy/Weiß (Silber) | 3 | Court Classic Armband navy weiß silberfarben am Handgelenk auf Satin |
 | `match-point-armband-packshot.jpg` | Match Point Armband | 1 | Tennisschläger Armband goldfarben mit Flechtnetz, Tennisball und Verlängerungskette – LUVIONA Match Point, Packshot |
-| `match-point-armband-tragebild.jpg` | Match Point Armband | 2 | Match Point Armband goldfarben am Handgelenk, Tragebild |
+| `match-point-armband-packshot-2.jpg` | Match Point Armband | 2 | Match Point Armband goldfarben mit Flechtnetz-Schläger, Tennisball und Verlängerungskette – Produktfoto mit LUVIONA-Karte |
+| `match-point-armband-tragebild.jpg` | Match Point Armband | 3 | Match Point Armband goldfarben am Handgelenk, Tragebild |
+| `match-point-armband-tragebild-satin.jpg` | Match Point Armband | 4 | Match Point Armband goldfarben am Handgelenk auf Satin |
 | `match-point-kette-tragebild.jpg` | Match Point Kette | 1 | Tennisschläger Kette goldfarben mit Tennisball – LUVIONA Match Point, Tragebild am Hals |
 | `match-point-kette-tragebild-hero.jpg` | Match Point Kette · **Startseiten-Hero** | 2 | Match Point Kette goldfarben auf Satin, Tragebild |
 | `love-charm-taupe-produktfoto.jpg` | Love Charm · Variante Taupe (Variantenbild) | 1 | Love Charm Lipgloss-Taschenanhänger in Taupe, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
