@@ -11,10 +11,16 @@ Legt an bzw. aktualisiert:
   und veröffentlicht alles im Vertriebskanal „Online Store“.
 
 Benötigte Umgebungsvariablen:
-  SHOPIFY_STORE        z. B. luviona-xyz.myshopify.com  (die myshopify-Adresse, nicht luviona.de)
-  SHOPIFY_ADMIN_TOKEN  Admin-API-Zugriffstoken (shpat_…) einer eigenen App mit den Scopes:
-                       read/write_products, read/write_content, read/write_online_store_navigation,
-                       read/write_publications
+  SHOPIFY_STORE          z. B. luviona-xyz.myshopify.com  (die myshopify-Adresse, nicht luviona.de)
+  und ENTWEDER (App aus dem Shopify Dev Dashboard, Standard seit 2026):
+  SHOPIFY_CLIENT_ID      Client-ID der App
+  SHOPIFY_CLIENT_SECRET  Client-Secret der App  → das Skript holt sich per Client-Credentials-Grant
+                         ein Zugriffstoken (gültig ca. 24 h)
+  ODER (ältere, im Admin erstellte App):
+  SHOPIFY_ADMIN_TOKEN    Admin-API-Zugriffstoken (shpat_…)
+  Scopes der App: write_products, read_products, write_content, read_content,
+                  write_online_store_navigation, read_online_store_navigation,
+                  write_publications, read_publications
   SHOPIFY_API_VERSION  optional, Standard 2026-07
 
 Aufruf:
@@ -32,11 +38,14 @@ import os
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STORE = os.environ.get("SHOPIFY_STORE", "").replace("https://", "").strip("/")
 TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN", "")
+CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID", "")
+CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET", "")
 VERSION = os.environ.get("SHOPIFY_API_VERSION", "2026-07")
 DRY = "--dry-run" in sys.argv
 STEPS = [a for a in sys.argv[1:] if not a.startswith("--")] or [
@@ -44,6 +53,23 @@ STEPS = [a for a in sys.argv[1:] if not a.startswith("--")] or [
 
 
 # --------------------------------------------------------------------------- API
+def fetch_token():
+    """Client-Credentials-Grant für Dev-Dashboard-Apps, die im eigenen Shop installiert sind."""
+    body = urllib.parse.urlencode({"grant_type": "client_credentials", "client_id": CLIENT_ID,
+                                   "client_secret": CLIENT_SECRET}).encode()
+    req = urllib.request.Request(f"https://{STORE}/admin/oauth/access_token", data=body,
+                                 headers={"Content-Type": "application/x-www-form-urlencoded",
+                                          "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            data = json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"Token-Abruf fehlgeschlagen (HTTP {e.code}): {e.read().decode()[:300]}\n"
+                         "Prüfen: App im Dev Dashboard veröffentlicht (Version freigegeben) und im Shop installiert?")
+    print(f"Token erhalten, Scopes: {data.get('scope')}")
+    return data["access_token"]
+
+
 def gql(query, variables=None):
     if DRY:
         return {}
@@ -387,8 +413,12 @@ def step_menus():
 
 # ------------------------------------------------------------------------- main
 def main():
+    global TOKEN
+    if not DRY and not TOKEN and STORE and CLIENT_ID and CLIENT_SECRET:
+        TOKEN = fetch_token()
     if not DRY and (not STORE or not TOKEN):
-        raise SystemExit("SHOPIFY_STORE und SHOPIFY_ADMIN_TOKEN müssen gesetzt sein (siehe Kopf dieser Datei).")
+        raise SystemExit("SHOPIFY_STORE und entweder SHOPIFY_CLIENT_ID + SHOPIFY_CLIENT_SECRET "
+                         "oder SHOPIFY_ADMIN_TOKEN müssen gesetzt sein (siehe Kopf dieser Datei).")
     if not DRY:
         shop = gql("{ shop { name myshopifyDomain primaryDomain { host } } }")["shop"]
         print(f"Shop: {shop['name']} ({shop['myshopifyDomain']}, {shop['primaryDomain']['host']}), API {VERSION}")
