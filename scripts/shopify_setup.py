@@ -21,7 +21,9 @@ Benötigte Umgebungsvariablen:
   Scopes der App: write_products, read_products, write_content, read_content,
                   write_online_store_navigation, read_online_store_navigation,
                   write_publications, read_publications
-  SHOPIFY_API_VERSION  optional, Standard 2026-07
+  SHOPIFY_API_VERSION  optional, Standard 2026-10
+  SHOPIFY_IMAGE_REF    optional: Git-Branch oder Commit, von dem die Bilder geladen werden
+                       (Standard: main). Praktisch, um Bilder vor dem Merge zu übernehmen.
 
 Aufruf:
   python3 scripts/shopify_setup.py            # alles
@@ -46,7 +48,12 @@ STORE = os.environ.get("SHOPIFY_STORE", "").replace("https://", "").strip("/")
 TOKEN = os.environ.get("SHOPIFY_ADMIN_TOKEN", "")
 CLIENT_ID = os.environ.get("SHOPIFY_CLIENT_ID", "")
 CLIENT_SECRET = os.environ.get("SHOPIFY_CLIENT_SECRET", "")
-VERSION = os.environ.get("SHOPIFY_API_VERSION", "2026-07")
+VERSION = os.environ.get("SHOPIFY_API_VERSION", "2026-10")
+IMAGE_REF = os.environ.get("SHOPIFY_IMAGE_REF", "main")
+
+
+def image_url(url):
+    return url.replace("/luviona-shop-theme/main/", f"/luviona-shop-theme/{IMAGE_REF}/") if url else url
 DRY = "--dry-run" in sys.argv
 STEPS = [a for a in sys.argv[1:] if not a.startswith("--")] or [
     "metafields", "products", "collections", "pages", "menus"]
@@ -189,11 +196,11 @@ def load_products():
                      option=r["Option1 Name"], seo_title=r["SEO Title"], seo_desc=r["SEO Description"],
                      price=r["Variant Price"], grams=r["Variant Grams"])
         if r["Image Src"]:
-            p["files"].append({"originalSource": r["Image Src"], "alt": r["Image Alt Text"], "contentType": "IMAGE"})
+            p["files"].append({"originalSource": image_url(r["Image Src"]), "alt": r["Image Alt Text"], "contentType": "IMAGE"})
         if r["Option1 Value"]:
             p["variants"].append({"value": r["Option1 Value"], "sku": r["Variant SKU"],
                                   "price": r["Variant Price"] or p.get("price"),
-                                  "image": r.get("Variant Image", "")})
+                                  "image": image_url(r.get("Variant Image", ""))})
     return list(products.values())
 
 
