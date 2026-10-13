@@ -702,8 +702,6 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .luviona-asset-media > img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
 .image-with-text__media.luviona-asset-media { padding-bottom: 100%; }
 .image-with-text__media--small.luviona-asset-media, .image-with-text__media--medium.luviona-asset-media, .image-with-text__media--large.luviona-asset-media { padding-bottom: 0; }
-.luviona-ai-badge { position: absolute; right: 0.8rem; bottom: 0.8rem; z-index: 2; padding: 0.2rem 0.8rem; font-size: 0.95rem; line-height: 1.6; letter-spacing: 0.06em; color: var(--luviona-creme); background: rgba(11, 28, 61, 0.72); pointer-events: none; }
-.banner .luviona-ai-badge, .luviona-hero .luviona-ai-badge { bottom: auto; top: 0.8rem; }
 
 /* ---------- 14. Bewegung ------------------------------------------------------------ */
 @media (prefers-reduced-motion: reduce) {
@@ -731,12 +729,6 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .product-form__submit.button.button--secondary:not([disabled]):hover { background: var(--luviona-gold); color: var(--luviona-navy); }
 .product-form__submit.button.button--secondary:not([disabled]):hover::after { box-shadow: 0 0 0 1px var(--luviona-gold); }
 
-/* Badges in Dawn-.media-Containern nicht vollflächig strecken */
-.media > .luviona-ai-badge.luviona-ai-badge.luviona-ai-badge, .global-media-settings > .luviona-ai-badge.luviona-ai-badge.luviona-ai-badge {
-  position: absolute; top: auto; left: auto; right: 0.8rem; bottom: 0.8rem;
-  width: auto; height: auto; max-width: calc(100% - 1.6rem); display: inline-block;
-}
-.banner__media > .luviona-ai-badge { top: 0.8rem; bottom: auto; }
 
 /* Links auf dunklen Flächen und im Newsletter-Hinweis */
 .luviona-newsletter-hint a, .footer a:not(.button) { color: inherit; text-decoration-color: var(--luviona-gold); text-underline-offset: 0.25em; }
@@ -746,4 +738,25 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 @media screen and (max-width: 749px) {
   .footer-block--newsletter, .footer-block__newsletter { text-align: left; align-items: flex-start; }
   .footer-block__newsletter .footer-block__heading { text-align: left; }
+}
+
+/* KI-Kennzeichnung am Bild (EU AI Act Art. 50, § 5 UWG):
+   dezent unten rechts, aber klar lesbar – Navy auf halbtransparentem Creme, Kontrast > 7:1. */
+.luviona-ai-badge.luviona-ai-badge.luviona-ai-badge {
+  position: absolute;
+  top: auto; left: auto; right: 0.6rem; bottom: 0.6rem;
+  width: auto; height: auto; max-width: calc(100% - 1.2rem);
+  display: inline-block;
+  z-index: 2;
+  padding: 0.15rem 0.6rem;
+  font-family: var(--font-body-family);
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: rgba(11, 28, 61, 0.85);
+  background: rgba(246, 240, 230, 0.72);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  white-space: nowrap;
 }
