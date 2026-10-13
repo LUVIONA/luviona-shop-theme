@@ -425,8 +425,11 @@ input[type='checkbox'], input[type='radio'] { accent-color: var(--luviona-navy);
 .newsletter-form__field-wrapper { max-width: 44rem; margin: 0; }
 .newsletter-form__button { color: rgb(var(--color-foreground)); }
 @media screen and (min-width: 990px) {
-  .newsletter__wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-  .newsletter__wrapper > :nth-child(3) { grid-column: 2; grid-row: 1 / span 2; }
+  .newsletter__wrapper { display: grid; grid-template-columns: 1fr 1fr; column-gap: 8rem; row-gap: 1.6rem; align-items: end; }
+  .newsletter__wrapper > h2 { grid-column: 1; grid-row: 1; margin: 0; }
+  .newsletter__wrapper > .newsletter__subheading { grid-column: 1; grid-row: 2; margin: 0; align-self: start; }
+  .newsletter__wrapper > div:last-child { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+  .newsletter__wrapper .newsletter-form__field-wrapper { max-width: none; }
 }
 .title-wrapper-with-link .title, .collection__title .title, .related-products__heading, .collection-list-title { font-size: clamp(3rem, 5vw, 4.4rem); }
 .title-wrapper-with-link .link { font-size: var(--luviona-label); letter-spacing: 0.22em; text-transform: uppercase; }

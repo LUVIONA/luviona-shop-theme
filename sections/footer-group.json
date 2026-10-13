@@ -42,7 +42,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-3",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Bleib am Ball",
         "newsletter_text": "<p>Neue Designs und Court-Style-Inspiration – maximal zweimal im Monat, jederzeit abbestellbar.</p>",
         "enable_follow_on_shop": false,
