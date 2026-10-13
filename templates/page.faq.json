@@ -39,7 +39,7 @@
           "settings": {
             "heading": "Allergien & Unverträglichkeiten",
             "icon": "heart",
-            "row_content": "<p>Angaben zum Material und zur Konformität (z. B. Nickel) findest du auf jeder Produktseite unter „Hersteller & Produktsicherheit“. [PLATZHALTER: Aussage zu Nickel nur mit Prüfbericht des Lieferanten.] Der Lipgloss im Love Charm enthält die auf der Produktseite gelistete INCI-Inhaltsstoffliste; bei bekannten Unverträglichkeiten bitte vor der Anwendung prüfen.</p>"
+            "row_content": "<p>Angaben zum Material und zur Konformität (z. B. Nickel) findest du auf jeder Produktseite unter „Hersteller & Produktsicherheit“. [PLATZHALTER: Aussage zu Nickel nur mit Prüfbericht des Lieferanten.]</p>"
           }
         },
         "faq_5": {
@@ -47,7 +47,7 @@
           "settings": {
             "heading": "Rückgabe & Widerruf",
             "icon": "return",
-            "row_content": "<p>Du hast ein 14-tägiges Widerrufsrecht ab Erhalt der Ware. Am einfachsten über den Button <a href=\"/pages/widerruf\">„Vertrag widerrufen“</a> im Footer, per E-Mail an widerruf@luviona.de oder mit dem Muster-Widerrufsformular. Die Rücksendekosten trägst du selbst [PLATZHALTER: ggf. anpassen, wenn LUVIONA die Kosten übernimmt]. Bitte beachte: Bei geöffneten oder entsiegelten Kosmetikartikeln (Lipgloss) kann das Widerrufsrecht aus Hygienegründen erlöschen. Alle Details stehen in unserer <a href=\"/policies/refund-policy\">Widerrufsbelehrung</a>.</p>"
+            "row_content": "<p>Du hast ein 14-tägiges Widerrufsrecht ab Erhalt der Ware. Am einfachsten über den Button <a href=\"/pages/widerruf\">„Vertrag widerrufen“</a> im Footer, per E-Mail an widerruf@luviona.de oder mit dem Muster-Widerrufsformular. Die Rücksendekosten trägst du selbst [PLATZHALTER: ggf. anpassen, wenn LUVIONA die Kosten übernimmt]. Alle Details stehen in unserer <a href=\"/policies/refund-policy\">Widerrufsbelehrung</a>.</p>"
           }
         },
         "faq_6": {
@@ -81,12 +81,21 @@
             "icon": "eye",
             "row_content": "<p>Einige unserer Produkt- und Tragebilder sind KI-generiert oder KI-bearbeitet und entsprechend gekennzeichnet. Das Originalprodukt kann in Farbe und Details leicht abweichen; zusätzlich zeigen wir dir zu jedem Artikel mindestens ein echtes Produktfoto mit Größenvergleich. Mehr dazu auf der Seite <a href=\"/pages/hinweis-zu-unseren-bildern\">Hinweis zu unseren Bildern</a>.</p>"
           }
+        },
+        "faq_lovecharm": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Love Charm – ist ein Lipgloss dabei?",
+            "icon": "heart",
+            "row_content": "<p>Nein. Der Love Charm ist ein Taschenanhänger mit einer genähten Hülle, in die dein eigener Lipgloss passt – die Abbildungen zeigen die Hülle mit einem beispielhaften Gloss. Passend für gängige Tuben bis [PLATZHALTER: Ø mm × Länge mm]. Die Hülle ist aus Kunstleder in Saffiano-Optik; mit einem feuchten Tuch abwischen.</p>"
+          }
         }
       },
       "block_order": [
         "faq_1",
         "faq_2",
         "faq_3",
+        "faq_lovecharm",
         "faq_4",
         "faq_5",
         "faq_6",

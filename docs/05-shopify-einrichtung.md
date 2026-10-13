@@ -131,7 +131,7 @@ Danach **Theme-Einstellungen → LUVIONA – Rechtliches/Preise:** Seiten „Ver
 | Bewertungen (später) | z. B. Judge.me/Shopify-eigene Produktbewertungen | Echtheitsprüfung dokumentieren (§ 5b UWG) |
 
 ## 14. SEO & Technik
-- Shopify erzeugt `sitemap.xml` und `robots.txt` automatisch; Startseiten-Meta-Titel/-Beschreibung unter *Onlineshop → Einstellungen*: „LUVIONA – Court Style Accessories | Tennis-Schmuck & Bag Charms“ / „Tennis-Armbänder, Schläger-Ketten und der Love Charm mit Lipgloss. Entworfen und versandkostenfrei versendet aus Deutschland.“
+- Shopify erzeugt `sitemap.xml` und `robots.txt` automatisch; Startseiten-Meta-Titel/-Beschreibung unter *Onlineshop → Einstellungen*: „LUVIONA – Court Style Accessories | Tennis-Schmuck & Bag Charms“ / „Tennis-Armbänder, Schläger-Ketten und der Love Charm mit Lipgloss-Hülle. Entworfen und versandkostenfrei versendet aus Deutschland.“
 - Strukturierte Daten: Produkt (Product/Offer mit Preis, Verfügbarkeit, Versandland über Shopify), Organisation und Breadcrumbs liefert Dawn (`product | structured_data`, Header-JSON-LD). Shop-Name/Logo in den Einstellungen pflegen.
 - Google Search Console per DNS-TXT bei united-domains verifizieren.
 - Performance: Lighthouse mobil nach dem Hochladen prüfen (Ziel LCP < 2 s): Hero-Bild ≤ 250 KB, Produktbilder ≤ 300 KB.
