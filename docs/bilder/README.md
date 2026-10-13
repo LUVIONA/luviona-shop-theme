@@ -19,11 +19,18 @@ Format: JPEG, 1254 × 1254 px (Hero 1448 × 1086 px), Qualität 88, 200–390 KB
 | `match-point-armband-tragebild.jpg` | Match Point Armband | 2 | Match Point Armband goldfarben am Handgelenk, Tragebild |
 | `match-point-kette-tragebild.jpg` | Match Point Kette | 1 | Tennisschläger Kette goldfarben mit Tennisball – LUVIONA Match Point, Tragebild am Hals |
 | `match-point-kette-tragebild-hero.jpg` | Match Point Kette · **Startseiten-Hero** | 2 | Match Point Kette goldfarben auf Satin, Tragebild |
-| `love-charm-olive-packshot.jpg` | Love Charm · Variante Olive | 1 (Variantenbild) | Taschenanhänger Lipgloss Bag Charm Damen Kunstleder olive mit goldfarbenen Details – LUVIONA Love Charm |
-| `love-charm-rose-packshot.jpg` | Love Charm · Variante Rosé | 2 (Variantenbild) | Taschenanhänger Lipgloss Bag Charm Damen Kunstleder rosé – LUVIONA Love Charm |
-| `love-charm-creme-packshot.jpg` | Love Charm · Variante Creme | 3 (Variantenbild) | Taschenanhänger Lipgloss Bag Charm Damen Kunstleder creme – LUVIONA Love Charm |
+| `love-charm-taupe-produktfoto.jpg` | Love Charm · Variante Taupe (Variantenbild) | 1 | Love Charm Lipgloss-Taschenanhänger in Taupe, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-taupe-lifestyle.jpg` | Love Charm · Taupe, Stimmungsbild an der Tasche | 2 | Taschenanhänger Lipgloss Bag Charm Damen in Taupe an einer Tasche – LUVIONA Love Charm |
+| `love-charm-rose-produktfoto.jpg` | Love Charm · Variante Rosé (Variantenbild) | 3 | Love Charm Lipgloss-Taschenanhänger in Rosé, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-rose-lifestyle.jpg` | Love Charm · Rosé, Stimmungsbild an der Tasche | 4 | Taschenanhänger Lipgloss Bag Charm Damen in Rosé an einer Tasche – LUVIONA Love Charm |
+| `love-charm-lavendel-produktfoto.jpg` | Love Charm · Variante Lavendel (Variantenbild) | 5 | Love Charm Lipgloss-Taschenanhänger in Lavendel, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-lavendel-lifestyle.jpg` | Love Charm · Lavendel, Stimmungsbild an der Tasche | 6 | Taschenanhänger Lipgloss Bag Charm Damen in Lavendel an einer Tasche – LUVIONA Love Charm |
+| `love-charm-olive-produktfoto.jpg` | Love Charm · Variante Olive (Variantenbild) | 7 | Love Charm Lipgloss-Taschenanhänger in Olive, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-olive-lifestyle.jpg` | Love Charm · Olive, Stimmungsbild an der Tasche | 8 | Taschenanhänger Lipgloss Bag Charm Damen in Olive an einer Tasche – LUVIONA Love Charm |
+| `love-charm-creme-produktfoto.jpg` | Love Charm · Variante Creme (Variantenbild) | 9 | Love Charm Lipgloss-Taschenanhänger in Creme, Kunstleder mit goldfarbenem Karabiner und LUVIONA-Schild – Produktfoto |
+| `love-charm-creme-lifestyle.jpg` | Love Charm · Creme, Stimmungsbild an der Tasche | 10 | Taschenanhänger Lipgloss Bag Charm Damen in Creme an einer Tasche – LUVIONA Love Charm |
 
-**Noch fehlend:** Love Charm in Taupe und Lavendel · je Artikel ein echtes Foto mit Lineal/Münze · Packshot der Match Point Kette (nur Tragebilder vorhanden) · freigestelltes Logo (SVG/PNG) für Header und Favicon.
+**Noch fehlend:** je Artikel ein echtes Foto mit Lineal/Münze · Packshot der Match Point Kette (nur Tragebilder vorhanden) · freigestelltes Logo (SVG/PNG) für Header und Favicon.
 
 ## Einsatz im Theme
 
@@ -31,8 +38,8 @@ Format: JPEG, 1254 × 1254 px (Hero 1448 × 1086 px), Qualität 88, 200–390 KB
 |---|---|---|
 | Startseite – Hero | `match-point-kette-tragebild-hero.jpg` | Theme-Editor → Startseite → Bild-Banner → Bild (vorher unter Inhalte → Dateien hochladen). Querformat 4:3, Text steht links in der Navy-Box; mobil unter dem Bild. |
 | Startseite – Markengeschichte | `court-classic-gruen-weiss-tragebild.jpg` | Bild mit Text → Bild |
-| Startseite – Instagram-Bereich | `match-point-armband-tragebild.jpg`, `love-charm-rose-packshot.jpg`, `court-classic-bordeaux-weiss-tragebild-satin.jpg`, `court-classic-navy-weiss-silber-tragebild.jpg` | LUVIONA Instagram → 4 Bild-Blöcke |
-| Über LUVIONA | `court-classic-navy-weiss-silber-packshot.jpg`, `love-charm-creme-packshot.jpg` | Bild mit Text (zwei Sektionen) |
+| Startseite – Instagram-Bereich | `match-point-armband-tragebild.jpg`, `love-charm-rose-lifestyle.jpg`, `court-classic-bordeaux-weiss-tragebild-satin.jpg`, `court-classic-navy-weiss-silber-tragebild.jpg` | LUVIONA Instagram → 4 Bild-Blöcke |
+| Über LUVIONA | `court-classic-navy-weiss-silber-packshot.jpg`, `love-charm-creme-lifestyle.jpg` | Bild mit Text (zwei Sektionen) |
 | Produktseiten | siehe Tabelle oben | Produkt → Medien (oder per CSV-Import, siehe unten) |
 
 ## Produkt-Import mit Bildern
