@@ -346,3 +346,257 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   pointer-events: none;
 }
 .banner .luviona-ai-badge { bottom: auto; top: 0.8rem; }
+
+/* =============================================================================
+   LUVIONA · Editorial-Layer (v1.1)
+   Ziel: weg vom Standard-Dawn-Look – redaktionelle Typografie, ruhige Flächen,
+   feine Linien, großzügiger Weißraum.
+   ============================================================================= */
+
+:root { --luviona-ease: cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+body { color: rgba(var(--color-foreground), 0.86); }
+h1, h2, h3, .h0, .h1, .h2, .hxl, .hxxl { font-weight: 400; letter-spacing: 0; }
+h1 em, h2 em, h3 em, .luviona-quote__text em, blockquote em {
+  font-style: italic;
+  color: var(--luviona-gold-dark);
+}
+.color-scheme-3 h1 em, .color-scheme-3 h2 em, .color-scheme-3 blockquote em,
+.color-scheme-5 h2 em, .color-scheme-6 h2 em { color: var(--luviona-gold); }
+
+/* ---------- Wortmarke ------------------------------------------------------ */
+.luviona-wordmark { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; color: rgb(var(--color-foreground)); }
+.luviona-wordmark__name {
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 2.6rem;
+  letter-spacing: 0.34em;
+  margin-right: -0.34em; /* optischer Ausgleich der Sperrung */
+}
+.luviona-wordmark__claim {
+  margin-top: 0.6rem;
+  font-family: var(--font-body-family);
+  font-size: 0.85rem;
+  letter-spacing: 0.42em;
+  margin-right: -0.42em;
+  text-transform: uppercase;
+  color: var(--luviona-gold-dark);
+}
+@media screen and (min-width: 990px) {
+  .luviona-wordmark__name { font-size: 3.2rem; }
+  .luviona-wordmark__claim { font-size: 0.95rem; }
+}
+.header__heading-link:hover .luviona-wordmark__name { text-decoration: none; }
+.header { padding-top: 1.4rem; padding-bottom: 1.4rem; }
+.header__menu-item { letter-spacing: 0.2em; font-size: 1.15rem; }
+.header__menu-item span { text-decoration: none; }
+.header__active-menu-item { text-decoration: none; border-bottom: 1px solid var(--luviona-gold); padding-bottom: 0.3rem; }
+.announcement-bar { border-bottom: 0; }
+.announcement-bar__message { font-size: 1.05rem; letter-spacing: 0.22em; padding: 0.9rem 0; }
+
+/* ---------- Buttons & Links ------------------------------------------------ */
+.button, .shopify-payment-button__button--unbranded {
+  min-height: 5rem;
+  padding: 0 3.4rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.24em;
+}
+.button--secondary { --color-button: var(--color-background); }
+.luviona-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--luviona-gold);
+  transition: gap 0.3s var(--luviona-ease), color 0.3s;
+}
+.luviona-link-arrow::after { content: '→'; font-size: 1.4rem; letter-spacing: 0; }
+.luviona-link-arrow:hover { gap: 1.6rem; color: var(--luviona-gold-dark); }
+.color-scheme-3 .luviona-link-arrow:hover { color: var(--luviona-gold); }
+
+.luviona-eyebrow { font-size: 1.05rem; letter-spacing: 0.32em; font-weight: 500; }
+
+/* ---------- Sektionsköpfe -------------------------------------------------- */
+.luviona-section-head { text-align: center; max-width: 64rem; margin: 0 auto 4.8rem; }
+.luviona-section-head__title { font-size: calc(var(--font-heading-scale) * 3.4rem); line-height: 1.1; margin: 0; }
+.luviona-section-head__text { margin-top: 1.6rem; font-size: 1.5rem; }
+@media screen and (min-width: 750px) { .luviona-section-head__title { font-size: calc(var(--font-heading-scale) * 4.6rem); } }
+
+/* ---------- Hero ------------------------------------------------------------ */
+.luviona-hero { display: grid; grid-template-columns: 1fr; }
+.luviona-hero__media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--luviona-gold-light); }
+.luviona-hero__media img, .luviona-hero__media .placeholder-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+.luviona-hero__content { display: flex; align-items: center; padding: 4rem 2.4rem 5.6rem; }
+.luviona-hero__inner { max-width: 52rem; }
+.luviona-hero__heading {
+  font-size: clamp(4.2rem, 11vw, 8.8rem);
+  line-height: 0.98;
+  font-weight: 300;
+  margin: 0;
+}
+.luviona-hero__rule { display: block; width: 6rem; height: 1px; background: var(--luviona-gold); margin: 2.8rem 0; }
+.luviona-hero__text { font-size: 1.6rem; max-width: 40rem; }
+.luviona-hero__text p { margin: 0; }
+.luviona-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 2.4rem 3.2rem; margin-top: 3.6rem; }
+.luviona-hero__footnote { margin: 3.2rem 0 0; font-size: 1.1rem; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.7; }
+@media screen and (min-width: 990px) {
+  .luviona-hero { grid-template-columns: 5fr 7fr; min-height: min(84vh, 86rem); }
+  .luviona-hero__media { aspect-ratio: auto; order: 2; }
+  .luviona-hero--text-right .luviona-hero__media { order: 0; }
+  .luviona-hero__content { padding: 6rem 6rem 6rem max(5rem, calc((100vw - var(--page-width)) / 2 + 5rem)); }
+  .luviona-hero--text-right .luviona-hero__content { padding: 6rem max(5rem, calc((100vw - var(--page-width)) / 2 + 5rem)) 6rem 6rem; }
+  .luviona-hero__heading { font-size: clamp(5.6rem, 6vw, 9.6rem); }
+}
+
+/* ---------- Kollektions-Kacheln ---------------------------------------------- */
+.luviona-tiles__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 78%;
+  gap: 1.6rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  margin-right: -1.5rem; padding-right: 1.5rem;
+}
+.luviona-tiles__list::-webkit-scrollbar { display: none; }
+.luviona-tile { scroll-snap-align: start; }
+.luviona-tile__link { display: block; text-decoration: none; color: inherit; }
+.luviona-tile__media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--luviona-gold-light); }
+.luviona-tile__media img, .luviona-tile__media svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--luviona-ease); }
+.luviona-tile__link:hover .luviona-tile__media img { transform: scale(1.04); }
+.luviona-tile__body { padding: 2.2rem 0 0; }
+.luviona-tile__kicker { margin: 0 0 0.8rem; font-size: 1.05rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--luviona-gold-dark); }
+.luviona-tile__title { margin: 0 0 1rem; font-size: calc(var(--font-heading-scale) * 2.8rem); line-height: 1.1; }
+.luviona-tile__text { margin: 0 0 1.8rem; font-size: 1.45rem; line-height: 1.6; max-width: 36rem; }
+@media screen and (min-width: 750px) {
+  .luviona-tiles__list { grid-auto-flow: row; grid-template-columns: repeat(3, 1fr); gap: 3.2rem; overflow: visible; margin-right: 0; padding-right: 0; }
+}
+
+/* ---------- Produkt-Story --------------------------------------------------- */
+.luviona-feature__grid { display: grid; gap: 4rem; align-items: center; }
+.luviona-feature__media { position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: var(--luviona-gold-light); }
+.luviona-feature__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.luviona-feature__title { font-size: calc(var(--font-heading-scale) * 3.4rem); line-height: 1.08; margin: 0 0 2rem; }
+.luviona-feature__text { font-size: 1.55rem; max-width: 48rem; }
+.luviona-feature__details { list-style: none; margin: 3.2rem 0 0; padding: 0; border-top: 1px solid rgba(var(--color-foreground), 0.12); }
+.luviona-feature__detail { display: grid; grid-template-columns: 4.8rem 1fr; gap: 1.2rem; padding: 2rem 0; border-bottom: 1px solid rgba(var(--color-foreground), 0.12); }
+.luviona-feature__num { font-family: var(--font-heading-family); font-style: italic; font-size: 2.4rem; line-height: 1; color: var(--luviona-gold-dark); }
+.luviona-feature__detail-title { margin: 0 0 0.4rem; font-size: 1.2rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: rgb(var(--color-foreground)); }
+.luviona-feature__detail-text { margin: 0; font-size: 1.45rem; line-height: 1.6; }
+.luviona-feature__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 3.6rem; }
+.luviona-feature__price-value { font-family: var(--font-heading-family); font-size: 2.8rem; color: rgb(var(--color-foreground)); display: block; }
+@media screen and (min-width: 990px) {
+  .luviona-feature__grid { grid-template-columns: 1.05fr 1fr; gap: 9rem; }
+  .luviona-feature--right .luviona-feature__media { order: 2; }
+  .luviona-feature__title { font-size: calc(var(--font-heading-scale) * 4.8rem); }
+}
+
+/* ---------- Farbwelt --------------------------------------------------------- */
+.luviona-colors__head { display: grid; gap: 2rem; margin-bottom: 4rem; align-items: end; }
+.luviona-colors__intro { font-size: 1.5rem; max-width: 48rem; }
+.luviona-colors__price { margin: 1.6rem 0 0; font-family: var(--font-heading-family); font-size: 2.4rem; color: rgb(var(--color-foreground)); }
+.luviona-colors__price .luviona-price-note { font-family: var(--font-body-family); }
+.luviona-colors__list {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 1.2rem;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.luviona-colors__list::-webkit-scrollbar { display: none; }
+.luviona-colors__item { scroll-snap-align: start; }
+.luviona-colors__link { display: block; text-decoration: none; color: inherit; text-align: center; }
+.luviona-colors__media { position: relative; aspect-ratio: 1; overflow: hidden; background: #fbf8f2; }
+.luviona-colors__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--luviona-ease); }
+.luviona-colors__link:hover img { transform: scale(1.05); }
+.luviona-colors__name { display: inline-block; margin-top: 1.4rem; font-size: 1.15rem; letter-spacing: 0.28em; text-transform: uppercase; border-bottom: 1px solid transparent; padding-bottom: 0.3rem; }
+.luviona-colors__link:hover .luviona-colors__name { border-color: var(--luviona-gold); }
+.luviona-colors__cta { text-align: center; margin-top: 4.8rem; }
+@media screen and (min-width: 990px) {
+  .luviona-colors__head { grid-template-columns: 1fr 1fr; gap: 8rem; }
+  .luviona-colors__list { grid-auto-flow: row; grid-template-columns: repeat(5, 1fr); gap: 2rem; overflow: visible; }
+}
+
+/* ---------- Zitat ------------------------------------------------------------- */
+.luviona-quote__text {
+  margin: 1.6rem auto 2.4rem;
+  font-family: var(--font-heading-family);
+  font-weight: 300;
+  font-size: clamp(3rem, 5vw, 5.4rem);
+  line-height: 1.15;
+  color: rgb(var(--color-foreground));
+  border: 0; padding: 0;
+}
+.luviona-quote__by { margin-bottom: 2.4rem; }
+
+/* ---------- Produktkarten (Kollektion, Empfehlungen) ------------------------- */
+.card--standard .card__inner, .card__inner.color-scheme-1 { background: transparent; }
+.card-wrapper .card__media .media { background: #fbf8f2; }
+.card__heading { font-size: calc(var(--font-heading-scale) * 2.1rem); font-weight: 400; line-height: 1.2; }
+.card__heading a { text-decoration: none; }
+.card-wrapper:hover .card__heading a { text-decoration: none; color: var(--luviona-gold-dark); }
+.card__information { padding-top: 1.6rem; }
+.card-information .price { font-size: 1.4rem; letter-spacing: 0.06em; }
+.card-information .luviona-price-note { opacity: 0.75; }
+.card__badge .badge { border-radius: 0; }
+.product-grid { row-gap: 4.8rem; }
+.title-wrapper-with-link .title, .collection__title .title, .related-products__heading {
+  font-size: calc(var(--font-heading-scale) * 3.4rem);
+}
+.collection__view-all .button, .collection__view-all .link { margin-top: 2rem; }
+
+/* ---------- Produktseite ------------------------------------------------------ */
+.product__info-container > * + * { margin-top: 1.6rem; }
+.product__title h1 { font-size: calc(var(--font-heading-scale) * 3.6rem); font-weight: 400; line-height: 1.08; margin: 0; }
+@media screen and (min-width: 990px) { .product__title h1 { font-size: calc(var(--font-heading-scale) * 4.4rem); } }
+.luviona-subtitle { margin: 0.8rem 0 0; font-size: 1.1rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--luviona-gold-dark); }
+.product__info-container .price--large { font-family: var(--font-heading-family); font-size: 2.8rem; letter-spacing: 0; }
+.product__info-container .price--large .price-item { font-family: var(--font-heading-family); }
+.product-form__input .form__label, .product-form__input legend { font-size: 1.1rem; letter-spacing: 0.24em; text-transform: uppercase; }
+.product-form__submit { min-height: 5.4rem; }
+.product__description { font-size: 1.55rem; line-height: 1.75; }
+.product__description h3, .product__description h4 {
+  font-family: var(--font-body-family);
+  font-size: 1.15rem; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 500;
+  margin: 2.8rem 0 1.2rem; color: rgb(var(--color-foreground));
+}
+.product__description ul { list-style: none; padding: 0; margin: 0; }
+.product__description li { position: relative; padding: 0.6rem 0 0.6rem 2.4rem; border-bottom: 1px solid rgba(var(--color-foreground), 0.08); }
+.product__description li::before { content: ''; position: absolute; left: 0; top: 1.5rem; width: 1rem; height: 1px; background: var(--luviona-gold-dark); }
+.product__description .luviona-lead, .product__description > p:first-child { font-family: var(--font-heading-family); font-size: 2.2rem; line-height: 1.35; color: rgb(var(--color-foreground)); }
+.luviona-highlights { list-style: none; margin: 2rem 0 0; padding: 1.8rem 0; display: grid; gap: 1rem; border-top: 1px solid rgba(var(--color-foreground), 0.12); border-bottom: 1px solid rgba(var(--color-foreground), 0.12); }
+.luviona-highlights__item { display: flex; align-items: center; gap: 1.2rem; font-size: 1.35rem; }
+.luviona-highlights__icon { width: 1.8rem; height: 1.8rem; flex: 0 0 auto; color: var(--luviona-gold-dark); }
+.luviona-highlights__icon svg { width: 100%; height: 100%; }
+.product__accordion { border-color: rgba(var(--color-foreground), 0.12); }
+.product__accordion summary { padding: 1.8rem 0; }
+.product .accordion { border-top-color: rgba(var(--color-foreground), 0.12); }
+.product__media-wrapper .product__media { background: #fbf8f2; }
+.product__view-details { display: none; }
+
+/* ---------- Kollektionsseite --------------------------------------------------- */
+.collection-hero__inner { justify-content: center; text-align: center; }
+.collection-hero__text-wrapper { max-width: 64rem; margin: 0 auto; }
+.collection-hero__title { font-size: calc(var(--font-heading-scale) * 4.6rem); margin-bottom: 1.2rem; }
+.collection-hero__description { font-size: 1.55rem; }
+.facets__summary, .facet-filters__label { letter-spacing: 0.2em; }
+
+/* ---------- Footer -------------------------------------------------------------- */
+.footer { border-top: 0; }
+.footer-block__brand-info .footer-block__heading {
+  font-family: var(--font-heading-family);
+  font-size: 3.2rem; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase;
+}
+.footer-block__heading { letter-spacing: 0.24em; font-size: 1.1rem; color: var(--luviona-gold); }
+.footer .list-menu__item--link { font-size: 1.35rem; letter-spacing: 0.02em; text-transform: none; opacity: 0.85; }
+.footer .list-menu__item--link:hover { opacity: 1; color: var(--luviona-gold); }
+
+/* ---------- Vertrauensleiste schlanker ------------------------------------------- */
+.luviona-trust__title { font-size: 1.05rem; letter-spacing: 0.22em; }
+.luviona-trust__text { font-size: 1.2rem; }
+.luviona-trust__icon { width: 2.6rem; height: 2.6rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .luviona-tile__link:hover .luviona-tile__media img, .luviona-colors__link:hover img { transform: none; }
+  .luviona-link-arrow { transition: none; }
+}

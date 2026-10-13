@@ -1,0 +1,26 @@
+{%- doc -%}
+  LUVIONA – drei kurze Produkt-Highlights unter dem Kaufbutton.
+  Quelle: Metafeld luviona.highlights (Liste, je Produkt) oder die Standardtexte des Blocks.
+
+  @param {object} block - Section-Block luviona_highlights
+  @param {object} product - Produkt
+{%- enddoc -%}
+{%- liquid
+  assign items = product.metafields.luviona.highlights.value
+  if items == blank
+    assign items = block.settings.default_items | newline_to_br | split: '<br />'
+  endif
+-%}
+{%- if items.size > 0 -%}
+  <ul class="luviona-highlights quick-add-hidden" role="list" {{ block.shopify_attributes }}>
+    {%- for item in items limit: 4 -%}
+      {%- assign label = item | strip -%}
+      {%- if label != blank -%}
+        <li class="luviona-highlights__item">
+          <span class="luviona-highlights__icon" aria-hidden="true">{% render 'luviona-icon', icon: 'sparkle' %}</span>
+          <span>{{ label | escape }}</span>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

@@ -680,6 +680,12 @@
                       <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                     {%- endif -%}
                   </product-recommendations>
+                {%- when 'luviona_subtitle' -%}
+                  {%- if product.metafields.luviona.untertitel.value != blank -%}
+                    <p class="luviona-subtitle" {{ block.shopify_attributes }}>{{ product.metafields.luviona.untertitel.value | escape }}</p>
+                  {%- endif -%}
+                {%- when 'luviona_highlights' -%}
+                  {% render 'luviona-highlights', block: block, product: product %}
                 {%- when 'luviona_delivery' -%}
                   {%- liquid
                     assign delivery_text = product.metafields.luviona.lieferzeit.value | default: settings.luviona_delivery_time
@@ -1267,6 +1273,21 @@
           "id": "page",
           "label": "t:sections.main-product.blocks.collapsible_tab.settings.page.label"
         }
+      ]
+    },
+    {
+      "type": "luviona_subtitle",
+      "name": "LUVIONA: Unterzeile",
+      "limit": 1,
+      "settings": [ { "type": "paragraph", "content": "Zeigt das Produkt-Metafeld luviona.untertitel, z. B. „Kordelarmband · goldfarben · verstellbar“." } ]
+    },
+    {
+      "type": "luviona_highlights",
+      "name": "LUVIONA: Highlights",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Bis zu vier kurze Punkte. Je Produkt über das Metafeld luviona.highlights (Liste) – sonst diese Standardtexte." },
+        { "type": "textarea", "id": "default_items", "label": "Standardtexte (eine Zeile pro Punkt)", "default": "Versandkostenfrei aus Deutschland\nIn der navy LUVIONA-Box auf Wunsch\n14 Tage Widerruf" }
       ]
     },
     {

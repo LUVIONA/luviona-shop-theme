@@ -1,0 +1,87 @@
+{%- comment -%}
+  LUVIONA – Produkt-Geschichte: großes Bild, Text und nummerierte Details (z. B. Flechtnetz, Emaille-Griff).
+{%- endcomment -%}
+{% render 'luviona-section-padding', section: section %}
+{%- liquid
+  assign p = section.settings.product
+  assign media = p.featured_media
+  if section.settings.media_index > 1 and p.media.size >= section.settings.media_index
+    assign idx = section.settings.media_index | minus: 1
+    assign media = p.media[idx]
+  endif
+-%}
+<div class="luviona-feature luviona-feature--{{ section.settings.image_position }} color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width luviona-feature__grid">
+    <div class="luviona-feature__media{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw' }}
+      {%- elsif media -%}
+        {{ media | image_url: width: 1400 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400', sizes: '(min-width: 990px) 50vw, 100vw', alt: media.alt | escape }}
+        <span class="luviona-ai-badge">{{ 'luviona.product.ai_badge' | t }}</span>
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <div class="luviona-feature__content{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- if section.settings.eyebrow != blank -%}<p class="luviona-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+      <h2 class="luviona-feature__title">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<div class="luviona-feature__text rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.blocks.size > 0 -%}
+        <ol class="luviona-feature__details" role="list">
+          {%- for block in section.blocks -%}
+            <li class="luviona-feature__detail" {{ block.shopify_attributes }}>
+              <span class="luviona-feature__num" aria-hidden="true">{{ forloop.index | prepend: '0' }}</span>
+              <div>
+                <p class="luviona-feature__detail-title">{{ block.settings.title | escape }}</p>
+                {%- if block.settings.text != blank -%}<p class="luviona-feature__detail-text">{{ block.settings.text | escape }}</p>{%- endif -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ol>
+      {%- endif -%}
+      <div class="luviona-feature__actions">
+        {%- if p != blank -%}
+          <div class="luviona-feature__price">
+            <span class="luviona-feature__price-value">{{ p.price | money }}</span>
+            {% render 'luviona-price-note', style: 'compact' %}
+          </div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a class="button" href="{{ section.settings.button_link | default: p.url }}">{{ section.settings.button_label | escape }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LUVIONA: Produkt-Story",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "max_blocks": 5,
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt (Bild, Preis, Link)" },
+    { "type": "range", "id": "media_index", "min": 1, "max": 10, "step": 1, "label": "Welches Produktbild", "default": 2 },
+    { "type": "image_picker", "id": "image", "label": "Eigenes Bild (optional)" },
+    { "type": "select", "id": "image_position", "label": "Bild", "options": [ { "value": "left", "label": "links" }, { "value": "right", "label": "rechts" } ], "default": "left" },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Überschrift", "default": "Court Classic" },
+    { "type": "inline_richtext", "id": "heading", "label": "Überschrift", "default": "Geflochten wie ein <em>Griffband</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Zum Armband" },
+    { "type": "url", "id": "button_link", "label": "Link (sonst Produkt)" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-1" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 64 }
+  ],
+  "blocks": [
+    { "type": "detail", "name": "Detail", "settings": [
+      { "type": "text", "id": "title", "label": "Titel", "default": "Detail" },
+      { "type": "text", "id": "text", "label": "Text", "default": "" }
+    ] }
+  ],
+  "presets": [ { "name": "LUVIONA: Produkt-Story", "blocks": [ { "type": "detail" }, { "type": "detail" }, { "type": "detail" } ] } ]
+}
+{% endschema %}

@@ -1,0 +1,62 @@
+{%- comment -%}
+  LUVIONA – Farbwelt: zeigt alle Farbvarianten eines Produkts (z. B. Love Charm) mit eigenem Bild.
+{%- endcomment -%}
+{% render 'luviona-section-padding', section: section %}
+{%- assign p = section.settings.product -%}
+<div class="luviona-colors color-{{ section.settings.color_scheme }} gradient section-{{ section.id }}-padding">
+  <div class="page-width">
+    <div class="luviona-colors__head">
+      <div>
+        {%- if section.settings.eyebrow != blank -%}<p class="luviona-eyebrow">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        <h2 class="luviona-section-head__title">{{ section.settings.heading }}</h2>
+      </div>
+      <div class="luviona-colors__intro">
+        {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if p != blank -%}
+          <p class="luviona-colors__price">{{ p.price | money }} {% render 'luviona-price-note', style: 'compact' %}</p>
+        {%- endif -%}
+      </div>
+    </div>
+    {%- if p != blank -%}
+      <ul class="luviona-colors__list" role="list">
+        {%- for variant in p.variants -%}
+          {%- assign vm = variant.featured_media | default: p.featured_media -%}
+          <li class="luviona-colors__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"{% if settings.animations_reveal_on_scroll %} data-cascade style="--animation-order: {{ forloop.index }};"{% endif %}>
+            <a href="{{ variant.url }}" class="luviona-colors__link">
+              <div class="luviona-colors__media">
+                {%- if vm -%}
+                  {{ vm | image_url: width: 700 | image_tag: loading: 'lazy', widths: '300, 500, 700', sizes: '(min-width: 990px) 19vw, 45vw', alt: vm.alt | escape }}
+                {%- endif -%}
+              </div>
+              <span class="luviona-colors__name">{{ variant.title | escape }}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <div class="luviona-colors__cta"><a class="button" href="{{ p.url }}">{{ section.settings.button_label | escape }}</a></div>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LUVIONA: Farbwelt",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": { "groups": ["header", "footer"] },
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt mit Farbvarianten" },
+    { "type": "text", "id": "eyebrow", "label": "Kleine Überschrift", "default": "Love Charm" },
+    { "type": "inline_richtext", "id": "heading", "label": "Überschrift", "default": "Fünf Farben. <em>Ein Gloss.</em>" },
+    { "type": "richtext", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "Love Charm entdecken" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Farbschema", "default": "scheme-4" },
+    { "type": "header", "content": "Abstände" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand oben", "default": 72 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "Abstand unten", "default": 72 }
+  ],
+  "presets": [ { "name": "LUVIONA: Farbwelt" } ]
+}
+{% endschema %}

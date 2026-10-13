@@ -56,7 +56,7 @@ def image_url(url):
     return url.replace("/luviona-shop-theme/main/", f"/luviona-shop-theme/{IMAGE_REF}/") if url else url
 DRY = "--dry-run" in sys.argv
 STEPS = [a for a in sys.argv[1:] if not a.startswith("--")] or [
-    "metafields", "products", "collections", "pages", "menus"]
+    "metafields", "products", "texts", "collections", "pages", "menus"]
 
 
 # --------------------------------------------------------------------------- API
@@ -138,6 +138,8 @@ def publish(gid):
 # ------------------------------------------------------------------ 1. Metafelder
 METAFIELDS = [
     ("lieferzeit", "Lieferzeit", "single_line_text_field"),
+    ("untertitel", "Unterzeile unter dem Produkttitel", "single_line_text_field"),
+    ("highlights", "Highlights (bis zu 4 kurze Punkte)", "list.single_line_text_field"),
     ("material", "Material & Maße", "rich_text_field"),
     ("pflege", "Pflegehinweise", "rich_text_field"),
     ("lieferumfang", "Lieferumfang", "rich_text_field"),
@@ -257,6 +259,27 @@ def step_products():
             continue
         if not user_errors(r, "productSet"):
             publish(r["productSet"]["product"]["id"])
+
+
+# ------------------------------------------------------- 2b. Produkttexte
+def step_texts():
+    """Beschreibung, Unterzeile und Highlights aus docs/produkt-texte.json übernehmen."""
+    print("\n== Produkttexte ==")
+    texts = json.load(open(os.path.join(ROOT, "docs", "produkt-texte.json"), encoding="utf-8"))
+    for handle, tx in texts.items():
+        pid = find_id("products", handle)
+        if not pid and not DRY:
+            log(f"  ! {handle} nicht gefunden – zuerst Schritt 'products' ausführen")
+            continue
+        log(f"  ~ {handle}: Text, Unterzeile, {len(tx['highlights'])} Highlights")
+        r = gql("""mutation($p: ProductUpdateInput!) {
+          productUpdate(product: $p) { userErrors { field message } } }""",
+                {"p": {"id": pid, "descriptionHtml": tx["body"], "metafields": [
+                    {"namespace": "luviona", "key": "untertitel", "type": "single_line_text_field", "value": tx["untertitel"]},
+                    {"namespace": "luviona", "key": "highlights", "type": "list.single_line_text_field",
+                     "value": json.dumps(tx["highlights"], ensure_ascii=False)}]}})
+        if not DRY:
+            user_errors(r, "productUpdate")
 
 
 # ----------------------------------------------------------------- 3. Kollektionen
@@ -430,7 +453,7 @@ def main():
         shop = gql("{ shop { name myshopifyDomain primaryDomain { host } } }")["shop"]
         print(f"Shop: {shop['name']} ({shop['myshopifyDomain']}, {shop['primaryDomain']['host']}), API {VERSION}")
     for step in STEPS:
-        {"metafields": step_metafields, "products": step_products, "collections": step_collections,
+        {"metafields": step_metafields, "products": step_products, "texts": step_texts, "collections": step_collections,
          "pages": step_pages, "menus": step_menus}[step]()
     print("\nFertig.")
 
