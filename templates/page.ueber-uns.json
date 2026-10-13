@@ -50,7 +50,9 @@
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
         "padding_top": 24,
-        "padding_bottom": 24
+        "padding_bottom": 24,
+        "luviona_asset": "luviona-about-1",
+        "luviona_asset_alt": "Court Classic Armband Navy/Weiß mit silberfarbenem Schläger vor der LUVIONA-Box"
       }
     },
     "story2": {
@@ -105,7 +107,9 @@
         "section_color_scheme": "scheme-4",
         "color_scheme": "scheme-4",
         "padding_top": 24,
-        "padding_bottom": 24
+        "padding_bottom": 24,
+        "luviona_asset": "luviona-about-2",
+        "luviona_asset_alt": "Love Charm Lipgloss-Taschenanhänger in Creme an einer Tasche"
       }
     },
     "trust": {

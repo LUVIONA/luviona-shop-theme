@@ -30,7 +30,7 @@
       <div class="image-with-text__grid grid grid--gapless grid--1-col grid--{% if section.settings.desktop_image_width == 'medium' %}2-col-tablet{% else %}3-col-tablet{% endif %}{% if section.settings.layout == 'text_first' %} image-with-text__grid--reverse{% endif %}">
         <div class="image-with-text__media-item image-with-text__media-item--{{ section.settings.desktop_image_width }} image-with-text__media-item--{{ section.settings.desktop_content_position }} grid__item">
           <div
-            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank %} media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
+            class="image-with-text__media image-with-text__media--{{ section.settings.height }} global-media-settings{% unless remove_color_classes %} gradient color-{{ section.settings.color_scheme }}{% else %} background-transparent{% endunless %}{% if section.settings.image != blank %} media{% elsif section.settings.luviona_asset != blank %} media luviona-asset-media{% else %} image-with-text__media--placeholder placeholder{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}"
             {% if section.settings.height == 'adapt' and section.settings.image != blank %}
               style="padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;"
             {% endif %}
@@ -54,6 +54,12 @@
                 | image_url: width: 1500
                 | image_tag: sizes: sizes, widths: widths, fetchpriority: fetch_priority
               }}
+            {%- elsif section.settings.luviona_asset != blank -%}
+              {% render 'luviona-asset-image',
+                name: section.settings.luviona_asset,
+                alt: section.settings.luviona_asset_alt,
+                sizes: '(min-width: 750px) 50vw, 100vw'
+              %}
             {%- else -%}
               {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
@@ -112,13 +118,51 @@
   "name": "t:sections.image-with-text.name",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
       "type": "image_picker",
       "id": "image",
       "label": "t:sections.image-with-text.settings.image.label"
+    },
+    {
+      "type": "select",
+      "id": "luviona_asset",
+      "label": "LUVIONA: Mitgeliefertes Bild (wenn oben kein Bild gewählt)",
+      "info": "KI-generiertes LUVIONA-Bild aus den Theme-Dateien inkl. Hinweis „KI-generiert“. Ein oben gewähltes Bild hat Vorrang.",
+      "options": [
+        {
+          "value": "",
+          "label": "Keins (Platzhalter)"
+        },
+        {
+          "value": "luviona-story",
+          "label": "Court Classic Grün/Weiß am Handgelenk"
+        },
+        {
+          "value": "luviona-about-1",
+          "label": "Court Classic Navy/Weiß mit Box"
+        },
+        {
+          "value": "luviona-about-2",
+          "label": "Love Charm Creme"
+        },
+        {
+          "value": "luviona-hero",
+          "label": "Match Point Kette"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "luviona_asset_alt",
+      "label": "LUVIONA: Alt-Text für das mitgelieferte Bild",
+      "default": ""
     },
     {
       "type": "select",
@@ -203,7 +247,7 @@
     {
       "type": "header",
       "content": "t:sections.image-with-text.settings.header.content"
-    }, 
+    },
     {
       "type": "select",
       "id": "content_layout",
@@ -219,7 +263,7 @@
       ],
       "default": "no-overlap",
       "label": "t:sections.image-with-text.settings.content_layout.label"
-    },       
+    },
     {
       "type": "select",
       "id": "desktop_content_position",
@@ -283,7 +327,7 @@
     {
       "type": "header",
       "content": "t:sections.image-with-text.settings.header_colors.content"
-    },        
+    },
     {
       "type": "color_scheme",
       "id": "section_color_scheme",

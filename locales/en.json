@@ -554,7 +554,8 @@
         "responsible": "Responsible person (EU Cosmetics Regulation)",
         "allergens": "Fragrance allergens",
         "warnings": "Warnings"
-      }
+      },
+      "ai_badge": "AI-generated image"
     },
     "addon": {
       "variant_label": "Choose colour"

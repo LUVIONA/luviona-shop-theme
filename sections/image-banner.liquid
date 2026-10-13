@@ -82,6 +82,21 @@
           fetchpriority: fetch_priority
       }}
     </div>
+  {%- elsif section.settings.image_2 == blank and section.settings.luviona_asset != blank -%}
+    <div class="banner__media media luviona-asset-media{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- liquid
+        assign luviona_eager = false
+        if section.index == 1
+          assign luviona_eager = true
+        endif
+      -%}
+      {% render 'luviona-asset-image',
+        name: section.settings.luviona_asset,
+        alt: section.settings.luviona_asset_alt,
+        sizes: '100vw',
+        eager: luviona_eager
+      %}
+    </div>
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -172,7 +187,10 @@
   "tag": "section",
   "class": "section",
   "disabled_on": {
-    "groups": ["header", "footer"]
+    "groups": [
+      "header",
+      "footer"
+    ]
   },
   "settings": [
     {
@@ -184,6 +202,41 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "select",
+      "id": "luviona_asset",
+      "label": "LUVIONA: Mitgeliefertes Bild (wenn oben kein Bild gewählt)",
+      "info": "Zeigt ein KI-generiertes LUVIONA-Bild aus den Theme-Dateien inkl. Hinweis „KI-generiert“. Ein oben gewähltes Bild hat Vorrang.",
+      "options": [
+        {
+          "value": "",
+          "label": "Keins (Platzhalter)"
+        },
+        {
+          "value": "luviona-hero",
+          "label": "Hero – Match Point Kette"
+        },
+        {
+          "value": "luviona-story",
+          "label": "Court Classic Grün/Weiß am Handgelenk"
+        },
+        {
+          "value": "luviona-about-1",
+          "label": "Court Classic Navy/Weiß mit Box"
+        },
+        {
+          "value": "luviona-about-2",
+          "label": "Love Charm Creme"
+        }
+      ],
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "luviona_asset_alt",
+      "label": "LUVIONA: Alt-Text für das mitgelieferte Bild",
+      "default": "Match Point Kette goldfarben mit Tennisschläger-Anhänger, Tragebild"
     },
     {
       "type": "range",
@@ -332,7 +385,7 @@
       "id": "stack_images_on_mobile",
       "default": true,
       "label": "t:sections.image-banner.settings.stack_images_on_mobile.label"
-    },    
+    },
     {
       "type": "select",
       "id": "mobile_content_alignment",
@@ -441,8 +494,8 @@
       "limit": 1,
       "settings": [
         {
-        "type": "header",
-        "content": "t:sections.image-banner.blocks.buttons.settings.header_1.content"
+          "type": "header",
+          "content": "t:sections.image-banner.blocks.buttons.settings.header_1.content"
         },
         {
           "type": "text",
@@ -463,8 +516,8 @@
           "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_1.label"
         },
         {
-        "type": "header",
-        "content": "t:sections.image-banner.blocks.buttons.settings.header_2.content"
+          "type": "header",
+          "content": "t:sections.image-banner.blocks.buttons.settings.header_2.content"
         },
         {
           "type": "text",
